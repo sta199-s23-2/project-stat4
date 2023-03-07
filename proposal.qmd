@@ -30,7 +30,7 @@ library(tidyverse)
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
@@ -52,25 +52,47 @@ library(tidyverse)
 
 -   Identify the source of the data.
 
+<https://data.unicef.org/resources/dataset/diets/> -- Unhealthy Practices 
+
+United Nations Children\'s Fund, Division of Data, Analysis, Planning and Monitoring (2022). Global UNICEF Global Databases: Infant and Young Child Feeding: Zero vegetable or fruit consumption, New York, October 2022.
+
 -   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
 
+Collected through surveys (national/nutrition monitoring and surveillance systems/multiple indicator cluster survey) from 2015 to 2021 and countries with data from this period are included in calculation of regional and global averages with the exception of China where the latest data are from 2013 
+
 -   Write a brief description of the observations.
+
+Each observation represents three-digit alphabetical codes ISO assigned by the International Organization for Standardization (columns also detail countries, UNICEF regions, UN regions, world bank income group, data source years, and the way that the survey was collected)
 
 ## Research question
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 
+Are there greater gender differences in the consumption of zero vegetable or fruit for low income countries than in upper-middle income countries?
+
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
+
+We are researching global data on infant and young child feeding, and specifically on vegetable and fruit consumption. The UNICEF global database on infant and young child feeding details the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day. Previous studies have shown that children from low- and low-middle countries had the lowest consumption of fruits and vegetables. Globally, zero vegetable or fruit consumption is very high with 46% of children consuming no vegetables or fruit the day before the survey. We hypothesize that there are male infants are better fed than female infants in lower-income countries whereas this gender gap is less prevalent in upper-middle income countries.
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+    The variables involved in our research question are quantitiative, with the indicator being the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day. 
+
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
+    Determinants of Complementary Feeding Indicators: A Secondary Analysis of Thailand Multiple Indicators Cluster Survey 2019 
+
+    By Abhirat Supthanasup, Nisachol Cetthakrikul, Matthew Kelly, Haribondhu Sarma, and Cathy Banwell
+
 -   Provide a one paragraph summary about the article.
 
+Child complementary feeding (CF practices) meet dietary recommendations more often among educated, high-income groups. Child undernutrition has the greatest impact in low- and middle-income countries, with the greatest impact on Asian and African children. The study explores the three groups of conditions as a result of undernutrition, which includes stunting, wasting, and underweight. The study found that child feeding practices are influenced by multidimensional determinants, including personal, household and community factors. It was often that higher maternal education is associated with appropriate child feeding practices and the findings were in line with previous studies that demonstrate children of mothers with high educational level displayed better complementary feeding indicators. 
+
 -   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
+
+Our research question builds on the topic of child complementary feeding, but will focus on the aspect of gender to compare feeding practices for male and females. Additionally, our research question will examine these differences across countries, with a focus on income (comparing low-income countries to upper-middle countries).
 
 ## Glimpse of data
 
@@ -98,7 +120,7 @@ library(tidyverse)
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
