@@ -110,7 +110,7 @@ glimpse(UNICEF_Food)
 
 -   State when and how it was originally collected (by the original data curator, not necessarily how you found the data). **This data set was originally collected February 27, 2023 by the Los Angeles Police Department.**
 
--   Write a brief description of the observations.
+-   Write a brief description of the observations. **The data set has 1321062 rows representing different arrests. There are 31 columns, from which 6 are relevant to us (report id, area name, age, sex code, charge group description and charge description).**
 
 ## Research question
 
@@ -118,7 +118,7 @@ glimpse(UNICEF_Food)
 
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
 
--   Identify the types of variables in your research question. Categorical? Quantitative?
+-   Identify the types of variables in your research question. Categorical? Quantitative? **(Charge of arrests: categorical, area name: categorical, age: quantitative)**
 
 ## Literature
 
