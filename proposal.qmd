@@ -106,15 +106,15 @@ glimpse(UNICEF_Food)
 
 ## Introduction and data
 
--   Identify the source of the data.
+-   Identify the source of the data. **The source of the data set is data.lacity.org.**
 
--   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
+-   State when and how it was originally collected (by the original data curator, not necessarily how you found the data). **This data set was originally collected February 27, 2023 by the Los Angeles Police Department.**
 
 -   Write a brief description of the observations.
 
 ## Research question
 
--   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
+-   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.) **How do the charges of arrests vary across the 5 areas in Los Angeles and are youth (those aged less than 30) more likely to commit these crimes than older people?**
 
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
 
