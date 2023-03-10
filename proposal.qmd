@@ -30,7 +30,7 @@ library(tidyverse)
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
@@ -64,7 +64,7 @@ library(tidyverse)
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
@@ -86,25 +86,45 @@ library(tidyverse)
 
 -   Identify the source of the data.
 
+    From the CORGIS Dataset Project
+
 -   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
 
+    By Ryan Whitcomb, Joung Min Choi, Bo Guan during 9/14/2021
+
 -   Write a brief description of the observations.
+
+    Each row represents a county in every United States state. The observations for each specific county is the count of people living in quarters and how far each one lives from a supermarket without a vehicle. There is also population of kids on the same distance markers used to determine the distance from a supermarket. This further divides into low income and senior divisions. 
 
 ## Research question
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 
+    Factors in the data that affect access to supermarkets are age, distance, income, transportation, and area. Which of these mostly affects access to supermarkets?
+
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
+
+    Looking at the United States Department of Agriculture's Economic Research Service, we see a data set that contains information about people's ability to access supermarkets in the US. There are multiple factors that are taken into a account. Each of these factors negatively or positively affects people's ability to access a supermarket. Some people live further away or closer to the markets, have cars, have higher income, live in different areas, and have different ages. Each of these factors contributed to different numbers for supermarket accessibility. We will be exploring each category to see which factor mostly affects the lower numbers to access of supermarkets by comparing each factor's data. 
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-## Literature 
+    Quantitative- miles away, age group, income, low access numbers, population
+
+    Categorical - state, county
+
+    \
+    \
+    Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
--   Provide a one paragraph summary about the article.
+    https://health.gov/healthypeople/priority-areas/social-determinants-health/literature-summaries/food-insecurity
+
+This article talks about food insecurity, which is a condition in which someone has limited access to adequate food. Alot of households are affected by this. It can be a long or temporary thing and is influenced by income, employment, race/ethnicity, and disability. High unemployment rates in low-income populations make it even more difficult to have sufficient food access. Moreover, disabled adults have a higher risk for food insecurity because they have less employment opportunities and health-care related expenses. This gives them less money to buy food. In 2020, Black households' food insecurity percentage was 21.7, which was 2 times greater than the national average. Possible reasons include neighborhood conditions, physical access to food, and lack of transportation. Some people who live in urban and rural areas, low-income neigborhoods may have less access to supermarkets. Predominantly black and hispanic neighbors have fewer good quality markets than predominantly white and non-hispanic neighborhoods. Having food insecurity is very bad because it could lead to negative health problems. There are studies that support that food insecurity increases risk for obesity and developmental and mental health problems for children.
 
 -   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
+
+    Our research question builds on the article. It seeks to find the greatest affect on someone's ability to access supermarkets. Although the article is more specific. It includes race, disabilites, and employment as possible factors while our data doesn't include that.
 
 ## Glimpse of data
 
