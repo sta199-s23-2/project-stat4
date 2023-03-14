@@ -16,32 +16,49 @@ library(tidyverse)
 
 ## Introduction and data
 
--   Identify the source of the data.
+-   Identify the source of the data. **The source of the data set is data.lacity.org.**
 
--   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
+-   State when and how it was originally collected (by the original data curator, not necessarily how you found the data). **This data set was originally collected February 27, 2023 by the Los Angeles Police Department.**
 
--   Write a brief description of the observations.
+-   Write a brief description of the observations. **The data set has 1321062 rows representing different arrests. There are 31 columns, from which 6 are relevant to us (report id, area name, age, date, sex code, charge group description and charge description).**
 
 ## Research question
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 
+    **How do the charges of arrests vary across the 5 areas in Los Angeles and are youth (those aged less than 30) more likely to commit these crimes than older people?**
+
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
 
+    **We chose a criminal justice approach for this dataset, which assesses arrest records and trends in LA. Our hypothesis is that those aged younger are more likely to commit misdemeanors in Los Angelos than any other age group because of the amount of poverty in Los Angelos, a driver for crime.**
+
 -   Identify the types of variables in your research question. Categorical? Quantitative?
+
+    **(Charge of arrests: categorical, area name: categorical,**
+
+    **age, date: quantitative)**
 
 ## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
+**https://www.ppic.org/publication/assessing-the-impact-of-covid-19-on-arrests-in-california/**
+
 -   Provide a one paragraph summary about the article.
 
+**Public health measures including the statewide shelter-in-place order and state and local directives that impacted law enforcement-public contacts, early release of inmates, and bail processes affected the criminal justice system during the COVID-19 epidemic. California arrest trends are examined in this article (through mid-2021). Due to fewer people leaving their houses, California's total crime rate declined in 2020, notwithstanding homicide increases. The epidemic's background is rare and complex, making pattern identification challenging. The trends that the article explores include arrests falling in March 2020,** **the reason for that being Californians staying home,** **percent changes being the same across varied racial groups, less police interactions, etc.**
+
 -   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
+
+**This article builds upon this research article because this article talks about California as a whole and focuses on the trends in the COVID time, while I focus on LA over a decade.**
 
 ## Glimpse of data
 
 ```{r}
 #| label: load-data-1
+
+Arrest_LA <- read.csv("data/Arrest_Data_from_2010_to_2019-7.csv")
+glimpse(Arrest_LA)
 
 ```
 
@@ -51,49 +68,47 @@ library(tidyverse)
 
 -   Identify the source of the data.
 
-<https://data.unicef.org/resources/dataset/diets/> -- Unhealthy Practices 
+[**https://data.unicef.org/resources/dataset/diets/**](https://data.unicef.org/resources/dataset/diets/){.uri} **-- Unhealthy Practices** 
 
 United Nations Children's Fund, Division of Data, Analysis, Planning and Monitoring (2022). Global UNICEF Global Databases: Infant and Young Child Feeding: Zero vegetable or fruit consumption, New York, October 2022.
 
 -   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
 
-Collected through surveys (national/nutrition monitoring and surveillance systems/multiple indicator cluster survey) from 2015 to 2021 and countries with data from this period are included in calculation of regional and global averages with the exception of China where the latest data are from 2013 
+**Collected through surveys (national/nutrition monitoring and surveillance systems/multiple indicator cluster survey) from 2015 to 2021 and countries with data from this period are included in calculation of regional and global averages with the exception of China where the latest data are from 2013** 
 
 -   Write a brief description of the observations.
 
-Each observation represents three-digit alphabetical codes ISO assigned by the International Organization for Standardization (columns also detail countries, UNICEF regions, UN regions, world bank income group, data source years, and the way that the survey was collected)
+**Each observation represents three-digit alphabetical codes ISO assigned by the International Organization for Standardization (columns also detail countries, UNICEF regions, UN regions, world bank income group, data source years, and the way that the survey was collected)**
 
 ## Research question
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 
-Are there greater gender differences in the consumption of zero vegetable or fruit for low income countries than in upper-middle income countries?
+**Are there greater gender differences in the consumption of zero vegetable or fruit for low income countries than in upper-middle income countries?**
 
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
 
-We are researching global data on infant and young child feeding, and specifically on vegetable and fruit consumption. The UNICEF global database on infant and young child feeding details the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day. Previous studies have shown that children from low- and low-middle countries had the lowest consumption of fruits and vegetables. Globally, zero vegetable or fruit consumption is very high with 46% of children consuming no vegetables or fruit the day before the survey. We hypothesize that there are male infants are better fed than female infants in lower-income countries whereas this gender gap is less prevalent in upper-middle income countries.
+**We are researching global data on infant and young child feeding, and specifically on vegetable and fruit consumption. The UNICEF global database on infant and young child feeding details the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day. Previous studies have shown that children from low- and low-middle countries had the lowest consumption of fruits and vegetables. Globally, zero vegetable or fruit consumption is very high with 46% of children consuming no vegetables or fruit the day before the survey. We hypothesize that there are male infants are better fed than female infants in lower-income countries whereas this gender gap is less prevalent in upper-middle income countries.**
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-
-    The variables involved in our research question are quantitiative, with the indicator being the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day. 
-
+    **The variables involved in our research question are quantitiative, with the indicator being the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day.** 
 
 ## Literature
 
 -   Find one published credible article on the topic you are interested in researching.
 
-    Determinants of Complementary Feeding Indicators: A Secondary Analysis of Thailand Multiple Indicators Cluster Survey 2019 
+    **Determinants of Complementary Feeding Indicators: A Secondary Analysis of Thailand Multiple Indicators Cluster Survey 2019**
 
-    By Abhirat Supthanasup, Nisachol Cetthakrikul, Matthew Kelly, Haribondhu Sarma, and Cathy Banwell
+    **By Abhirat Supthanasup, Nisachol Cetthakrikul, Matthew Kelly, Haribondhu Sarma, and Cathy Banwell**
 
 -   Provide a one paragraph summary about the article.
 
-Child complementary feeding (CF practices) meet dietary recommendations more often among educated, high-income groups. Child undernutrition has the greatest impact in low- and middle-income countries, with the greatest impact on Asian and African children. The study explores the three groups of conditions as a result of undernutrition, which includes stunting, wasting, and underweight. The study found that child feeding practices are influenced by multidimensional determinants, including personal, household and community factors. It was often that higher maternal education is associated with appropriate child feeding practices and the findings were in line with previous studies that demonstrate children of mothers with high educational level displayed better complementary feeding indicators. 
+**Child complementary feeding (CF practices) meet dietary recommendations more often among educated, high-income groups. Child undernutrition has the greatest impact in low- and middle-income countries, with the greatest impact on Asian and African children. The study explores the three groups of conditions as a result of undernutrition, which includes stunting, wasting, and underweight. The study found that child feeding practices are influenced by multidimensional determinants, including personal, household and community factors. It was often that higher maternal education is associated with appropriate child feeding practices and the findings were in line with previous studies that demonstrate children of mothers with high educational level displayed better complementary feeding indicators.** 
 
 -   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
 
-Our research question builds on the topic of child complementary feeding, but will focus on the aspect of gender to compare feeding practices for male and females. Additionally, our research question will examine these differences across countries, with a focus on income (comparing low-income countries to upper-middle countries).
+**Our research question builds on the topic of child complementary feeding, but will focus on the aspect of gender to compare feeding practices for male and females. Additionally, our research question will examine these differences across countries, with a focus on income (comparing low-income countries to upper-middle countries).**
 
 ## Glimpse of data
 
@@ -108,59 +123,45 @@ glimpse(UNICEF_Food)
 
 ## Introduction and data
 
--   Identify the source of the data. **The source of the data set is data.lacity.org.**
+-   Identify the source of the data.
 
-
-    From the CORGIS Dataset Project
+    **From the CORGIS Dataset Project**
 
 -   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
 
-    By Ryan Whitcomb, Joung Min Choi, Bo Guan during 9/14/2021
+    **By Ryan Whitcomb, Joung Min Choi, Bo Guan during 9/14/2021**
 
 -   Write a brief description of the observations.
 
--   State when and how it was originally collected (by the original data curator, not necessarily how you found the data). **This data set was originally collected February 27, 2023 by the Los Angeles Police Department.**
-
--   Write a brief description of the observations. **The data set has 1321062 rows representing different arrests. There are 31 columns, from which 6 are relevant to us (report id, area name, age, sex code, charge group description and charge description).**
-
-
-    Each row represents a county in every United States state. The observations for each specific county is the count of people living in quarters and how far each one lives from a supermarket without a vehicle. There is also population of kids on the same distance markers used to determine the distance from a supermarket. This further divides into low income and senior divisions. 
+    **Each row represents a county in every United States state. The observations for each specific county is the count of people living in quarters and how far each one lives from a supermarket without a vehicle. There is also population of kids on the same distance markers used to determine the distance from a supermarket. This further divides into low income and senior divisions.** 
 
 ## Research question
 
--   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.) **How do the charges of arrests vary across the 5 areas in Los Angeles and are youth (those aged less than 30) more likely to commit these crimes than older people?**
+-   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 
-    Factors in the data that affect access to supermarkets are age, distance, income, transportation, and area. Which of these mostly affects access to supermarkets?
+    **Factors in the data that affect access to supermarkets are age, distance, income, transportation, and area. Which of these mostly affects access to supermarkets?**
 
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
 
-
-    Looking at the United States Department of Agriculture's Economic Research Service, we see a data set that contains information about people's ability to access supermarkets in the US. There are multiple factors that are taken into a account. Each of these factors negatively or positively affects people's ability to access a supermarket. Some people live further away or closer to the markets, have cars, have higher income, live in different areas, and have different ages. Each of these factors contributed to different numbers for supermarket accessibility. We will be exploring each category to see which factor mostly affects the lower numbers to access of supermarkets by comparing each factor's data. 
+    **Looking at the United States Department of Agriculture's Economic Research Service, we see a data set that contains information about people's ability to access supermarkets in the US. There are multiple factors that are taken into a account. Each of these factors negatively or positively affects people's ability to access a supermarket. Some people live further away or closer to the markets, have cars, have higher income, live in different areas, and have different ages. Each of these factors contributed to different numbers for supermarket accessibility. We will be exploring each category to see which factor mostly affects the lower numbers to access of supermarkets by comparing each factor's data.** 
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-    Quantitative- miles away, age group, income, low access numbers, population
+    **Quantitative- miles away, age group, income, low access numbers, population**
 
-    Categorical - state, county
-
-    \
-    \
-    Literature
-
--   Identify the types of variables in your research question. Categorical? Quantitative? **(Charge of arrests: categorical, area name: categorical, age: quantitative)**
+    **Categorical - state, county**
 
 ## Literature
 
-
 -   Find one published credible article on the topic you are interested in researching.
 
-    https://health.gov/healthypeople/priority-areas/social-determinants-health/literature-summaries/food-insecurity
+    **https://health.gov/healthypeople/priority-areas/social-determinants-health/literature-summaries/food-insecurity**
 
-This article talks about food insecurity, which is a condition in which someone has limited access to adequate food. Alot of households are affected by this. It can be a long or temporary thing and is influenced by income, employment, race/ethnicity, and disability. High unemployment rates in low-income populations make it even more difficult to have sufficient food access. Moreover, disabled adults have a higher risk for food insecurity because they have less employment opportunities and health-care related expenses. This gives them less money to buy food. In 2020, Black households' food insecurity percentage was 21.7, which was 2 times greater than the national average. Possible reasons include neighborhood conditions, physical access to food, and lack of transportation. Some people who live in urban and rural areas, low-income neigborhoods may have less access to supermarkets. Predominantly black and hispanic neighbors have fewer good quality markets than predominantly white and non-hispanic neighborhoods. Having food insecurity is very bad because it could lead to negative health problems. There are studies that support that food insecurity increases risk for obesity and developmental and mental health problems for children.
+**This article talks about food insecurity, which is a condition in which someone has limited access to adequate food. Alot of households are affected by this. It can be a long or temporary thing and is influenced by income, employment, race/ethnicity, and disability. High unemployment rates in low-income populations make it even more difficult to have sufficient food access. Moreover, disabled adults have a higher risk for food insecurity because they have less employment opportunities and health-care related expenses. This gives them less money to buy food. In 2020, Black households' food insecurity percentage was 21.7, which was 2 times greater than the national average. Possible reasons include neighborhood conditions, physical access to food, and lack of transportation. Some people who live in urban and rural areas, low-income neigborhoods may have less access to supermarkets. Predominantly black and hispanic neighbors have fewer good quality markets than predominantly white and non-hispanic neighborhoods. Having food insecurity is very bad because it could lead to negative health problems. There are studies that support that food insecurity increases risk for obesity and developmental and mental health problems for children.**
 
 -   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
 
-    Our research question builds on the article. It seeks to find the greatest affect on someone's ability to access supermarkets. Although the article is more specific. It includes race, disabilites, and employment as possible factors while our data doesn't include that.
+    **Our research question builds on the article. It seeks to find the greatest affect on someone's ability to access supermarkets. Although the article is more specific. It includes race, disabilites, and employment as possible factors while our data doesn't include that.**
 
 ## Glimpse of data
 
