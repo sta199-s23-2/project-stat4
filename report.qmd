@@ -15,17 +15,17 @@ glimpse (UNICEF_Food)
 
 **Introduction and data**
 
-The source of the dataset is from the United Nations Children's Fund, Division of Data, Analysis, Planning and Monitoring (2022). The dataset includes global statistics on the percentage of children 6-23 months of age who did not consume any fruits and vegetables over the previous day. This dataset originates from October, 2022. 
+The source of the dataset is from the United Nations Children's Fund, Division of Data, Analysis, Planning and Monitoring (2022). The dataset includes global statistics on the percentage of children 6-23 months of age who did not consume any fruits and vegetables over the previous day. This dataset originates from October, 2022.
 
 The issue of insufficient fruits and vegetables available in the world traces back decades. According to "Insufficient Consumption of Fruits and Vegetables among Individuals 15 Years and Older in 28 Low- and Middle-Income Countries: What Can Be Done?" Karen S Siegal, expresses that only roughly 20% of those in low and middle income countries are meeting the daily fruit and vegetable average. We want to explore this topic further given how prevalent an issue it is in the world.
 
-Each observation represents three-digit alphabetical codes ISO assigned by the International Organization for Standardization (columns also detail countries, UNICEF regions, UN regions, world bank income group, data source years, and the way that the survey was collected). Previous studies have shown that children from low and low-middle countries had the lowest consumption of fruits and vegetables. Globally, zero vegetable or fruit consumption is very high with 46% of children in the dataset consuming no vegetables or fruit the day before the survey. We will be exploring this concept more with the UNICEF data. 
+Each observation represents three-digit alphabetical codes ISO assigned by the International Organization for Standardization (columns also detail countries, UNICEF regions, UN regions, world bank income group, data source years, and the way that the survey was collected). Previous studies have shown that children from low and low-middle countries had the lowest consumption of fruits and vegetables. Globally, zero vegetable or fruit consumption is very high with 46% of children in the dataset consuming no vegetables or fruit the day before the survey. We will be exploring this concept more with the UNICEF data.
 
 The observations come from qualitative, survey samples from 2015 to 2021.
 
 **Methodology**
 
-Collected through surveys (national/nutrition monitoring and surveillance systems/multiple indicator cluster survey) from 2015 to 2021 and countries with data from this period are included in calculation of regional and global averages with the exception of China where the latest data are from 2013. 
+Collected through surveys (national/nutrition monitoring and surveillance systems/multiple indicator cluster survey) from 2015 to 2021 and countries with data from this period are included in calculation of regional and global averages with the exception of China where the latest data are from 2013.
 
 We will be using r functions to create graphs to analyze the data and find linear regression for different factors like using parent income, parent education, and wealth quantile. 
 
