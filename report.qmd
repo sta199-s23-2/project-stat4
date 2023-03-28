@@ -32,3 +32,5 @@ We will be using r functions to create graphs to analyze the data and find linea
 Using this data, we hope to develop an inference to predict if lower or higher incomes have lower or higher consumption of fruits and vegetables for children.
 
 **Results**
+
+Are there greater gender differences in the consumption of zero vegetable or fruit for low income countries than in upper-middle income countries?
