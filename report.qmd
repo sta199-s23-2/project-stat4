@@ -27,7 +27,7 @@ The observations come from qualitative, survey samples from 2015 to 2021.
 
 Collected through surveys (national/nutrition monitoring and surveillance systems/multiple indicator cluster survey) from 2015 to 2021 and countries with data from this period are included in calculation of regional and global averages with the exception of China where the latest data are from 2013.
 
-We will be using r functions to create graphs to analyze the data and find linear regression for different factors like using parent income, parent education, and wealth quantile. 
+We will be using r functions to create graphs to analyze the data and find linear regression for different factors like using parent income, parent education, and wealth quantile.
 
 Using this data, we hope to develop an inference to predict if lower or higher incomes have lower or higher consumption of fruits and vegetables for children.
 
