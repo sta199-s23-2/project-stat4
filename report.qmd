@@ -7,4 +7,7 @@ execute:
   echo: true
 ---
 
-Add project writeup here.
+```{r}
+UNICEF_Food <- read.csv("data/UNICEF_Food.csv")
+glimpse (UNICEF_Food)
+```
