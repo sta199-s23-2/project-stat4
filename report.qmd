@@ -35,20 +35,6 @@ Using this data, we hope to develop an inference to predict if lower or higher i
 
 Are there greater gender differences in the consumption of zero vegetable or fruit for low income countries than in upper-middle income countries?
 
-<<<<<<< HEAD
 We hypothesize that there are male infants are better fed than female infants in lower-income countries whereas this gender gap is less prevalent in upper-middle income countries. The variables involved in our research question are numerical, with the indicator being the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day.
-=======
 
-We hypothesize that there are male infants are better fed than female infants in lower-income countries whereas this gender gap is less prevalent in upper-middle income countries.
-The variables involved in our research question are numerical, with the indicator being the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day. 
-
-
-*W+F*
- 
-This project was developed by Stat4 For STA 199: Introduction to Data Science at Duke University. The team is comprised of the following team members.
-
-Sreya: Sreya is a freshman at Duke University majoring in Statistical Science and a minor in Finance. 
-Sathvika Gandavarapu: Sathvika is a freshman at Duke University looking to double major in Economics and Public Policy. 
-Tina: Tina is a junior at Duke University, majoring in Environmental Science & Policy, with a minor in Asian American Diaspora Studies. 
-Laura: Laura is a freshman at Duke University majoring in Computer Science.
->>>>>>> e55679f769b3f91f28e7cadb37534f075c36b0cb
+We hypothesize that there are male infants are better fed than female infants in lower-income countries whereas this gender gap is less prevalent in upper-middle income countries. The variables involved in our research question are numerical, with the indicator being the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day.
