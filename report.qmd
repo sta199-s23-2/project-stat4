@@ -34,3 +34,8 @@ Using this data, we hope to develop an inference to predict if lower or higher i
 **Results**
 
 Are there greater gender differences in the consumption of zero vegetable or fruit for low income countries than in upper-middle income countries?
+
+
+We hypothesize that there are male infants are better fed than female infants in lower-income countries whereas this gender gap is less prevalent in upper-middle income countries.
+The variables involved in our research question are numerical, with the indicator being the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day. 
+
