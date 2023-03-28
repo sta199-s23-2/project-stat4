@@ -7,4 +7,8 @@ execute:
   echo: true
 ---
 
-Add project writeup here.
+**Introduction and data**
+
+The source of the dataset is from the United Nations Children\'s Fund, Division of Data, Analysis, Planning and Monitoring (2022). The dataset includes global statistics on the percentage of children 6-23 months of age who did not consume any fruits and vegetables over the previous day. This dataset originates from October, 2022. 
+
+\
