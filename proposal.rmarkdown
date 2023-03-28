@@ -12,6 +12,7 @@ editor: visual
 library(tidyverse)
 ```
 
+
 # Data 1
 
 ## Introduction and data
@@ -54,11 +55,13 @@ library(tidyverse)
 
 ## Glimpse of data
 
+
 ```{r}
 #| label: load-data-1
 Arrest_LA <- read.csv("data/Arrest_Data_from_2010_to_2019-7.csv")
 glimpse(Arrest_LA)
 ```
+
 
 # Data 2
 
@@ -110,11 +113,13 @@ United Nations Children's Fund, Division of Data, Analysis, Planning and Monitor
 
 ## Glimpse of data
 
+
 ```{r}
 #| label: load-data-2
 UNICEF_Food <- read.csv("data/UNICEF_Expanded_Global_Databases_FINAL.csv")
 glimpse (UNICEF_Food)
 ```
+
 
 # Data 3
 
@@ -162,8 +167,10 @@ glimpse (UNICEF_Food)
 
 ## Glimpse of data
 
+
 ```{r}
 #| label: load-data-3
 food_access <- read.csv("data/food_access.csv")
 glimpse(food_access)
 ```
+
