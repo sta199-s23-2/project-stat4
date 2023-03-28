@@ -30,3 +30,5 @@ Collected through surveys (national/nutrition monitoring and surveillance system
 We will be using r functions to create graphs to analyze the data and find linear regression for different factors like using parent income, parent education, and wealth quantile. 
 
 Using this data, we hope to develop an inference to predict if lower or higher incomes have lower or higher consumption of fruits and vegetables for children.
+
+**Results**
