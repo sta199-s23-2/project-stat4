@@ -10,7 +10,7 @@ execute:
 ```{r}
 library (tidyverse)
 UNICEF_Food <- read.csv("data/UNICEF_Expanded_Global_Databases_FINAL.csv")
-glimpse (UNICEF_Food)
+slice_head (UNICEF_Food)
 ```
 
 **Introduction and data**
