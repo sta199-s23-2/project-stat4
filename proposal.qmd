@@ -66,13 +66,13 @@ glimpse(Arrest_LA)
 
 -   Identify the source of the data.
 
-[**https://data.unicef.org/resources/dataset/diets/**](https://data.unicef.org/resources/dataset/diets/){.uri} **-- Unhealthy Practices** 
+[**https://data.unicef.org/resources/dataset/diets/**](https://data.unicef.org/resources/dataset/diets/){.uri} **-- Unhealthy Practices**
 
 United Nations Children's Fund, Division of Data, Analysis, Planning and Monitoring (2022). Global UNICEF Global Databases: Infant and Young Child Feeding: Zero vegetable or fruit consumption, New York, October 2022.
 
 -   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
 
-**Collected through surveys (national/nutrition monitoring and surveillance systems/multiple indicator cluster survey) from 2015 to 2021 and countries with data from this period are included in calculation of regional and global averages with the exception of China where the latest data are from 2013** 
+**Collected through surveys (national/nutrition monitoring and surveillance systems/multiple indicator cluster survey) from 2015 to 2021 and countries with data from this period are included in calculation of regional and global averages with the exception of China where the latest data are from 2013**
 
 -   Write a brief description of the observations.
 
@@ -102,7 +102,7 @@ United Nations Children's Fund, Division of Data, Analysis, Planning and Monitor
 
 -   Provide a one paragraph summary about the article.
 
-**Child complementary feeding (CF practices) meet dietary recommendations more often among educated, high-income groups. Child undernutrition has the greatest impact in low- and middle-income countries, with the greatest impact on Asian and African children. The study explores the three groups of conditions as a result of undernutrition, which includes stunting, wasting, and underweight. The study found that child feeding practices are influenced by multidimensional determinants, including personal, household and community factors. It was often that higher maternal education is associated with appropriate child feeding practices and the findings were in line with previous studies that demonstrate children of mothers with high educational level displayed better complementary feeding indicators.** 
+**Child complementary feeding (CF practices) meet dietary recommendations more often among educated, high-income groups. Child undernutrition has the greatest impact in low- and middle-income countries, with the greatest impact on Asian and African children. The study explores the three groups of conditions as a result of undernutrition, which includes stunting, wasting, and underweight. The study found that child feeding practices are influenced by multidimensional determinants, including personal, household and community factors. It was often that higher maternal education is associated with appropriate child feeding practices and the findings were in line with previous studies that demonstrate children of mothers with high educational level displayed better complementary feeding indicators.**
 
 -   In 1-2 sentences, explain how your research question builds on / is different than the article you have cited.
 
@@ -112,7 +112,6 @@ United Nations Children's Fund, Division of Data, Analysis, Planning and Monitor
 
 ```{r}
 #| label: load-data-2
-
 UNICEF_Food <- read.csv("data/UNICEF_Expanded_Global_Databases_FINAL.csv")
 glimpse (UNICEF_Food)
 ```
@@ -131,7 +130,7 @@ glimpse (UNICEF_Food)
 
 -   Write a brief description of the observations.
 
-    **Each row represents a county in every United States state. The observations for each specific county is the count of people living in quarters and how far each one lives from a supermarket without a vehicle. There is also population of kids on the same distance markers used to determine the distance from a supermarket. This further divides into low income and senior divisions.** 
+    **Each row represents a county in every United States state. The observations for each specific county is the count of people living in quarters and how far each one lives from a supermarket without a vehicle. There is also population of kids on the same distance markers used to determine the distance from a supermarket. This further divides into low income and senior divisions.**
 
 ## Research question
 
@@ -141,7 +140,7 @@ glimpse (UNICEF_Food)
 
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
 
-    **Looking at the United States Department of Agriculture's Economic Research Service, we see a data set that contains information about people's ability to access supermarkets in the US. There are multiple factors that are taken into a account. Each of these factors negatively or positively affects people's ability to access a supermarket. Some people live further away or closer to the markets, have cars, have higher income, live in different areas, and have different ages. Each of these factors contributed to different numbers for supermarket accessibility. We will be exploring each category to see which factor mostly affects the lower numbers to access of supermarkets by comparing each factor's data.** 
+    **Looking at the United States Department of Agriculture's Economic Research Service, we see a data set that contains information about people's ability to access supermarkets in the US. There are multiple factors that are taken into a account. Each of these factors negatively or positively affects people's ability to access a supermarket. Some people live further away or closer to the markets, have cars, have higher income, live in different areas, and have different ages. Each of these factors contributed to different numbers for supermarket accessibility. We will be exploring each category to see which factor mostly affects the lower numbers to access of supermarkets by comparing each factor's data.**
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
@@ -165,7 +164,6 @@ glimpse (UNICEF_Food)
 
 ```{r}
 #| label: load-data-3
-
 food_access <- read.csv("data/food_access.csv")
 glimpse(food_access)
 ```
