@@ -4,10 +4,12 @@ format: html
 editor: visual
 ---
 
-This project was developed by **\[team name\]** For [STA 199: Introduction to Data Science](https://sta199-s23-2.github.io/) at Duke University. The team is comprised of the following team members.
+This project was developed by **Stat4** For [STA 199: Introduction to Data Science](https://sta199-s23-2.github.io/)at Duke University. The team is comprised of the following team members.
 
--   Team member 1: One sentence description of Team member 1 (e.g., year, major, etc.).
--   Team member 2: One sentence description of Team member 2 (e.g., year, major, etc.).
--   Team member 3: One sentence description of Team member 3 (e.g., year, major, etc.).
--   Team member 4: One sentence description of Team member 4 (e.g., year, major, etc.).
--   ...
+-   Sreya Gnanavel: Sreya is a freshman at Duke University majoring in Statistical Science and a minor in Finance.
+
+-   Sathvika Gandavarapu: Sathvika is a freshman at Duke University looking to double major in Economics and Public Policy.
+
+-   Tina Zheng: Tina is a junior at Duke University, majoring in Environmental Science & Policy, with a minor in Asian American Diaspora Studies.
+
+-   Laura Peng: Laura is a freshman at Duke University majoring in Computer Science.
