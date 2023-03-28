@@ -11,4 +11,8 @@ execute:
 
 The source of the dataset is from the United Nations Children\'s Fund, Division of Data, Analysis, Planning and Monitoring (2022). The dataset includes global statistics on the percentage of children 6-23 months of age who did not consume any fruits and vegetables over the previous day. This dataset originates from October, 2022. 
 
+The issue of insufficient fruits and vegetables available in the world traces back decades. According to \"Insufficient Consumption of Fruits and Vegetables among Individuals 15 Years and Older in 28 Low- and Middle-Income Countries: What Can Be Done?\" Karen S Siegal, expresses that only roughly 20% of those in low and middle income countries are meeting the daily fruit and vegetable average. We want to explore this topic further given how prevalent an issue it is in the world.
+
+\
+
 \
