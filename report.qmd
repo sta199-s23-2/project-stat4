@@ -8,6 +8,7 @@ execute:
 ---
 
 ```{r}
-UNICEF_Food <- read.csv("data/UNICEF_Food.csv")
+library (tidyverse)
+UNICEF_Food <- read.csv("data/UNICEF_Expanded_Global_Databases_FINAL.csv")
 glimpse (UNICEF_Food)
 ```

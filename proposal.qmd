@@ -42,8 +42,8 @@ library(tidyverse)
 
 ```{r}
 #| label: load-data-1
-UNICEF_Food <- read.csv("data/UNICEF_Food.csv")
-UNICEF_Food
+UNICEF_Food <- read.csv("data/UNICEF_Expanded_Global_Databases_FINAL.csv")
+glimpse (UNICEF_Food)
 ```
 
 # Data 2
@@ -54,7 +54,7 @@ UNICEF_Food
 
 <https://data.unicef.org/resources/dataset/diets/> -- Unhealthy Practices 
 
-United Nations Children\'s Fund, Division of Data, Analysis, Planning and Monitoring (2022). Global UNICEF Global Databases: Infant and Young Child Feeding: Zero vegetable or fruit consumption, New York, October 2022.
+United Nations Children's Fund, Division of Data, Analysis, Planning and Monitoring (2022). Global UNICEF Global Databases: Infant and Young Child Feeding: Zero vegetable or fruit consumption, New York, October 2022.
 
 -   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
 
