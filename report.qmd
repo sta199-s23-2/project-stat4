@@ -38,3 +38,11 @@ Are there greater gender differences in the consumption of zero vegetable or fru
 We hypothesize that there are male infants are better fed than female infants in lower-income countries whereas this gender gap is less prevalent in upper-middle income countries. The variables involved in our research question are numerical, with the indicator being the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day.
 
 We hypothesize that there are male infants are better fed than female infants in lower-income countries whereas this gender gap is less prevalent in upper-middle income countries. The variables involved in our research question are numerical, with the indicator being the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day.
+
+```{r}
+UNICEF_Food |>
+  ggplot (aes (x = ISO3Code, y = male_ul, color = WB_Latest)) +
+  geom_point() + 
+  theme (axis.text.x = element_text (angle = 90, hjust = .5, vjust = .5))
+```
+
