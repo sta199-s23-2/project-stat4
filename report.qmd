@@ -45,4 +45,3 @@ UNICEF_Food |>
   geom_point() + 
   theme (axis.text.x = element_text (angle = 90, hjust = .5, vjust = .5))
 ```
-
