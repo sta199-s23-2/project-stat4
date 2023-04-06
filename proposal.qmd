@@ -90,7 +90,7 @@ United Nations Children's Fund, Division of Data, Analysis, Planning and Monitor
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
-    **The variables involved in our research question are quantitiative, with the indicator being the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day.** 
+    **The variables involved in our research question are quantitiative, with the indicator being the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day.**
 
 ## Literature
 
