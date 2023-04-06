@@ -75,6 +75,10 @@ In high income countries, age does not seem to play as an important factor in co
 
 ```{r}
 UNICEF_Food |>
+  filter (WB_Latest !="") |>
   ggplot(aes(x = UNRegion, fill = WB_Latest, na.rm = T)) + 
-  geom_bar() 
+  geom_bar() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ```
+
+
+
