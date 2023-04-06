@@ -449,19 +449,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We will be using r functions to create graphs to analyze the data and find linear regression for different factors like using parent income, parent education, and wealth quantile.</p>
 <p>Using this data, we hope to develop an inference to predict if lower or higher incomes have lower or higher consumption of fruits and vegetables for children.</p>
 <p><strong>Results</strong></p>
-<p>Are there greater gender differences in the consumption of zero vegetable or fruit for low income countries than in upper-middle income countries?</p>
+<p>Are there greater gender differences in the consumption of zero vegetable or fruit for low income countries than in higher income countries?</p>
 <p>We hypothesize that there are male infants are better fed than female infants in lower-income countries whereas this gender gap is less prevalent in upper-middle income countries. The variables involved in our research question are numerical, with the indicator being the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day.</p>
 <p>We hypothesize that there are male infants are better fed than female infants in lower-income countries whereas this gender gap is less prevalent in upper-middle income countries. The variables involved in our research question are numerical, with the indicator being the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>UNICEF_Food <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span> (<span class="fu">aes</span> (<span class="at">x =</span> ISO3Code, <span class="at">y =</span> male_ul, <span class="at">color =</span> WB_Latest)) <span class="sc">+</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span> (<span class="at">axis.text.x =</span> <span class="fu">element_text</span> (<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> .<span class="dv">5</span>, <span class="at">vjust =</span> .<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 971 rows containing missing values (`geom_point()`).</code></pre>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(WB_Latest) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_male =</span> <span class="fu">mean</span>(male_r, <span class="at">na.rm =</span> T), </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_female =</span> <span class="fu">mean</span>(female_r, <span class="at">na.rm =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  WB_Latest             mean_male mean_female
+  &lt;chr&gt;                     &lt;dbl&gt;       &lt;dbl&gt;
+1 ""                        NaN         NaN  
+2 "High Income"              13.9        24.2
+3 "Low Income"               47.6        47.4
+4 "Lower Middle Income"      40.3        40.3
+5 "Upper Middle Income"      21.1        20.6</code></pre>
 </div>
+</div>
+<p>There seems to be a significant difference between female and male consumption of fruit based on the previous day depending on the income categorization of their country. Around 14% of males in the high income category did not consume fruit in the previous day. Around 24% of females in the high income category did not consume fruit in the previous day.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>UNICEF_Food <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(WB_Latest <span class="sc">==</span> <span class="st">"Low Income"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_urban =</span> <span class="fu">mean</span>(urban_r, <span class="at">na.rm =</span> T), </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_rural =</span> <span class="fu">mean</span>(rural_r, <span class="at">na.rm =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  mean_urban mean_rural
+1   44.61579   47.75614</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>UNICEF_Food <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(WB_Latest <span class="sc">==</span> <span class="st">"Low Income"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_6to11 =</span> <span class="fu">mean</span>(month_6_11_r),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_12to15 =</span> <span class="fu">mean</span>(month_12_15_r), </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_16to19 =</span> <span class="fu">mean</span>(month_16_19_r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  mean_6to11 mean_12to15 mean_16to19
+1   62.42344     43.0125    39.09375</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>UNICEF_Food <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(WB_Latest <span class="sc">==</span> <span class="st">"High Income"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_6to11 =</span> <span class="fu">mean</span>(month_6_11_r, <span class="at">na.rm =</span> T),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_12to15 =</span> <span class="fu">mean</span>(month_12_15_r, <span class="at">na.rm =</span> T), </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_16to19 =</span> <span class="fu">mean</span>(month_16_19_r, <span class="at">na.rm =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  mean_6to11 mean_12to15 mean_16to19
+1        7.8         3.8         6.6</code></pre>
+</div>
+</div>
+<p>In high income countries, age does not seem to play as an important factor in consumption of fruit.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>UNICEF_Food <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> UNRegion, <span class="at">fill =</span> WB_Latest, <span class="at">na.rm =</span> T)) <span class="sc">+</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 

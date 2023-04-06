@@ -33,7 +33,7 @@ Using this data, we hope to develop an inference to predict if lower or higher i
 
 **Results**
 
-Are there greater gender differences in the consumption of zero vegetable or fruit for low income countries than in upper-middle income countries?
+Are there greater gender differences in the consumption of zero vegetable or fruit for low income countries than in higher income countries?
 
 We hypothesize that there are male infants are better fed than female infants in lower-income countries whereas this gender gap is less prevalent in upper-middle income countries. The variables involved in our research question are numerical, with the indicator being the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day.
 
@@ -41,7 +41,40 @@ We hypothesize that there are male infants are better fed than female infants in
 
 ```{r}
 UNICEF_Food |>
-  ggplot (aes (x = ISO3Code, y = male_ul, color = WB_Latest)) +
-  geom_point() + 
-  theme (axis.text.x = element_text (angle = 90, hjust = .5, vjust = .5))
+  group_by(WB_Latest) |>
+  summarise(mean_male = mean(male_r, na.rm = T), 
+            mean_female = mean(female_r, na.rm = T))
+```
+
+There seems to be a significant difference between female and male consumption of fruit based on the previous day depending on the income categorization of their country. Around 14% of males in the high income category did not consume fruit in the previous day. Around 24% of females in the high income category did not consume fruit in the previous day.
+
+```{r}
+UNICEF_Food |>
+  filter(WB_Latest == "Low Income") |>
+  summarise(mean_urban = mean(urban_r, na.rm = T), 
+            mean_rural = mean(rural_r, na.rm = T))
+```
+
+```{r}
+UNICEF_Food |>
+  filter(WB_Latest == "Low Income") |>
+  summarise(mean_6to11 = mean(month_6_11_r),
+            mean_12to15 = mean(month_12_15_r), 
+            mean_16to19 = mean(month_16_19_r))
+```
+
+```{r}
+UNICEF_Food |>
+  filter(WB_Latest == "High Income") |>
+  summarise(mean_6to11 = mean(month_6_11_r, na.rm = T),
+            mean_12to15 = mean(month_12_15_r, na.rm = T), 
+            mean_16to19 = mean(month_16_19_r, na.rm = T))
+```
+
+In high income countries, age does not seem to play as an important factor in consumption of fruit.
+
+```{r}
+UNICEF_Food |>
+  ggplot(aes(x = UNRegion, fill = WB_Latest, na.rm = T)) + 
+  geom_bar() 
 ```
