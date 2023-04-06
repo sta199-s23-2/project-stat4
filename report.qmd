@@ -46,7 +46,7 @@ UNICEF_Food |>
             mean_female = mean(female_r, na.rm = T))
 ```
 
-There seems to be a significant difference between female and male consumption of fruit based on the previous day depending on the income categorization of their country. Around 14% of males in the high income category did not consume fruit in the previous day. Around 24% of females in the high income category did not consume fruit in the previous day.
+There seems to be a significant difference between female and male consumption of vegetables and fruit based on the previous day depending on the income categorization of their country. Around 14% of males in the high income category did not consume vegetables or fruit in the previous day. Around 24% of females in the high income category did not consume any vegetables or fruit in the previous day.
 
 ```{r}
 UNICEF_Food |>
@@ -54,6 +54,7 @@ UNICEF_Food |>
   summarise(mean_urban = mean(urban_r, na.rm = T), 
             mean_rural = mean(rural_r, na.rm = T))
 ```
+In low income countries, mean percentage of individuals who did not consume any vegetables or fruit the previous day is higher for rural areas as compared to in urban areas. 
 
 ```{r}
 UNICEF_Food |>
@@ -62,6 +63,7 @@ UNICEF_Food |>
             mean_12to15 = mean(month_12_15_r), 
             mean_16to19 = mean(month_16_19_r))
 ```
+In low-income countries, there appears to be a correlation between age and vegetable and fruit consumption, with younger individuals (months 6-11) having the highest mean percentage of not consuming fruit/vegetable in the previous day. For older individuals, the mean percentage is smaller.
 
 ```{r}
 UNICEF_Food |>
@@ -70,8 +72,7 @@ UNICEF_Food |>
             mean_12to15 = mean(month_12_15_r, na.rm = T), 
             mean_16to19 = mean(month_16_19_r, na.rm = T))
 ```
-
-In high income countries, age does not seem to play as an important factor in consumption of fruit.
+In high income countries, age does not seem to play as an important factor in consumption of fruit/vegetables as it does in lower income countries. There also does not appear to be any correlation between age and fruit/vegetable consumption.
 
 ```{r}
 UNICEF_Food |>
@@ -79,6 +80,3 @@ UNICEF_Food |>
   ggplot(aes(x = UNRegion, fill = WB_Latest, na.rm = T)) + 
   geom_bar() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ```
-
-
-
