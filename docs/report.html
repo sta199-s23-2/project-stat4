@@ -449,13 +449,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We will be using r functions to create graphs to analyze the data and find linear regression for different factors like using parent income, parent education, and wealth quantile.</p>
 <p>Using this data, we hope to develop an inference to predict if lower or higher incomes have lower or higher consumption of fruits and vegetables for children.</p>
 <p><strong>Results</strong></p>
-<<<<<<< HEAD
-<p>Are there greater gender differences in the consumption of zero vegetable or fruit for low income countries than in upper-middle income countries?</p>
-<p>We hypothesize that there are male infants are better fed than female infants in lower-income countries whereas this gender gap is less prevalent in upper-middle income countries. The variables involved in our research question are numerical, with the indicator being the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day.</p>
-<p><em>W+F</em></p>
-<p>This project was developed by Stat4 For STA 199: Introduction to Data Science at Duke University. The team is comprised of the following team members.</p>
-<p>Sreya: Sreya is a freshman at Duke University majoring in Statistical Science and a minor in Finance. Sathvika Gandavarapu: Sathvika is a freshman at Duke University looking to double major in Economics and Public Policy. Tina: Tina is a junior at Duke University, majoring in Environmental Science &amp; Policy, with a minor in Asian American Diaspora Studies. Laura: Laura is a freshman at Duke University majoring in Computer Science.</p>
-=======
 <p>Are there greater gender differences in the consumption of zero vegetable or fruit for low income countries than in higher income countries?</p>
 <p>We hypothesize that there are male infants are better fed than female infants in lower-income countries whereas this gender gap is less prevalent in upper-middle income countries. The variables involved in our research question are numerical, with the indicator being the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day.</p>
 <p>We hypothesize that there are male infants are better fed than female infants in lower-income countries whereas this gender gap is less prevalent in upper-middle income countries. The variables involved in our research question are numerical, with the indicator being the percentage of children 6-23 months of age who did not consume any vegetables or fruits during the previous day.</p>
@@ -475,7 +468,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 5 "Upper Middle Income"      21.1        20.6</code></pre>
 </div>
 </div>
-<p>There seems to be a significant difference between female and male consumption of fruit based on the previous day depending on the income categorization of their country. Around 14% of males in the high income category did not consume fruit in the previous day. Around 24% of females in the high income category did not consume fruit in the previous day.</p>
+<p>There seems to be a significant difference between female and male consumption of vegetables and fruit based on the previous day depending on the income categorization of their country. Around 14% of males in the high income category did not consume vegetables or fruit in the previous day. Around 24% of females in the high income category did not consume any vegetables or fruit in the previous day.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>UNICEF_Food <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(WB_Latest <span class="sc">==</span> <span class="st">"Low Income"</span>) <span class="sc">|&gt;</span></span>
@@ -486,6 +479,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 1   44.61579   47.75614</code></pre>
 </div>
 </div>
+<p>In low income countries, mean percentage of individuals who did not consume any vegetables or fruit the previous day is higher for rural areas as compared to in urban areas.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>UNICEF_Food <span class="sc">|&gt;</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(WB_Latest <span class="sc">==</span> <span class="st">"Low Income"</span>) <span class="sc">|&gt;</span></span>
@@ -497,6 +491,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 1   62.42344     43.0125    39.09375</code></pre>
 </div>
 </div>
+<p>In low-income countries, there appears to be a correlation between age and vegetable and fruit consumption, with younger individuals (months 6-11) having the highest mean percentage of not consuming fruit/vegetable in the previous day. For older individuals, the mean percentage is smaller.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>UNICEF_Food <span class="sc">|&gt;</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(WB_Latest <span class="sc">==</span> <span class="st">"High Income"</span>) <span class="sc">|&gt;</span></span>
@@ -508,7 +503,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 1        7.8         3.8         6.6</code></pre>
 </div>
 </div>
-<p>In high income countries, age does not seem to play as an important factor in consumption of fruit.</p>
+<p>In high income countries, age does not seem to play as an important factor in consumption of fruit/vegetables as it does in lower income countries. There also does not appear to be any correlation between age and fruit/vegetable consumption.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>UNICEF_Food <span class="sc">|&gt;</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (WB_Latest <span class="sc">!=</span><span class="st">""</span>) <span class="sc">|&gt;</span></span>
@@ -518,7 +513,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="report_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
->>>>>>> ca4096629740fa38e9b2be928296d20d8c62178a
+<p>It is important to consider the confounding variable of different levels of average income in regions of the world. For example, Asia’s minimum wage on average may be way lower than the United States, yet that minimum wage is sustainable to live on there. We graphed the region versus income level above. From this graph, we can see that Africa has much more low-income people than any other country, Asia has the majority of people in lower middle income, Oceania has less people in the data on average and may not be completely representative of the trends for Oceania. Europe is largely upper middle income. While Asia has more people in lower middle income than upper, it is important to consider that most groceries there especially in rural areas are at a much lower price.</p>
+<p><br>
+</p>
 
 
 
