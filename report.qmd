@@ -103,14 +103,15 @@ $H_o: \pi_m = \pi_f$
 $H_a: \pi_m < \pi_f$
 
 ```{r}
-set.seed(777)
 
-UNICEF_Food |>
-  mutate(WB_Latest = factor(WB_Latest))
+#set.seed(777)
 
-logistic_reg() |>
-  set_engine("glm") |>
-  fit(WB_Latest ~ male_r, data = UNICEF_Food, family = "binomial")
+#UNICEF_Food |>
+  #mutate(WB_Latest = factor(WB_Latest))
+
+#logistic_reg() |>
+  #set_engine("glm") |>
+  #fit(WB_Latest ~ male_r, data = UNICEF_Food, family = "binomial")
 
 
 ```
@@ -126,11 +127,123 @@ food_access |>
   group_by(State) |>
   summarise(mean = mean(percentage))
 
-food_access|>
-  mutate(region = if_else(state == c("New Mexico", "Oklahoma", "Texas", "Arizona", "Virginia", "West Virginia", "Kentucky", "Tennessee", "North Carolina", "South Carolina", "Georgia", "Florida", "Alabama", "Mississippi", "Louisiana", "Arkansas") , "South")))
+#food_access|>
+  #mutate(region = if_else(state == c("New Mexico", "Oklahoma", "Texas", "Arizona", "Virginia", "West Virginia", "Kentucky", "Tennessee", "North Carolina", "South Carolina", "Georgia", "Florida", "Alabama", "Mississippi", "Louisiana", "Arkansas") , "South")))
 ```
 
 ```{r}
 food_access <- food_access |>
   mutate()
+```
+
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(tidyverse)
+library(tidymodels)
+
+# Read in the data
+food_access <- read_csv("data/food_access.csv")
+
+# Rename the Housing Data.Residing in Group Quarters column
+food_access <- food_access %>% rename(group_quarters = `Housing Data.Residing in Group Quarters`)
+
+# Create a scatterplot to visualize the relationship between the two variables
+ggplot(data = food_access, aes(x = group_quarters, y = `Vehicle Access.1 Mile`)) +
+  geom_point() +
+  labs(x = "Percentage of Population Residing in Group Quarters", y = "Number of Housing Units without Vehicle Access Beyond 1 Mile from a Supermarket") +
+  ggtitle("Relationship between Group Quarters and Housing Units without Vehicle Access") 
+
+# Perform a linear regression to quantify the relationship
+
+  
+  
+model1 <- linear_reg() |>
+  set_engine("lm") |>
+  fit(`Vehicle Access.1 Mile` ~ group_quarters , data = food_access)
+
+model1 |>
+  glance() |>
+  pull(adj.r.squared)
+
+```
+
+the adjusted R-squared value of 0.43 suggests that the predictor variable "Vehicle Access.1 Mile" accounts for approximately 43% of the variability in the response variable "group_quarters", after adjusting for the effect of other predictor variables in the model.
+
+This means that there is a moderate positive linear relationship between the percentage of housing units without vehicle access beyond 1 mile from a supermarket (as represented by the predictor variable "Vehicle Access.1 Mile") and the percentage of tract population residing in group quarters (as represented by the response variable "group_quarters").
+
+```{r}
+
+summary(food_access[,c("Population", "group_quarters", "Housing Data.Total Housing Units", "Vehicle Access.1 Mile")])
+
+# Check for missing values
+sum(is.na(food_access))
+
+ggplot(food_access, aes(x= group_quarters)) +
+  geom_histogram(binwidth=10, fill="blue", color="white") +
+  labs(title="Distribution of population residing in group quarters", x="Population in group quarters", y="Frequency")
+
+ggplot(food_access, aes(x=`Vehicle Access.1 Mile`, y= group_quarters)) +
+  geom_point() +
+  labs(title="Scatterplot of vehicle access beyond 1 mile against population in group quarters", x="Vehicle Access.1 Mile", y="Population in group quarters")
+```
+
+```{r}
+food_access |>
+  group_by(State) |>
+  summarise(total = mean(group_quarters)) 
+
+
+```
+
+district of columbia has the most living in group quarters
+
+```{r}
+food_access |>
+  filter(State == "District of Columbia") |>
+  ggplot(aes(x = group_quarters, y = `Vehicle Access.1 Mile`)) +
+  geom_point() +
+  geom_smooth(method = "lm" , se = F) 
+```
+
+```{r}
+food_access_DC <- food_access |>
+  filter(State == "District of Columbia")
+
+linear_reg() |>
+  set_engine("lm") |>
+  fit(`Low Access Numbers.Low Income People.1 Mile` ~ `Vehicle Access.1 Mile` + `Low Access Numbers.Seniors.1 Mile`, data = food_access_DC) |>
+  tidy()
+```
+
+```{r}
+food_access_ND <- food_access |>
+  filter(State == "North Dakota")
+
+model_ND <- linear_reg() |>
+  set_engine("lm") |>
+  fit(`Low Access Numbers.Low Income People.1 Mile` ~ `Vehicle Access.1 Mile` + `Low Access Numbers.Seniors.1 Mile`, data = food_access_ND) 
+
+model_ND |>
+  glance() |>
+  pull(adj.r.squared)
+```
+
+REALLY GOOD MODEL, has high adjusted r squared value,
+
+use
+
+```{r}
+food_access$DC <- ifelse(food_access$State == "District of Columbia", 1, 0)
+
+food_access2 <- food_access %>% select(-c(County, State))
+
+model <- glm(DC ~ ., data = food_access2, family = "binomial")
+
+
+#prob <- predict(model, type = "response")
+#roc_obj <- roc(food_access2
+               #$DC, prob)
+#auc(roc_obj)
 ```
