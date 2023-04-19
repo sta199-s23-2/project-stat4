@@ -9,7 +9,9 @@ execute:
 
 ```{r}
 library (tidyverse)
+library(tidymodels)
 UNICEF_Food <- read.csv("data/UNICEF_Expanded_Global_Databases_FINAL.csv")
+food_access <- read.csv("data/food_access.csv")
 slice_head (UNICEF_Food)
 ```
 
@@ -91,4 +93,44 @@ UNICEF_Food |>
 
 It is important to consider the confounding variable of different levels of average income in regions of the world. For example, Asia's minimum wage on average may be way lower than the United States, yet that minimum wage is sustainable to live on there. We graphed the region versus income level above. From this graph, we can see that Africa has much more low-income people than any other country, Asia has the majority of people in lower middle income, Oceania has less people in the data on average and may not be completely representative of the trends for Oceania. Europe is largely upper middle income. While Asia has more people in lower middle income than upper, it is important to consider that most groceries there especially in rural areas are at a much lower price.
 
+**Are there greater gender differences in the consumption of zero vegetable or fruit for low income countries than in higher income countries?**
+
+**Null Hypothesis: There is no difference between the true mean males consumption of fruit in low income countries for females for the consumption of fruit in low income countries**
+
+**Alternative Hypothesis: The true mean of boy's consumption of zero vegetables or fruit in low income is less than the true mean of girl's consumption of zero vegetables or fruit**\
+$H_o: \pi_m = \pi_f$
+
+$H_a: \pi_m < \pi_f$
+
+```{r}
+set.seed(777)
+
+UNICEF_Food |>
+  mutate(WB_Latest = factor(WB_Latest))
+
+logistic_reg() |>
+  set_engine("glm") |>
+  fit(WB_Latest ~ male_r, data = UNICEF_Food, family = "binomial")
+
+
+```
+
 \
+
+```{r}
+food_access<- food_access |>
+  mutate(percentage = Vehicle.Access.1.Mile/Housing.Data.Total.Housing.Units) 
+
+
+food_access |>
+  group_by(State) |>
+  summarise(mean = mean(percentage))
+
+food_access|>
+  mutate(region = if_else(state == c("New Mexico", "Oklahoma", "Texas", "Arizona", "Virginia", "West Virginia", "Kentucky", "Tennessee", "North Carolina", "South Carolina", "Georgia", "Florida", "Alabama", "Mississippi", "Louisiana", "Arkansas") , "South")))
+```
+
+```{r}
+food_access <- food_access |>
+  mutate()
+```
