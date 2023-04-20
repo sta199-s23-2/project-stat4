@@ -79,8 +79,7 @@ Southwest <- c ("Texas", "Oklahoma", "New Mexico", "Arizona")
 West <- c("Colorado", "Wyoming", "Montana", "Idaho", "Washington", "Oregon", "Utah", "Nevada", "California", "Alaska", "Hawaii")
 
 food_acess_reg <- food_access |>
-  mutate (region = case_when(State %in% Northeast ~ "Northeast", State %in% Southeast ~ "Southeast", State %in% Midwest ~ "Midwest", State %in% Southwest ~ "Southwest", State %in% West ~ "West")) |>
-  select (State, region)
+  mutate (region = case_when(State %in% Northeast ~ "Northeast", State %in% Southeast ~ "Southeast", State %in% Midwest ~ "Midwest", State %in% Southwest ~ "Southwest", State %in% West ~ "West")) 
 ```
 
 ```{r}
