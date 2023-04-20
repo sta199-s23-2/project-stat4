@@ -116,12 +116,11 @@ $H_a: \pi_m < \pi_f$
 
 ```
 
-\
+
 
 ```{r}
 food_access<- food_access |>
   mutate(percentage = Vehicle.Access.1.Mile/Housing.Data.Total.Housing.Units) 
-
 
 food_access |>
   group_by(State) |>
@@ -172,6 +171,25 @@ model1 |>
 the adjusted R-squared value of 0.43 suggests that the predictor variable "Vehicle Access.1 Mile" accounts for approximately 43% of the variability in the response variable "group_quarters", after adjusting for the effect of other predictor variables in the model.
 
 This means that there is a moderate positive linear relationship between the percentage of housing units without vehicle access beyond 1 mile from a supermarket (as represented by the predictor variable "Vehicle Access.1 Mile") and the percentage of tract population residing in group quarters (as represented by the response variable "group_quarters").
+
+```{r}
+
+Midwest <- c("Ohio", "Indiana", "Michigan", "Illinois", "Missouri", "Wisconsin", "Minnesota", "Iowa", "Kansas", "Nebraska", "South Dakota", "North Dakota")
+
+Northeast <- c ("Maine", "Massachusetts", "Rhode Island", "Connecticut", "New Hampshire", "Vermont", "New York", "Pennsylvania", "New Jersey", "Delaware", "Maryland")
+
+Southeast <- c ("West Virginia", "Virginia", "Kentucky", "Tennessee", "North Carolina", "South Carolina", "Georgia", "Alabama", "Mississippi", "Arkansas", "Louisiana", "Florida")
+
+Southwest <- c ("Texas", "Oklahoma", "New Mexico", "Arizona")
+
+West <- c("Colorado", "Wyoming", "Montana", "Idaho", "Washington", "Oregon", "Utah", "Nevada", "California", "Alaska", "Hawaii")
+
+food_acess_reg <- food_access |>
+  mutate (region = case_when(State %in% Northeast ~ "Northeast", State %in% Southeast ~ "Southeast", State %in% Midwest ~ "Midwest", State %in% Southwest ~ "Southwest", State %in% West ~ "West")) |>
+  select (State, region)
+```
+
+
 
 ```{r}
 
