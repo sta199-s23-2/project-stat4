@@ -156,3 +156,44 @@ model <- glm(DC ~ ., data = food_access2, family = "binomial")
                #$DC, prob)
 #auc(roc_obj)
 ```
+
+Hypothesis: We hypothesize that compared to the Northeast, the Midwest will be mostly impacted by having a greater proportion of low income population count beyond 10 miles from supermarket. Since this area is the most rural, there isn't reliable public transportation compared to urban areas to get to supermarkets that are far away. 
+
+$H_O$ = The true mean proportional difference between the Midwest and low income population count beyond 10 miles from the supermarket is equal to 0. 
+
+$H_a$ = The Midwest has a greater true mean proportion of low income population count beyond 10 miles from the supermarket. 
+
+```{r}
+food_acess_reg <-
+food_acess_reg |>
+  mutate (proportion = `Low Access Numbers.Low Income People.10 Miles` / `Housing Data.Total Housing Units`)
+```
+```{r}
+food_acess_reg |>
+  filter (region == "Midwest") |>
+  summarize (mean = mean(proportion))
+
+food_acess_reg |>
+  filter (region == "Northeast") |>
+  summarize (mean = mean(proportion))
+
+xbar <- 0.1124311 - 0.01673986
+```
+The true mean proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region. 
+$\bar{x_Midwest} = .11$ 
+$\bar {x_Northeast} = .017$ 
+
+
+
+
+```{r}
+null_dist <- food_acess_reg |>
+  filter (region %in% c("Midwest", "Northeast")) |>
+  specify (response = proportion, explanatory = region) |>
+  hypothesize (null = "independence") |>
+  generate (reps = 1000, type = "permute") |>
+  calculate (stat = "diff in means", order = c("Midwest", "Northeast"))
+```
+
+
+
