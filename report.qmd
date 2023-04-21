@@ -27,8 +27,6 @@ food_access |>
   group_by(State) |>
   summarise(mean = mean(percentage))
 
-#food_access|>
-  #mutate(region = if_else(state == c("New Mexico", "Oklahoma", "Texas", "Arizona", "Virginia", "West Virginia", "Kentucky", "Tennessee", "North Carolina", "South Carolina", "Georgia", "Florida", "Alabama", "Mississippi", "Louisiana", "Arkansas") , "South")))
 ```
 
 ```{r}
@@ -164,10 +162,10 @@ $H_O$ = The true mean proportional difference between the Midwest and low income
 $H_a$ = The Midwest has a greater true mean proportion of low income population count beyond 10 miles from the supermarket. 
 
 ```{r}
-food_acess_reg <-
-food_acess_reg |>
+food_acess_reg <- food_acess_reg |>
   mutate (proportion = `Low Access Numbers.Low Income People.10 Miles` / `Housing Data.Total Housing Units`)
 ```
+
 ```{r}
 food_acess_reg |>
   filter (region == "Midwest") |>
@@ -179,11 +177,9 @@ food_acess_reg |>
 
 xbar <- 0.1124311 - 0.01673986
 ```
-The true mean proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region. 
+The sample mean proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region. 
 $\bar{x_Midwest} = .11$ 
 $\bar {x_Northeast} = .017$ 
-
-
 
 
 ```{r}
