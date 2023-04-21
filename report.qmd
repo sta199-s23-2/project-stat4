@@ -21,6 +21,28 @@ food_access <- read_csv("data/food_access.csv")
 ```
 
 ```{r}
+#| label: creating proportions and mutating data
+
+Midwest <- c("Ohio", "Indiana", "Michigan", "Illinois", "Missouri", "Wisconsin", "Minnesota", "Iowa", "Kansas", "Nebraska", "South Dakota", "North Dakota")
+
+Northeast <- c ("Maine", "Massachusetts", "Rhode Island", "Connecticut", "New Hampshire", "Vermont", "New York", "Pennsylvania", "New Jersey", "Delaware", "Maryland", "District of Columbia")
+
+Southwest <- c ("Texas", "Oklahoma", "New Mexico", "Arizona")
+
+Southeast <- c ("West Virginia", "Virginia", "Kentucky", "Tennessee", "North Carolina", "South Carolina", "Georgia", "Alabama", "Mississippi", "Arkansas", "Louisiana", "Florida")
+
+West <- c("Colorado", "Wyoming", "Montana", "Idaho", "Washington", "Oregon", "Utah", "Nevada", "California", "Alaska", "Hawaii")
+
+food_access_reg <- food_access |>
+  mutate (region = case_when(State %in% Northeast ~ "Northeast", State %in% Southeast ~ "Southeast", State %in% Midwest ~ "Midwest", State %in% Southwest ~ "Southwest", State %in% West ~ "West")) 
+
+
+food_access_reg <-food_access_reg |>
+  mutate (proportion = `Low Access Numbers.Low Income People.10 Miles` / `Housing Data.Total Housing Units`, proportion_vechicle = `Low Access Numbers.Low Income People.10 Miles`, proportion_vehicle = `Vehicle Access.10 Miles`/`Housing Data.Total Housing Units`, proportion_seniors = `Low Access Numbers.Seniors.10 Miles`/`Housing Data.Total Housing Units`, proportion_group = `Housing Data.Residing in Group Quarters`/`Housing Data.Total Housing Units`)
+```
+
+
+```{r}
 #| label: food access dataset
 
 food_access<- food_access |>
@@ -63,22 +85,7 @@ the adjusted R-squared value of 0.43 suggests that the predictor variable "Vehic
 
 This means that there is a moderate positive linear relationship between the percentage of housing units without vehicle access beyond 1 mile from a supermarket (as represented by the predictor variable "Vehicle Access.1 Mile") and the percentage of tract population residing in group quarters (as represented by the response variable "group_quarters").
 
-```{r}
-#| label: defining regions for food access
 
-Midwest <- c("Ohio", "Indiana", "Michigan", "Illinois", "Missouri", "Wisconsin", "Minnesota", "Iowa", "Kansas", "Nebraska", "South Dakota", "North Dakota")
-
-Northeast <- c ("Maine", "Massachusetts", "Rhode Island", "Connecticut", "New Hampshire", "Vermont", "New York", "Pennsylvania", "New Jersey", "Delaware", "Maryland")
-
-Southeast <- c ("West Virginia", "Virginia", "Kentucky", "Tennessee", "North Carolina", "South Carolina", "Georgia", "Alabama", "Mississippi", "Arkansas", "Louisiana", "Florida")
-
-Southwest <- c ("Texas", "Oklahoma", "New Mexico", "Arizona")
-
-West <- c("Colorado", "Wyoming", "Montana", "Idaho", "Washington", "Oregon", "Utah", "Nevada", "California", "Alaska", "Hawaii")
-
-food_access_reg <- food_access |>
-  mutate (region = case_when(State %in% Northeast ~ "Northeast", State %in% Southeast ~ "Southeast", State %in% Midwest ~ "Midwest", State %in% Southwest ~ "Southwest", State %in% West ~ "West")) 
-```
 
 ```{r}
 #| label: x
@@ -173,14 +180,6 @@ $H_O$ = The true mean proportional difference between the Midwest and low income
 
 $H_a$ = The Midwest has a greater true mean proportion of low income population count beyond 10 miles from the supermarket.
 
-```{r}
-
-
-#| label: mutating proportion
-
-food_access_reg <-food_access_reg |>
-  mutate (proportion = `Low Access Numbers.Low Income People.10 Miles` / `Housing Data.Total Housing Units`)
-```
 
 ```{r}
 #| label: mean for Midwest and Northeast
@@ -199,9 +198,9 @@ xbar
 ```
 
 The sample mean proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region. 
+
 $\bar{x_Midwest} = .11$ 
 $\bar {x_Northeast} = .017$ 
-
 
 
 The true mean proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region. $\bar{x_Midwest} = 0.1124311$ $\bar {x_Northeast} = .017$
@@ -236,7 +235,7 @@ null_dist |>
 
 ```
 
-Conclusion: The probabiltiy of observing a difference of 0.09569124 between the mean proportion of the Midwest versus the Northeast and low income population count beyond 10 miles from the supermarket is equal to 0, given that the difference is equal to 0, is p = \~0. Because p = \~ 0 \< $alpha$ = .05, we reject the null hypothesis that the true mean proportional difference between the Midwest and low income population count beyond 10 miles from the supermarket is equal to 0.
+Conclusion: The probabiltiy of observing a difference of 0.09569124 between the mean proportion of the Midwest versus the Northeast and low income population count beyond 10 miles from the supermarket is equal to 0, given that the difference is equal to 0, is p = \~0. Because p = \~ 0 \< $alpha$ = .05, we reject the null hypothesis that the true mean proportional difference between the Midwest and low income population count beyond 10 miles from the supermarket is equal to 0. We have strong evidence to conclude the alternate.
 
 **Confidence Interval: True mean proportion for Midwest**
 
@@ -275,7 +274,7 @@ boot_df |>
 
 ```
 
-Interpretation: We are 95% confident that the true mean proportion of \_\_\_\_\_ is between 0.102609 and 0.1226445.
+Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Midwest is between 0.102609 and 0.1226445.
 
 **Confidence Interval: True mean proportion for Northeast**
 
@@ -314,4 +313,49 @@ boot_df |>
 
 ```
 
-Interpretation: We are 95% confident that the true mean proportion of \_\_\_\_\_ is between 0.01155406 and 0.02294395.
+Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast is between 0.01155406 and 0.02294395.
+
+```{r}
+#| label: relationship between low income and vehicle access in the Midwest & Northeast
+
+food_access_reg |>
+  filter (region %in% c ("Midwest", "Northeast")) |>
+  ggplot (aes (x = proportion, y = proportion_vehicle)) +
+  geom_point() + 
+  facet_wrap ("region", ncol = 1)
+```
+
+There is a positive relationship between the proportion of low income who are 10 miles away from a supermarket and don't have a car who are 10 miles away from a supermarket. As the proportion of low income who are 10 miles away increases so does the proportion for individuals who don't have a car and are 10 miles away.
+
+
+There is a positive relationship between the proportion of low income who are 10 miles away from a supermarket and don't have a car who are 10 miles away from a supermarket. As the proportion of low income who are 10 miles away increases so does the proportion for individuals who don't have a car and are 10 miles away. Although this graph's proportion for low income and 10 miles away and proportion for no vehicle and 10 miles away is lower. The max it reaches is .4 and .03. While the midwest reaches 1 and .08 for the max. 
+
+--> Sathvika add to results: These two graphs support our claim that Midwest is more impacted as the proportions for the Midwest reach higher numbers for the proportion of low income who are 10 miles away. Moreover, it shows that having no vehicle access contributes to this problem, supporting our claim that Midwest is more impacted by not have reliable access 
+to transportation compared to more urban areas like the Northeast. 
+
+```{r}
+#| label: relationship between low income and seniors in the Midwest & Northeast
+
+food_access_reg |>
+  filter (region %in% c ("Midwest", "Northeast")) |>
+  ggplot (aes (x = proportion, y = proportion_seniors)) +
+  geom_point() + 
+  facet_wrap ("region", ncol = 1)
+
+```
+
+```{r}
+#| label: relationship between low income and group quarters in the Midwest & Northeast
+
+food_access_reg |>
+  filter (region %in% c ("Midwest", "Northeast")) |>
+  ggplot (aes (x = proportion, y = proportion_group)) +
+  geom_point() + 
+  facet_wrap ("region", ncol = 1)
+```
+
+
+
+
+
+

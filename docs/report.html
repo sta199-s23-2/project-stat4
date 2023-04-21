@@ -161,7 +161,7 @@ Attaching package: 'dplyr'</code></pre>
 ✖ dplyr::lag()      masks stats::lag()
 ✖ yardstick::spec() masks readr::spec()
 ✖ recipes::step()   masks stats::step()
-• Search for functions across packages at https://www.tidymodels.org/find/
+• Use suppressPackageStartupMessages() to eliminate package startup messages
 
 Rows: 3142 Columns: 25
 ── Column specification ────────────────────────────────────────────────────────
@@ -172,6 +172,9 @@ dbl (23): Population, Housing Data.Residing in Group Quarters, Housing Data....
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
+</div>
+<div class="cell">
+
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -201,9 +204,6 @@ dbl (23): Population, Housing Data.Residing in Group Quarters, Housing Data....
 </div>
 <p>the adjusted R-squared value of 0.43 suggests that the predictor variable “Vehicle Access.1 Mile” accounts for approximately 43% of the variability in the response variable “group_quarters”, after adjusting for the effect of other predictor variables in the model.</p>
 <p>This means that there is a moderate positive linear relationship between the percentage of housing units without vehicle access beyond 1 mile from a supermarket (as represented by the predictor variable “Vehicle Access.1 Mile”) and the percentage of tract population residing in group quarters (as represented by the response variable “group_quarters”).</p>
-<div class="cell">
-
-</div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>   Population      group_quarters   Housing Data.Total Housing Units
@@ -287,9 +287,6 @@ dbl (23): Population, Housing Data.Residing in Group Quarters, Housing Data....
 <p><span class="math inline">\(H_O\)</span> = The true mean proportional difference between the Midwest and low income population count beyond 10 miles from the supermarket is equal to 0.</p>
 <p><span class="math inline">\(H_a\)</span> = The Midwest has a greater true mean proportion of low income population count beyond 10 miles from the supermarket.</p>
 <div class="cell">
-
-</div>
-<div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
    mean
@@ -306,7 +303,8 @@ dbl (23): Population, Housing Data.Residing in Group Quarters, Housing Data....
 <pre><code>[1] 0.09569124</code></pre>
 </div>
 </div>
-<p>The sample mean proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region. <span class="math inline">\(\bar{x_Midwest} = .11\)</span> <span class="math inline">\(\bar {x_Northeast} = .017\)</span></p>
+<p>The sample mean proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region.</p>
+<p><span class="math inline">\(\bar{x_Midwest} = .11\)</span> <span class="math inline">\(\bar {x_Northeast} = .017\)</span></p>
 <p>The true mean proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region. <span class="math inline">\(\bar{x_Midwest} = 0.1124311\)</span> <span class="math inline">\(\bar {x_Northeast} = .017\)</span></p>
 <div class="cell">
 
@@ -316,7 +314,7 @@ dbl (23): Population, Housing Data.Residing in Group Quarters, Housing Data....
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
@@ -332,7 +330,7 @@ approximation based on the number of `reps` chosen in the `generate()` step. See
 1       0</code></pre>
 </div>
 </div>
-<p>Conclusion: The probabiltiy of observing a difference of 0.09569124 between the mean proportion of the Midwest versus the Northeast and low income population count beyond 10 miles from the supermarket is equal to 0, given that the difference is equal to 0, is p = ~0. Because p = ~ 0 &lt; <span class="math inline">\(alpha\)</span> = .05, we reject the null hypothesis that the true mean proportional difference between the Midwest and low income population count beyond 10 miles from the supermarket is equal to 0.</p>
+<p>Conclusion: The probabiltiy of observing a difference of 0.09569124 between the mean proportion of the Midwest versus the Northeast and low income population count beyond 10 miles from the supermarket is equal to 0, given that the difference is equal to 0, is p = ~0. Because p = ~ 0 &lt; <span class="math inline">\(alpha\)</span> = .05, we reject the null hypothesis that the true mean proportional difference between the Midwest and low income population count beyond 10 miles from the supermarket is equal to 0. We have strong evidence to conclude the alternate.</p>
 <p><strong>Confidence Interval: True mean proportion for Midwest</strong></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -355,17 +353,17 @@ $ stat      &lt;dbl&gt; 0.1144171, 0.1136144, 0.1131544, 0.1066412, 0.1130759, 0
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Interpretation: We are 95% confident that the true mean proportion of _____ is between 0.102609 and 0.1226445.</p>
+<p>Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Midwest is between 0.102609 and 0.1226445.</p>
 <p><strong>Confidence Interval: True mean proportion for Northeast</strong></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 5,000
 Columns: 2
 $ replicate &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
-$ stat      &lt;dbl&gt; 0.01499851, 0.01856120, 0.01908665, 0.01778448, 0.01871016, …</code></pre>
+$ stat      &lt;dbl&gt; 0.01381593, 0.01676433, 0.01266810, 0.01101073, 0.01092749, …</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -373,7 +371,7 @@ $ stat      &lt;dbl&gt; 0.01499851, 0.01856120, 0.01908665, 0.01778448, 0.018710
 <pre><code># A tibble: 1 × 2
    lower  upper
    &lt;dbl&gt;  &lt;dbl&gt;
-1 0.0116 0.0229</code></pre>
+1 0.0114 0.0230</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -381,10 +379,28 @@ $ stat      &lt;dbl&gt; 0.01499851, 0.01856120, 0.01908665, 0.01778448, 0.018710
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Interpretation: We are 95% confident that the true mean proportion of _____ is between 0.01155406 and 0.02294395.</p>
+<p>Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast is between 0.01155406 and 0.02294395.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="report_files/figure-html/relationship%20between%20low%20income%20and%20vehicle%20access%20in%20the%20Midwest%20&amp;%20Northeast-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>There is a positive relationship between the proportion of low income who are 10 miles away from a supermarket and don’t have a car who are 10 miles away from a supermarket. As the proportion of low income who are 10 miles away increases so does the proportion for individuals who don’t have a car and are 10 miles away.</p>
+<p>There is a positive relationship between the proportion of low income who are 10 miles away from a supermarket and don’t have a car who are 10 miles away from a supermarket. As the proportion of low income who are 10 miles away increases so does the proportion for individuals who don’t have a car and are 10 miles away. Although this graph’s proportion for low income and 10 miles away and proportion for no vehicle and 10 miles away is lower. The max it reaches is .4 and .03. While the midwest reaches 1 and .08 for the max.</p>
+<p>–&gt; Sathvika add to results: These two graphs support our claim that Midwest is more impacted as the proportions for the Midwest reach higher numbers for the proportion of low income who are 10 miles away. Moreover, it shows that having no vehicle access contributes to this problem, supporting our claim that Midwest is more impacted by not have reliable access to transportation compared to more urban areas like the Northeast.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="report_files/figure-html/relationship%20between%20low%20income%20and%20seniors%20in%20the%20Midwest%20&amp;%20Northeast-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="report_files/figure-html/relationship%20between%20low%20income%20and%20group%20quarters%20in%20the%20Midwest%20&amp;%20Northeast-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
 
