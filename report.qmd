@@ -29,7 +29,7 @@ This study examines the relationship between access to a personal vehicle and di
 
 The independent variable was whether or not the resident had access to a personal vehicle which the dependent variables were 'high' fruit & vegetable intake (= 6.7 servings/day), 'high' added sugar intake (+ 39.9 tsp/day), food insecurity, and being physically active. The sample included 265 adults with mean age of 45 years, 86% women, and 96% African-American. Only 42% had access to a vehicle.
 
-The study found that there were no significant associations that existed between personal vehicle access with diet or physical activity outcomes. However, the study found that access to a personal vehicle was associated with significantly lower risk of food insecurity (RR 0.76, 95% CI 0.63-0.92, p < 0.01). There was a significant association between personal vehicle access and lower risk of food insecurity.
+The study found that there were no significant associations that existed between personal vehicle access with diet or physical activity outcomes. However, the study found that access to a personal vehicle was associated with significantly lower risk of food insecurity (RR 0.76, 95% CI 0.63-0.92, p \< 0.01). There was a significant association between personal vehicle access and lower risk of food insecurity.
 
 In connection to the article, our research explores other factors beyond transportation (specifically vehicle access) such as family income, age, and availability of public transportation. Our research also expands across both urban and rural areas in the United States while the article focuses exclusively on Baltimore, MD. Our research is important because it will address if more factors impact food access for low income individuals. 
 
@@ -204,11 +204,14 @@ xbar
 
 The sample mean proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region.
 
-$\bar{x_Midwest} = .11$ 
-$\bar {x_Northeast} = .017$
+$\bar{x_Midwest} = .11$ $\bar {x_Northeast} = .017$
+
 
 The true sample proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region. $\bar{x_Midwest} = 0.1124311$ 
 $\bar {x_Northeast} = .017$
+
+The true mean proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region. $\bar{x_Midwest} = 0.1124311$ $\bar {x_Northeast} = .017$
+
 
 ```{r}
 
@@ -240,9 +243,14 @@ null_dist |>
 
 ```
 
+Conclusion: The probabiltiy of observing a difference of 0.09569124 between the mean proportion of the Midwest versus the Northeast and low income population count beyond 10 miles from the supermarket is equal to 0, given that the difference is equal to 0, is p = \~0. Because p = \~ 0 alpha = .05, we reject the null hypothesis that the true mean proportional difference between the Midwest and low income population count beyond 10 miles from the supermarket is equal to 0. We have strong evidence to conclude the alternate.
+
 
 Conclusion: The probabiltiy of observing a difference of 0.09569124 between the mean proportion of the Midwest versus the Northeast and low income population count beyond 10 miles from the supermarket is equal to 0, given that the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is equal to 0 the difference is equal to 0. Because p = ~ 0  alpha = .05, we reject the null hypothesis. We have strong evidence to conclude the alternate. Based on this test, we can answer our research question and say that the Midwest is more impacted than the Northeast for low income and being beyond 10 miles from a supermarket.
 
+
+Conclusion: The probability of observing a difference of 0.09569124 between the mean proportion of the Midwest versus the Northeast and low income population count beyond 10 miles from the supermarket is equal to 0, given that the difference is equal to 0, is p = \~0. Because p = 0 $alpha$ = .05, we reject the null hypothesis that the true mean proportional difference between the Midwest and low income population count beyond 10 miles from the supermarket is equal to 0. We have strong evidence to conclude the alternate.
+>>>>>>> 58d55cdcf1e26f326c7560854b7c99e78657eeae
 
 **Confidence Interval: True mean proportion for Midwest**
 

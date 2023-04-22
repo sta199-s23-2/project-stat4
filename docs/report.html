@@ -181,7 +181,7 @@ Attaching package: 'dplyr'</code></pre>
 ✖ dplyr::lag()      masks stats::lag()
 ✖ yardstick::spec() masks readr::spec()
 ✖ recipes::step()   masks stats::step()
-• Learn how to get started at https://www.tidymodels.org/start/
+• Use tidymodels_prefer() to resolve common conflicts.
 
 Rows: 3142 Columns: 25
 ── Column specification ────────────────────────────────────────────────────────
@@ -282,6 +282,7 @@ dbl (23): Population, Housing Data.Residing in Group Quarters, Housing Data....
 <p>The sample mean proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region.</p>
 <p><span class="math inline">\(\bar{x_Midwest} = .11\)</span> <span class="math inline">\(\bar {x_Northeast} = .017\)</span></p>
 <p>The true sample proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region. <span class="math inline">\(\bar{x_Midwest} = 0.1124311\)</span> <span class="math inline">\(\bar {x_Northeast} = .017\)</span></p>
+<p>The true mean proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region. <span class="math inline">\(\bar{x_Midwest} = 0.1124311\)</span> <span class="math inline">\(\bar {x_Northeast} = .017\)</span></p>
 <div class="cell">
 
 </div>
@@ -306,7 +307,9 @@ approximation based on the number of `reps` chosen in the `generate()` step. See
 1       0</code></pre>
 </div>
 </div>
+<p>Conclusion: The probabiltiy of observing a difference of 0.09569124 between the mean proportion of the Midwest versus the Northeast and low income population count beyond 10 miles from the supermarket is equal to 0, given that the difference is equal to 0, is p = ~0. Because p = ~ 0 alpha = .05, we reject the null hypothesis that the true mean proportional difference between the Midwest and low income population count beyond 10 miles from the supermarket is equal to 0. We have strong evidence to conclude the alternate.</p>
 <p>Conclusion: The probabiltiy of observing a difference of 0.09569124 between the mean proportion of the Midwest versus the Northeast and low income population count beyond 10 miles from the supermarket is equal to 0, given that the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is equal to 0 the difference is equal to 0. Because p = ~ 0 alpha = .05, we reject the null hypothesis. We have strong evidence to conclude the alternate. Based on this test, we can answer our research question and say that the Midwest is more impacted than the Northeast for low income and being beyond 10 miles from a supermarket.</p>
+<p>Conclusion: The probability of observing a difference of 0.09569124 between the mean proportion of the Midwest versus the Northeast and low income population count beyond 10 miles from the supermarket is equal to 0, given that the difference is equal to 0, is p = ~0. Because p = 0 <span class="math inline">\(alpha\)</span> = .05, we reject the null hypothesis that the true mean proportional difference between the Midwest and low income population count beyond 10 miles from the supermarket is equal to 0. We have strong evidence to conclude the alternate. &gt;&gt;&gt;&gt;&gt;&gt;&gt; 58d55cdcf1e26f326c7560854b7c99e78657eeae</p>
 <p><strong>Confidence Interval: True mean proportion for Midwest</strong></p>
 <p>After our result from the hypothesis test, we wanted to further support that the Midwest is more impacted than the Northeast. Therefore, we will be creating two confidence intervals to determine the true mean proportion for low income and living 10 miles beyond a supermarkets. We will compare those intervals. The interval with a higher proportion interval will be the most impacted by being low income and living 10 miles beyond a supermarket. We will be used simulation based techniques because we are sampling with replacement, calculating the new resampled mean, then we will be repeat that process 5000 times.</p>
 <div class="cell">
