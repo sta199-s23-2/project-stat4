@@ -100,7 +100,13 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#literature-review" id="toc-literature-review" class="nav-link active" data-scroll-target="#literature-review">Literature Review</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -122,6 +128,19 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>##Introduction and Data</p>
+<p>We are interested in the topic of food accessibility (defined as the ability to access healthy and affordable foods) in the US and how factors such as family income, vehicle availability, and neighborhood characteristics such as average income and availability of public transportation impact food accessibility. Our data is from the United States Department of Agriculture’s Economic Research Service, which contains information about US county’s ability to access supermarkets. Though there is no available information on how the USDA ERS collected this particular dataset, the USDA ERS generally collects data in the following ways: surveys, administrative data, census data, and remote sensing. Given the variables of the food access data, it is likely that the USDA ERS used a combination of surveys and census data to collect information.</p>
+<p>Definitions of Key Variables: County: County Name Population: Population Count from 2010 Census State: State Name Housing Data. Total Housing Units: Occupied Housing Unit Count from 2010 Census Vehicle Access. 10 Miles: Housing Units without Vehicle Count Beyond 10 Miles from Supermarket Low Access Numbers.Low Income People. 10 Miles: Low income population count beyond 10 miles from supermarket Low Access Numbers.People.10 Miles: Population count beyond 10 miles from supermarket Low.Access Numbers.Seniors.10 Miles: Seniors population count beyond 10 miles from supermarket</p>
+<p>Research Question: What is the relationship between housing units without vehicle access beyond 1 mile from a supermarket and tract population residing in group quarters?</p>
+<p>Given our background research on the Midwest and the Northeast regions, we hypothesize that the Midwest will be mostly impacted by having a greater proportion of low income population count beyond 10 miles from supermarkets. We will conduct a hypothesis test to test this hypothesis.</p>
+<p>What is the confidence interval for the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast? In the Midwest?</p>
+<p>Data cleaning: We first mutated the dataset to categorize each state into their respective region (Midwest, Northeast, Southwest, Southeast, and West).</p>
+<section id="literature-review" class="level2">
+<h2 class="anchored" data-anchor-id="literature-review">Literature Review</h2>
+<p>This study examines the relationship between access to a personal vehicle and diet, food insecurity, and physical activity among public housing residents, which are typically low-income, urban populations. The study conducted a cross-sectional survey of randomly selected households within two public housing communities in Baltimore, MD. The study used Poisson regression with robust error variance to estimate relative risk ratios adjusted for demographics and perceived environmental factors.</p>
+<p>The independent variable was whether or not the resident had access to a personal vehicle which the dependent variables were ‘high’ fruit &amp; vegetable intake (&gt;= 6.7 servings/day), ‘high’ added sugar intake (&gt;+ 39.9 tsp/day), food insecurity, and being physically active. The sample included 265 adults with mean age of 45 years, 86% women, and 96% African-American. Only 42% had access to a vehicle.</p>
+<p>The study found that there were no significant associations that existed between personal vehicle access with diet or physical activity outcomes. However, the study found that access to a personal vehicle was associated with significantly lower risk of food insecurity (RR 0.76, 95% CI 0.63-0.92, p &lt; 0.01). There was a significant association between personal vehicle access and lower risk of food insecurity.</p>
+<p>In connection to the article, our research explores other factors beyond transportation (specifically vehicle access) such as family income and the availability of public transportation. Our research also expands across both urban and rural areas in the United States while the article focuses exclusively on Baltimore, MD. Moreover, our research attempts to understand the relationship between various geographical regions, accounting for numerous variables.</p>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
 <pre><code>
@@ -161,7 +180,7 @@ Attaching package: 'dplyr'</code></pre>
 ✖ dplyr::lag()      masks stats::lag()
 ✖ yardstick::spec() masks readr::spec()
 ✖ recipes::step()   masks stats::step()
-• Use suppressPackageStartupMessages() to eliminate package startup messages
+• Search for functions across packages at https://www.tidymodels.org/find/
 
 Rows: 3142 Columns: 25
 ── Column specification ────────────────────────────────────────────────────────
@@ -196,13 +215,13 @@ dbl (23): Population, Housing Data.Residing in Group Quarters, Housing Data....
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/creating%20new%20column-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4326019</code></pre>
 </div>
 </div>
-<p>the adjusted R-squared value of 0.43 suggests that the predictor variable “Vehicle Access.1 Mile” accounts for approximately 43% of the variability in the response variable “group_quarters”, after adjusting for the effect of other predictor variables in the model.</p>
+<p>The adjusted R-squared value of 0.43 suggests that the predictor variable “Vehicle Access.1 Mile” accounts for approximately 43% of the variability in the response variable “group_quarters”, after adjusting for the effect of other predictor variables in the model.</p>
 <p>This means that there is a moderate positive linear relationship between the percentage of housing units without vehicle access beyond 1 mile from a supermarket (as represented by the predictor variable “Vehicle Access.1 Mile”) and the percentage of tract population residing in group quarters (as represented by the response variable “group_quarters”).</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -225,10 +244,10 @@ dbl (23): Population, Housing Data.Residing in Group Quarters, Housing Data....
 <pre><code>[1] 0</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/x-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/x-2.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
@@ -255,7 +274,7 @@ dbl (23): Population, Housing Data.Residing in Group Quarters, Housing Data....
 <pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/linear%20representation-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
@@ -330,7 +349,7 @@ approximation based on the number of `reps` chosen in the `generate()` step. See
 1       0</code></pre>
 </div>
 </div>
-<p>Conclusion: The probabiltiy of observing a difference of 0.09569124 between the mean proportion of the Midwest versus the Northeast and low income population count beyond 10 miles from the supermarket is equal to 0, given that the difference is equal to 0, is p = ~0. Because p = ~ 0 &lt; <span class="math inline">\(alpha\)</span> = .05, we reject the null hypothesis that the true mean proportional difference between the Midwest and low income population count beyond 10 miles from the supermarket is equal to 0. We have strong evidence to conclude the alternate.</p>
+<p>Conclusion: The probability of observing a difference of 0.09569124 between the mean proportion of the Midwest versus the Northeast and low income population count beyond 10 miles from the supermarket is equal to 0, given that the difference is equal to 0, is p = ~0. Because p = ~ 0 &nbsp;<span class="math inline">\(alpha\)</span> = .05, we reject the null hypothesis that the true mean proportional difference between the Midwest and low income population count beyond 10 miles from the supermarket is equal to 0. We have strong evidence to conclude the alternate.</p>
 <p><strong>Confidence Interval: True mean proportion for Midwest</strong></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -385,24 +404,25 @@ $ stat      &lt;dbl&gt; 0.01381593, 0.01676433, 0.01266810, 0.01101073, 0.010927
 <p>Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast is between 0.01155406 and 0.02294395.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/relationship%20between%20low%20income%20and%20vehicle%20access%20in%20the%20Midwest%20&amp;%20Northeast-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>There is a positive relationship between the proportion of low income who are 10 miles away from a supermarket and don’t have a car who are 10 miles away from a supermarket. As the proportion of low income who are 10 miles away increases so does the proportion for individuals who don’t have a car and are 10 miles away.</p>
 <p>There is a positive relationship between the proportion of low income who are 10 miles away from a supermarket and don’t have a car who are 10 miles away from a supermarket. As the proportion of low income who are 10 miles away increases so does the proportion for individuals who don’t have a car and are 10 miles away. Although this graph’s proportion for low income and 10 miles away and proportion for no vehicle and 10 miles away is lower. The max it reaches is .4 and .03. While the midwest reaches 1 and .08 for the max.</p>
-<p>–&gt; Sathvika add to results: These two graphs support our claim that Midwest is more impacted as the proportions for the Midwest reach higher numbers for the proportion of low income who are 10 miles away. Moreover, it shows that having no vehicle access contributes to this problem, supporting our claim that Midwest is more impacted by not have reliable access to transportation compared to more urban areas like the Northeast.</p>
+<p>Sathvika add to results: These two graphs support our claim that Midwest is more impacted as the proportions for the Midwest reach higher numbers for the proportion of low income who are 10 miles away. Moreover, it shows that having no vehicle access contributes to this problem, supporting our claim that Midwest is more impacted by not have reliable access to transportation compared to more urban areas like the Northeast.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/relationship%20between%20low%20income%20and%20seniors%20in%20the%20Midwest%20&amp;%20Northeast-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/relationship%20between%20low%20income%20and%20group%20quarters%20in%20the%20Midwest%20&amp;%20Northeast-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

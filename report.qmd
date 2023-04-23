@@ -23,8 +23,6 @@ Data cleaning: We first mutated the dataset to categorize each state into their 
 
 ## Literature Review
 
-https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6369228/
-
 This study examines the relationship between access to a personal vehicle and diet, food insecurity, and physical activity among public housing residents, which are typically low-income, urban populations. The study conducted a cross-sectional survey of randomly selected households within two public housing communities in Baltimore, MD. The study used Poisson regression with robust error variance to estimate relative risk ratios adjusted for demographics and perceived environmental factors.
 
 The independent variable was whether or not the resident had access to a personal vehicle which the dependent variables were 'high' fruit & vegetable intake (\>= 6.7 servings/day), 'high' added sugar intake (\>+ 39.9 tsp/day), food insecurity, and being physically active. The sample included 265 adults with mean age of 45 years, 86% women, and 96% African-American. Only 42% had access to a vehicle.
