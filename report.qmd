@@ -84,32 +84,23 @@ food_access_reg_MID_and_NORTH <- food_access_reg |>
   mutate(region = factor(region))
 ```
 
-```{r}
-#| label: x
-
-food_access_reg |>
-  filter(region == "Midwest" | region == "Northeast") |>
-  ggplot(aes(x=group_quarters)) +
-  geom_histogram(binwidth=10, fill="blue", color="white") +
-  labs(title="Distribution of population residing in group quarters", x="Population in group quarters", y="Frequency")
-
-```
 
 ```{r}
+#| label: Graph 1 Density
+
 food_access_reg_MID_and_NORTH |> 
   ggplot(aes(x = `Vehicle Access.10 Miles`, fill = region)) + 
   geom_density()
 ```
 
 ```{r}
-
-#| label: Graph between Housing units without vehicle count beyond 10 miles from supermarket and people living in housing quarters
+#| label: Graph 2 between Housing units without vehicle count beyond 10 miles from supermarket and people living in housing quarters
 
 food_access_reg |>
   filter(region == "Midwest" | region == "Northeast") |>
   ggplot(aes(x=`Vehicle Access.10 Miles`, y= group_quarters)) +
   geom_point() +
-  labs(title="Scatterplot of vehicle access beyond 1 mile against population in group quarters", x="Vehicle Access.1 Mile", y="Population in group quarters")
+  labs(title="Scatterplot of vehicle access beyond 10 miles against population in group quarters", x="Vehicle Access.10 Mile", y="Population in group quarters")
 
 ```
 
@@ -193,6 +184,38 @@ region_pred |>
     event_level = "second"
   ) 
 ```
+
+
+
+```{r}
+
+#| label: relationship between low income and vehicle access in the Midwest & Northeast
+
+food_access_reg |>
+  filter (region %in% c ("Midwest", "Northeast")) |>
+  ggplot (aes (x = proportion_vehicle, y = proportion)) +
+  geom_point() + 
+  facet_wrap ("region", ncol = 1)
+
+```
+
+We wanted to see if having no vehicle access and being beyond 10 miles from a market contributes to low income nad being 10 miles from a market. Therefore, we created a scatter plot. There is a positive relationship between the proportion of having no vehicle and being beyond 10 miles away from a market and the proportion of low income who are 10 miles away from a supermarket for both regions. As the proportion of no vehicle access who are 10 miles away increases so does the proportion for individuals who are low income and are 10 miles away from a market.
+
+
+```{r}
+
+#| label: relationship between low income and seniors in the Midwest & Northeast
+
+food_access_reg |>
+  filter (region %in% c ("Midwest", "Northeast")) |>
+  ggplot (aes (x = proportion_seniors, y = proportion)) +
+  geom_point() + 
+  facet_wrap ("region", ncol = 1)
+
+```
+
+
+We wanted to see if being a senior who was beyond 10 miles from a market contributes to low income and being 10 miles from a market. Therefore, we created a scatter plot. There is a positive relationship between the proportion of being a senior and living 10 miles away from a market and the proportion of low income who are 10 miles away from a supermarket for both regions. As the proportion of being a senior and living 10 miles away increases so does the proportion for individuals who are low income and are 10 miles away from a market.
 
 ##  Literature Review
 
@@ -381,38 +404,6 @@ boot_df |>
 ```
 
 Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast is between 0.01155406 and 0.02294395.
-
-```{r}
-
-#| label: relationship between low income and vehicle access in the Midwest & Northeast
-
-food_access_reg |>
-  filter (region %in% c ("Midwest", "Northeast")) |>
-  ggplot (aes (x = proportion_vehicle, y = proportion)) +
-  geom_point() + 
-  facet_wrap ("region", ncol = 1)
-
-```
-
-We wanted to see if having no vehicle access and being beyond 10 miles from a market contributes to low income nad being 10 miles from a market. Therefore, we created a scatter plot. There is a positive relationship between the proportion of having no vehicle and being beyond 10 miles away from a market and the proportion of low income who are 10 miles away from a supermarket for both regions. As the proportion of no vehicle access who are 10 miles away increases so does the proportion for individuals who are low income and are 10 miles away from a market.
-
-Sathvika add to results: These two graphs support our claim that Midwest is more impacted as the proportions for the Midwest reach higher numbers for the proportion of low income who are 10 miles away. Moreover, it shows that having no vehicle access contributes to this problem, supporting our claim that Midwest is more impacted by not have reliable access to transportation compared to more urban areas like the Northeast.
-
-
-```{r}
-
-#| label: relationship between low income and seniors in the Midwest & Northeast
-
-food_access_reg |>
-  filter (region %in% c ("Midwest", "Northeast")) |>
-  ggplot (aes (x = proportion_seniors, y = proportion)) +
-  geom_point() + 
-  facet_wrap ("region", ncol = 1)
-
-```
-
-
-We wanted to see if being a senior who was beyond 10 miles from a market contributes to low income and being 10 miles from a market. Therefore, we created a scatter plot. There is a positive relationship between the proportion of being a senior and living 10 miles away from a market and the proportion of low income who are 10 miles away from a supermarket for both regions. As the proportion of being a senior and living 10 miles away increases so does the proportion for individuals who are low income and are 10 miles away from a market.
 
 
 ## Results
