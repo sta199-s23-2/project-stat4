@@ -109,7 +109,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#literature-review-1" id="toc-literature-review-1" class="nav-link" data-scroll-target="#literature-review-1">Literature Review</a></li>
   <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a>
   <ul class="collapse">
-  <li><a href="#confidence-interval-true-mean-proportion-for-midwest" id="toc-confidence-interval-true-mean-proportion-for-midwest" class="nav-link" data-scroll-target="#confidence-interval-true-mean-proportion-for-midwest"><strong>Confidence Interval: True mean proportion for Midwest</strong></a></li>
   <li><a href="#confidence-interval-true-mean-proportion-for-northeast" id="toc-confidence-interval-true-mean-proportion-for-northeast" class="nav-link" data-scroll-target="#confidence-interval-true-mean-proportion-for-northeast"><strong>Confidence Interval: True mean proportion for Northeast</strong></a></li>
   </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
@@ -195,7 +194,7 @@ Attaching package: 'dplyr'</code></pre>
 ✖ dplyr::lag()      masks stats::lag()
 ✖ yardstick::spec() masks readr::spec()
 ✖ recipes::step()   masks stats::step()
-• Search for functions across packages at https://www.tidymodels.org/find/
+• Use tidymodels_prefer() to resolve common conflicts.
 
 Rows: 3142 Columns: 25
 ── Column specification ────────────────────────────────────────────────────────
@@ -244,35 +243,19 @@ $ `Low Access Numbers.Seniors.20 Miles`           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/Graph%201%20Density-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/Graph%201%20relationship%20between%20low%20income%20and%20vehicle%20access%20in%20the%20Midwest%20&amp;%20Northeast-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>We wanted to see if having no vehicle access and being beyond 10 miles from a market contributes to low income nad being 10 miles from a market. Therefore, we created a scatter plot. There is a positive relationship between the proportion of having no vehicle and being beyond 10 miles away from a market and the proportion of low income who are 10 miles away from a supermarket for both regions. As the proportion of no vehicle access who are 10 miles away increases so does the proportion for individuals who are low income and are 10 miles away from a market.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/Graph%202%20between%20Housing%20units%20without%20vehicle%20count%20beyond%2010%20miles%20from%20supermarket%20and%20people%20living%20in%20housing%20quarters-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>We wanted to see if being a senior who was beyond 10 miles from a market contributes to low income and being 10 miles from a market. Therefore, we created a scatter plot. There is a positive relationship between the proportion of being a senior and living 10 miles away from a market and the proportion of low income who are 10 miles away from a supermarket for both regions. As the proportion of being a senior and living 10 miles away increases so does the proportion for individuals who are low income and are 10 miles away from a market.</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 5
-  term                                estimate std.error statistic p.value
-  &lt;chr&gt;                                  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-1 (Intercept)                             9661       NaN       NaN     NaN
-2 `Vehicle Access.1 Mile`                   NA        NA        NA      NA
-3 `Low Access Numbers.Seniors.1 Mile`       NA        NA        NA      NA</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$x
-[1] "No Vehicle Access beyond 10 miles"
-
-$y
-[1] "Population in group quarters"
-
-$title
-[1] "No Vehicle Access Beyond 10 Miles vs. Population in Group Quarters"
-
-attr(,"class")
-[1] "labels"</code></pre>
+<div class="cell-output-display">
+<p><img src="report_files/figure-html/Graph%203%20Density-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
@@ -281,9 +264,6 @@ attr(,"class")
 <div class="cell">
 
 </div>
-<p>*We choose a hypothesis test because it helps answer our research question if the Northwest or Northeast is more impacted by being low income and living 10 miles away from a supermarket. We hypothesize that compared to the Northeast, the Midwest will be mostly impacted by having a greater proportion of low income population count beyond 10 miles from supermarket. Our null hypothesis is the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is equal to 0.Our alternate is the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is greater than 0. Using the resulting p-values from our test, we can see if the Midwest is more impacted or if there is no difference between the two. We will be using simulation based techniques. We will permute all observations together, distribute them into two new groups, calculate the new sample means for each group, and lastly subtract the new sample means. This will be done 5000 times.</p>
-<p>WRITE IN PROPER NOTATION</p>
-<p>$H_O:$ = the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is equal to 0</p>
 <div class="cell">
 
 </div>
@@ -307,18 +287,6 @@ attr(,"class")
 1 roc_auc binary         0.718</code></pre>
 </div>
 </div>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>We wanted to see if having no vehicle access and being beyond 10 miles from a market contributes to low income nad being 10 miles from a market. Therefore, we created a scatter plot. There is a positive relationship between the proportion of having no vehicle and being beyond 10 miles away from a market and the proportion of low income who are 10 miles away from a supermarket for both regions. As the proportion of no vehicle access who are 10 miles away increases so does the proportion for individuals who are low income and are 10 miles away from a market.</p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>We wanted to see if being a senior who was beyond 10 miles from a market contributes to low income and being 10 miles from a market. Therefore, we created a scatter plot. There is a positive relationship between the proportion of being a senior and living 10 miles away from a market and the proportion of low income who are 10 miles away from a supermarket for both regions. As the proportion of being a senior and living 10 miles away increases so does the proportion for individuals who are low income and are 10 miles away from a market.</p>
 </section>
 <section id="literature-review-1" class="level2">
 <h2 class="anchored" data-anchor-id="literature-review-1">Literature Review</h2>
@@ -334,9 +302,10 @@ attr(,"class")
 <p>In order to explore the basic relationships, first some exploratory data analysis was conducted to see which specific states in the regions our research question was exploring. By quantifying and visualizing the relationship between the variables in the Midwest and Northeast, the sample mean difference is extracted from the given regions. This is used to run a hypothesis test in order to answer our research question. With a null distribution and p-value either reject or fail to reject the null hypothesis of no difference between the two regions. This would help answer our research question as it would show which region is impacted more by taking the mean of the proportions of low income people 10 miles away from the supermarket without a vehicle. Based on the results of the hypothesis test, we run a confidence interval in order to see where the true mean lies in each region.</p>
 <p>In order to find which variables contribute to the Midwest region being more impacted by low income and no transportation a linear regression model is used as the low income people without vehicle access beyond 10 miles from a supermarket is the explanatory, and the number of people living in housing quarters as the response variable. This would be the best variable to use in the linear regression because the other data refers to children, seniors, and other varying amounts of vehicle distance. Therefore, housing group quarters population would be the best variable to use in this linear regression model and would help solidify the second part of the research question.&nbsp;</p>
 <p>We choose a hypothesis test because it helps answer our research question if the Northwest or Northeast is more impacted by being low income and living 10 miles away from a supermarket. We hypothesize that compared to the Northeast, the Midwest will be mostly impacted by having a greater proportion of low income population count beyond 10 miles from supermarket. Our null hypothesis is the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is equal to 0. Our alternate is the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is greater than 0. Using the resulting p-values from our test, we can see if the Midwest is more impacted or if there is no difference between the two. We will be using simulation based techniques. We will permute all observations together, distribute them into two new groups, calculate the new sample means for each group, and lastly subtract the new sample means. This will be done 5000 times.</p>
-<p>WRITE IN PROPER NOTATION</p>
-<p><span class="math inline">\(H_o\)</span> = the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is equal to 0</p>
-<p><span class="math inline">\(H_a\)</span> = The true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is greater than 0</p>
+<p><span class="math inline">\(H_o\)</span>: <span class="math inline">\(\mu_{Midwest} - \mu_{Northeast} = 0\)</span></p>
+<p>Null Hypothesis: The true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is equal to 0.</p>
+<p><span class="math inline">\(H_a\)</span>: <span class="math inline">\(\mu_{Midwest} - \mu_{Northeast} &gt; 0\)</span></p>
+<p>Alternative Hypothesis: The true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is greater than 0.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
@@ -356,10 +325,7 @@ attr(,"class")
 </div>
 <p>The sample mean proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region.</p>
 <p><span class="math inline">\(\bar{x_{Midwest}} = .11\)</span> <span class="math inline">\(\bar {x_{Northeast}} = .017\)</span></p>
-<p>The true sample proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region. <span class="math inline">\(\bar{x_Midwest} = 0.1124311\)</span> <span class="math inline">\(\bar {x_Northeast} = .017\)</span></p>
-<p>The true mean proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region. <span class="math inline">\(\bar{x_Midwest} = 0.1124311\)</span> <span class="math inline">\(\bar {x_Northeast} = .017\)</span></p>
-<p>The true sample proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region. <span class="math inline">\(\bar{x_{Midwest}} = 0.1124311\)</span> <span class="math inline">\(\bar {x_{Northeast}} = .017\)</span></p>
-<p>The true mean proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region. <span class="math inline">\(\bar{x_{Midwest}} = 0.1124311\)</span> <span class="math inline">\(\bar {x_{Northeast}} = .017\)</span></p>
+<p>PROPER NOTATION: Observed Statistic = 0.09569124</p>
 <div class="cell">
 
 </div>
@@ -368,7 +334,7 @@ attr(,"class")
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
@@ -384,14 +350,9 @@ approximation based on the number of `reps` chosen in the `generate()` step. See
 1       0</code></pre>
 </div>
 </div>
-<p>Conclusion: The probability of observing a difference of 0.09569124 between the mean proportion of the Midwest versus the Northeast and low income population count beyond 10 miles from the supermarket is equal to 0, given that the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is equal to 0 the difference is equal to 0. Because p = ~ 0 alpha = .05, we reject the null hypothesis. We have strong evidence to conclude the alternate. Based on this test, we can answer our research question and say that the Midwest is more impacted than the Northeast for low income and being beyond 10 miles from a supermarket.</p>
 <p>Conclusion: The probabiltiy of observing a difference of 0.09569124 between the mean proportion of the Midwest versus the Northeast and low income population count beyond 10 miles from the supermarket is equal to 0, given that the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is equal to 0 the difference is equal to 0. Because p = ~ 0 alpha = .05, we reject the null hypothesis. We have strong evidence to conclude the alternate. Based on this test, we can answer our research question and say that the Midwest is more impacted than the Northeast for low income and being beyond 10 miles from a supermarket.</p>
-<p>Conclusion: The probability of observing a difference of 0.09569124 between the mean proportion of the Midwest versus the Northeast and low income population count beyond 10 miles from the supermarket is equal to 0, given that the difference is equal to 0, is p = ~0. Because p = 0 <span class="math inline">\(alpha\)</span> = .05, we reject the null hypothesis that the true mean proportional difference between the Midwest and low income population count beyond 10 miles from the supermarket is equal to 0. We have strong evidence to conclude the alternate.</p>
 <p><strong>Confidence Interval: True mean proportion for Midwest</strong></p>
 <p>After our result from the hypothesis test, we wanted to further support that the Midwest is more impacted than the Northeast. Therefore, we will be creating two confidence intervals to determine the true mean proportion for low income and living 10 miles beyond a supermarkets. We will compare those intervals. The interval with a higher proportion interval will be the most impacted by being low income and living 10 miles beyond a supermarket. We will be used simulation based techniques because we are sampling with replacement, calculating the new resampled mean, then we will be repeat that process 5000 times.</p>
-<section id="confidence-interval-true-mean-proportion-for-midwest" class="level3">
-<h3 class="anchored" data-anchor-id="confidence-interval-true-mean-proportion-for-midwest"><strong>Confidence Interval: True mean proportion for Midwest</strong></h3>
-<p>After our result from the hypothesis test, we wanted to further support that the Midwest is more impacted than the Northeast. Therefore, we will be creating two confidence intervals to determine the true mean proportion for low income and living 10 miles beyond a supermarkets. We will compare those intervals. The interval with a higher proportion interval will be the most impacted by being low income and living 10 miles beyond a supermarket. We will be used simulation based techniques because we are sampling with replacement, calculating the new re-sampled mean, then we will be repeat that process 5000 times.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 5,000
@@ -408,19 +369,19 @@ $ stat      &lt;dbl&gt; 0.1144171, 0.1136144, 0.1131544, 0.1066412, 0.1130759, 0
 1 0.103 0.123</code></pre>
 </div>
 </div>
-<p>We are creating a histogram to see the distribution of resamples from our original data for Northwest. We also have lines that represent our confidence interval.</p>
+<p>We are creating a histogram to see the distribution of resamples from our original data for Midwest. We also have lines that represent our confidence interval.</p>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Midwest is between 0.102609 and 0.1226445.</p>
-</section>
 <section id="confidence-interval-true-mean-proportion-for-northeast" class="level3">
 <h3 class="anchored" data-anchor-id="confidence-interval-true-mean-proportion-for-northeast"><strong>Confidence Interval: True mean proportion for Northeast</strong></h3>
+<p>After our result from the hypothesis test, we wanted to further support that the Midwest is more impacted than the Northeast. Therefore, we will be creating two confidence intervals to determine the true mean proportion for low income and living 10 miles beyond a supermarkets. We will compare those intervals. The interval with a higher proportion interval will be the most impacted by being low income and living 10 miles beyond a supermarket. We will be used simulation based techniques because we are sampling with replacement, calculating the new re-sampled mean, then we will be repeat that process 5000 times.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 5,000
@@ -444,7 +405,7 @@ $ stat      &lt;dbl&gt; 0.01381593, 0.01676433, 0.01266810, 0.01101073, 0.010927
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast is between 0.01155406 and 0.02294395.</p>
@@ -452,7 +413,7 @@ $ stat      &lt;dbl&gt; 0.01381593, 0.01676433, 0.01266810, 0.01101073, 0.010927
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>Based on the exploratory data analysis, The first graph is a density plot that shows the distribution of vehicle access beyond 10 miles for both the Midwest and Northeast regions. The x-axis represents the distance of vehicle access beyond 10 miles, while the y-axis represents the density of the distribution. The graph is relevant as it shows the difference in the distribution of vehicle access between the two regions. For instance, the Midwest region appears to have a higher density of vehicle access beyond 10 miles than the Northeast region. The third and fourth ROC graph curves represent where the x-axis represents the false positive rate, while the y-axis represents the true positive rate. The graph is relevant as it shows the ability of the logistic regression model to distinguish between the Midwest and Northeast regions based on vehicle access beyond 10 miles. For instance, the higher the AUC, the better the model is at discriminating between the two regions. They both have an AUC of around 0.717, indicating a high prediction rate based on the regions and no vehicle access. This helps quantify the strength of the relationships and set up for the hypothesis test.&nbsp;</p>
+<p>Based on the exploratory data analysis, The first graph is a density plot that shows the distribution of vehicle access beyond 10 miles for both the Midwest and Northeast regions. The x-axis represents the distance of vehicle access beyond 10 miles, while the y-axis represents the density of the distribution. The graph is relevant as it shows the difference in the distribution of vehicle access between the two regions. For instance, the Midwest region appears to have a higher density of vehicle access beyond 10 miles than the Northeast region. The third and fourth ROC graph curves represent where the x-axis represents the false positive rate, while the y-axis represents the true positive rate. The graph is relevant as it shows the ability of the logistic regression model to distinguish between the Midwest and Northeast regions based on vehicle access beyond 10 miles. For instance, the higher the AUC, the better the model is at discriminating between the two regions. They both have an AUC of around 0.717, indicating a high prediction rate based on the regions and no vehicle access. This helps quantify the strength of the relationships and set up for the hypothesis test.</p>
 <p>Graph 1</p>
 <p>The general trend between the variables _____ and ______ are a positive correlation. This helps us set up the context for our research question because…</p>
 <p>Graph 2</p>
