@@ -74,92 +74,91 @@ food_access_reg <- food_access |>
   mutate (region = case_when(State %in% Northeast ~ "Northeast", State %in% Southeast ~ "Southeast", State %in% Midwest ~ "Midwest", State %in% Southwest ~ "Southwest", State %in% West ~ "West")) 
 
 food_access_reg <-food_access_reg |>
-  mutate (proportion = `Low Access Numbers.Low Income People.10 Miles` / `Housing Data.Total Housing Units`, proportion_vechicle = `Low Access Numbers.Low Income People.10 Miles`, proportion_vehicle = `Vehicle Access.10 Miles`/`Housing Data.Total Housing Units`, proportion_seniors = `Low Access Numbers.Seniors.10 Miles`/`Housing Data.Total Housing Units`, proportion_group = `Housing Data.Residing in Group Quarters`/`Housing Data.Total Housing Units`)
+  mutate (proportion = `Low Access Numbers.Low Income People.10 Miles` / `Housing Data.Total Housing Units`, 
+          proportion_vechicle = `Low Access Numbers.Low Income People.10 Miles`, proportion_vehicle = `Vehicle Access.10 Miles`/`Housing Data.Total Housing Units`, proportion_seniors = `Low Access Numbers.Seniors.10 Miles`/`Housing Data.Total Housing Units`, proportion_group = `Housing Data.Residing in Group Quarters`/`Housing Data.Total Housing Units`, 
+  group_quarters = `Housing Data.Residing in Group Quarters`
+      )
 
 ```
 
 ```{r}
 
-#| label: creating new column
-
-food_access <- food_access %>% rename(group_quarters = `Housing Data.Residing in Group Quarters`)
-
-# Create a scatterplot to visualize the relationship between the two variables
-ggplot(data = food_access, aes(x = group_quarters, y = `Vehicle Access.1 Mile`)) +
-  geom_point() +
-  labs(x = "Percentage of Population Residing in Group Quarters", y = "Number of Housing Units without Vehicle Access Beyond 1 Mile from a Supermarket") +
-  ggtitle("Relationship between Group Quarters and Housing Units without Vehicle Access") 
-
-# Perform a linear regression to quantify the relationship
-model1 <- linear_reg() |>
-  set_engine("lm") |>
-  fit(`Vehicle Access.1 Mile` ~ group_quarters , data = food_access)
-
-model1 |>
-  glance() |>
-  pull(adj.r.squared)
+food_access_reg_MID_and_NORTH <- food_access_reg |>
+  filter(region == "Northeast" | region == "Midwest") |>
+  mutate(region = factor(region))
 
 ```
 
-The adjusted R-squared value of 0.43 suggests that the predictor variable "Vehicle Access.1 Mile" accounts for approximately 43% of the variability in the response variable "group_quarters", after adjusting for the effect of other predictor variables in the model.
-
-This means that there is a moderate positive linear relationship between the percentage of housing units without vehicle access beyond 1 mile from a supermarket (as represented by the predictor variable "Vehicle Access.1 Mile") and the percentage of tract population residing in group quarters (as represented by the response variable "group_quarters").
-
 ```{r}
-
 #| label: x
 
-summary(food_access[,c("Population", "group_quarters", "Housing Data.Total Housing Units", "Vehicle Access.1 Mile")])
-
-# Check for missing values
-sum(is.na(food_access))
-
-ggplot(food_access, aes(x= group_quarters)) +
+food_access_reg |>
+  filter(region == "Midwest" | region == "Northeast") |>
+  ggplot(aes(x=group_quarters)) +
   geom_histogram(binwidth=10, fill="blue", color="white") +
   labs(title="Distribution of population residing in group quarters", x="Population in group quarters", y="Frequency")
 
-ggplot(food_access, aes(x=`Vehicle Access.1 Mile`, y= group_quarters)) +
+```
+
+```{r}
+food_access_reg_MID_and_NORTH |> 
+  ggplot(aes(x = `Vehicle Access.10 Miles`, fill = region)) + 
+  geom_density()
+```
+
+```{r}
+#| label: Graph between Housing units without vehicle count beyond 10 miles from supermarket and people living in housing quarters
+
+food_access_reg |>
+  filter(region == "Midwest" | region == "Northeast") |>
+  ggplot(aes(x=`Vehicle Access.10 Miles`, y= group_quarters)) +
   geom_point() +
-  labs(title="Scatterplot of vehicle access beyond 1 mile against population in group quarters", x="Vehicle Access.1 Mile", y="Population in group quarters")
-
+  labs(title="No Vehicle Access Beyond 10 Miles vs. Population in Group Quarters", x="No Vehicle Access beyond 10 miles", y="Population in group quarters")
 ```
 
 ```{r}
 
-#| label: linear regression
+set.seed(0310)
 
-food_access_DC <- food_access |>
-  filter(State == "District of Columbia")
+food_access_reg_MID_and_NORTH_split <- 
+  initial_split(food_access_reg_MID_and_NORTH, prop = 0.80) 
 
-linear_reg() |>
-  set_engine("lm") |>
-  fit(`Low Access Numbers.Low Income People.10 Miles` ~ `Vehicle Access.10 Miles` + `Low Access Numbers.Seniors.1 Mile`, data = food_access_DC) |>
-  tidy()
-
+train_data <- training(food_access_reg_MID_and_NORTH_split)
+test_data <- testing(food_access_reg_MID_and_NORTH_split)
 ```
 
 ```{r}
-
-#| label: pulling R Squared
-
-food_access_ND <- food_access |>
-  filter(State == "North Dakota")
-
-model_ND <- linear_reg() |>
-  set_engine("lm") |>
-  fit(`Low Access Numbers.Low Income People.10 Miles` ~ `Vehicle Access.10 Miles` + `Low Access Numbers.Seniors.10 Miles`, data = food_access_reg) 
-
-model_ND |>
-  glance() |>
-  pull(adj.r.squared)
-
+model1 <- logistic_reg() |>
+  set_engine("glm") |>
+  fit(region ~ `Vehicle Access.10 Miles`, data = food_access_reg_MID_and_NORTH, family = "binomial")
 ```
 
-REALLY GOOD MODEL, has high adjusted r squared value,
+```{r}
+region_pred <- predict(model1, test_data, type = "prob") |>  
+  bind_cols(test_data |> select(region))  
+```
 
-us
+```{r}
+region_pred |>
+  roc_curve(
+    truth = region, 
+    .pred_Midwest, 
+    event_level = "first" #which level is a success?
+  ) |>
+  autoplot()
 
-\*We choose a hypothesis test because it helps answer our research question if the Northwest or Northeast is more impacted by being low income and living 10 miles away from a supermarket. We hypothesize that compared to the Northeast, the Midwest will be mostly impacted by having a greater proportion of low income population count beyond 10 miles from supermarket. Our null hypothesis is the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is equal to 0. Our alternate is the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is greater than 0. Using the resulting p-values from our test, we can see if the Midwest is more impacted or if there is no difference between the two. We will be using simulation based techniques. We will permute all observations together, distribute them into two new groups, calculate the new sample means for each group, and lastly subtract the new sample means. This will be done 5000 times.
+region_pred |>
+  roc_curve(
+    truth = region, 
+    .pred_Northeast, 
+    event_level = "second" #which level is a success?
+  ) |>
+  autoplot()
+```
+
+\*ADD DESCRIPTION FOR LOG REG
+
+We choose a hypothesis test because it helps answer our research question if the Northwest or Northeast is more impacted by being low income and living 10 miles away from a supermarket. We hypothesize that compared to the Northeast, the Midwest will be mostly impacted by having a greater proportion of low income population count beyond 10 miles from supermarket. Our null hypothesis is the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is equal to 0. Our alternate is the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is greater than 0. Using the resulting p-values from our test, we can see if the Midwest is more impacted or if there is no difference between the two. We will be using simulation based techniques. We will permute all observations together, distribute them into two new groups, calculate the new sample means for each group, and lastly subtract the new sample means. This will be done 5000 times.
 
 WRITE IN PROPER NOTATION
 

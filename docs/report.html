@@ -238,60 +238,42 @@ $ `Low Access Numbers.Seniors.20 Miles`           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 
 
 </div>
 <div class="cell">
-<div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4326019</code></pre>
-</div>
-</div>
-<p>The adjusted R-squared value of 0.43 suggests that the predictor variable “Vehicle Access.1 Mile” accounts for approximately 43% of the variability in the response variable “group_quarters”, after adjusting for the effect of other predictor variables in the model.</p>
-<p>This means that there is a moderate positive linear relationship between the percentage of housing units without vehicle access beyond 1 mile from a supermarket (as represented by the predictor variable “Vehicle Access.1 Mile”) and the percentage of tract population residing in group quarters (as represented by the response variable “group_quarters”).</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>   Population      group_quarters   Housing Data.Total Housing Units
- Min.   :     82   Min.   :     0   Min.   :     39                 
- 1st Qu.:  11114   1st Qu.:   177   1st Qu.:   4369                 
- Median :  25872   Median :   602   Median :  10017                 
- Mean   :  98264   Mean   :  2541   Mean   :  37147                 
- 3rd Qu.:  66780   3rd Qu.:  2247   3rd Qu.:  25829                 
- Max.   :9818605   Max.   :171670   Max.   :3241204                 
- Vehicle Access.1 Mile
- Min.   :    0.0      
- 1st Qu.:  118.0      
- Median :  332.0      
- Mean   :  662.2      
- 3rd Qu.:  739.8      
- Max.   :13735.0      </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
-</div>
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/x-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 5
-  term                                estimate std.error statistic p.value
-  &lt;chr&gt;                                  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-1 (Intercept)                                0       NaN       NaN     NaN
-2 `Vehicle Access.10 Miles`                 NA        NA        NA      NA
-3 `Low Access Numbers.Seniors.1 Mile`       NA        NA        NA      NA</code></pre>
+<div class="cell-output-display">
+<p><img src="report_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8489516</code></pre>
+<div class="cell-output-display">
+<p><img src="report_files/figure-html/Graph%20between%20Housing%20units%20without%20vehicle%20count%20beyond%2010%20miles%20from%20supermarket%20and%20people%20living%20in%20housing%20quarters-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>REALLY GOOD MODEL, has high adjusted r squared value,</p>
-<p>us</p>
-<p>*We choose a hypothesis test because it helps answer our research question if the Northwest or Northeast is more impacted by being low income and living 10 miles away from a supermarket. We hypothesize that compared to the Northeast, the Midwest will be mostly impacted by having a greater proportion of low income population count beyond 10 miles from supermarket. Our null hypothesis is the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is equal to 0. Our alternate is the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is greater than 0. Using the resulting p-values from our test, we can see if the Midwest is more impacted or if there is no difference between the two. We will be using simulation based techniques. We will permute all observations together, distribute them into two new groups, calculate the new sample means for each group, and lastly subtract the new sample means. This will be done 5000 times.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="report_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="report_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>*ADD DESCRIPTION FOR LOG REG</p>
+<p>We choose a hypothesis test because it helps answer our research question if the Northwest or Northeast is more impacted by being low income and living 10 miles away from a supermarket. We hypothesize that compared to the Northeast, the Midwest will be mostly impacted by having a greater proportion of low income population count beyond 10 miles from supermarket. Our null hypothesis is the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is equal to 0. Our alternate is the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is greater than 0. Using the resulting p-values from our test, we can see if the Midwest is more impacted or if there is no difference between the two. We will be using simulation based techniques. We will permute all observations together, distribute them into two new groups, calculate the new sample means for each group, and lastly subtract the new sample means. This will be done 5000 times.</p>
 <p>WRITE IN PROPER NOTATION</p>
 <p><span class="math inline">\(H_o\)</span> = the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is equal to 0</p>
 <p><span class="math inline">\(H_a\)</span> = The true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is greater than 0</p>
@@ -324,7 +306,7 @@ $ `Low Access Numbers.Seniors.20 Miles`           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
@@ -367,7 +349,7 @@ $ stat      &lt;dbl&gt; 0.1144171, 0.1136144, 0.1131544, 0.1066412, 0.1130759, 0
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Midwest is between 0.102609 and 0.1226445.</p>
@@ -394,20 +376,20 @@ $ stat      &lt;dbl&gt; 0.01381593, 0.01676433, 0.01266810, 0.01101073, 0.010927
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast is between 0.01155406 and 0.02294395.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>We wanted to see if having no vehicle access and being beyond 10 miles from a market contributes to low income and being 10 miles from a market. Therefore, we created a scatter plot. There is a positive relationship between the proportion of having no vehicle and being beyond 10 miles away from a market and the proportion of low income who are 10 miles away from a supermarket for both regions. As the proportion of no vehicle access who are 10 miles away increases so does the proportion for individuals who are low income and are 10 miles away from a market.</p>
 <p>Sathvika add to results: These two graphs support our claim that Midwest is more impacted as the proportions for the Midwest reach higher numbers for the proportion of low income who are 10 miles away. Moreover, it shows that having no vehicle access contributes to this problem, supporting our claim that Midwest is more impacted by not have reliable access to transportation compared to more urban areas like the Northeast.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>We wanted to see if being a senior who was beyond 10 miles from a market contributes to low income and being 10 miles from a market. Therefore, we created a scatter plot. There is a positive relationship between the proportion of being a senior and living 10 miles away from a market and the proportion of low income who are 10 miles away from a supermarket for both regions. As the proportion of being a senior and living 10 miles away increases so does the proportion for individuals who are low income and are 10 miles away from a market.</p>
