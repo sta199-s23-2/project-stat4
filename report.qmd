@@ -89,7 +89,10 @@ food_access_reg |>
   ggplot(
     aes(x = proportion_vehicle, y = proportion)) +
   geom_point() +
-  facet_wrap("region", ncol = 1)
+  facet_wrap("region", ncol = 1) +
+  labs(title = "Is having no vehicle access and being 10 miles from a supermarket associated with low-income?",
+       x = "Proportion with no vehicle access",
+       y = "Proportion that are 10 miles away")
 
 ```
 
@@ -103,7 +106,10 @@ food_access_reg |>
   ggplot(
     aes(x = proportion_seniors, y = proportion)) +
   geom_point() + 
-  facet_wrap("region", ncol = 1)
+  facet_wrap("region", ncol = 1) + 
+  labs(title = "Is being a senior and 10 miles from a supermarket associated with low-income?",
+       x = "Proportion who are seniors",
+       y = "Proportion that are 10 miles away")
 
 ```
 
@@ -115,9 +121,15 @@ We wanted to see if being a senior who lives beyond 10 miles from a supermarket 
 food_access_reg_MID_and_NORTH |> 
   ggplot(
     aes(x = `Vehicle Access.10 Miles`, fill = region)) + 
-  geom_density()
+  geom_density() +
+  labs(title = "Density of areas within the Midwest and Northeast who have vehicle access to a supermarket 10 miles away",
+       x = "Vehicle Access Yes",
+       y = "Density with Vehicle Access",
+       fill = "Region")
 
 ```
+
+Explanation for Density Curve: There are more people in the Midwest that have vehicle access for supermarkets...
 
 ```{r}
 #| label: Splitting data into testing and training data 
@@ -143,12 +155,14 @@ model1 <- logistic_reg() |>
 ```
 
 ```{r}
+#| label: Predict model
 
 region_pred <- predict(model1, test_data, type = "prob") |>  
   bind_cols(test_data |> select(region))  
 ```
 
 ```{r}
+#| label: ROC Curves
 
 region_pred |>
   roc_curve(
@@ -196,7 +210,7 @@ $H_a$: $\mu_{Midwest} - \mu_{Northeast} > 0$
 Alternative Hypothesis: The true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and northeast is greater than 0.
 
 ```{r}
-#| label: Meean for Midwest and Northeast
+#| label: Sample mean for Midwest and Northeast
 
 food_access_reg |>
   filter(region == "Midwest") |>
