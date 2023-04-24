@@ -139,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Research Question:</p>
 <p>Definitions of Key Variables: There are a mix of quantitative and qualitative variables. Qualitative Variables: County: County Name State: State Name Housing Data Quantitative Variables: Population: Population Count from 2010 Census Housing Data. Total Housing Units: Occupied Housing Unit Count from 2010 Census Vehicle Access. 10 Miles: Housing Units without Vehicle Count Beyond 10 Miles from Supermarket Low Access Numbers.Low Income People. 10 Miles: Low income population count beyond 10 miles from supermarket Low Access Numbers.People.10 Miles: Population count beyond 10 miles from supermarket Low.Access Numbers.Seniors.10 Miles: Seniors population count beyond 10 miles from supermarket.</p>
 <p>Research Question:</p>
-<p><strong>Does the Midwest or Northeast have a higher amount of individuals who have low access to super markets and have low income and are beyond 10 miles away from a supermarket? Which specific variables contribute to this difference?</strong> Our target population for this question are individuals living in the Northeast and Midwest area of the US, as the Northeast is generally more urban and the Midwest is generally more rural and agricultural-based. We hope to bring awareness to potentially significant differences in food access because everyone should have access across the US, regardless of geographic location. This question is original because it is focusing on a “10 mile” range specifically. This research question will be answered using a hypothesis test and confidence intervals. <strong>Given our background research on the Midwest and the Northeast regions, we hypothesize that the Midwest will be mostly impacted by having a greater proportion of low income population count beyond 10 miles from supermarkets.</strong> We will conduct a hypothesis test to test this hypothesis. We are also exploring an additional question to support our hypothesis test: What is the confidence interval for the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast? In the Midwest?</p>
+<p><strong>For those classified as low income and beyond 10 miles away from a supermarket, does the Midwest or Northeast have a higher mean proportion of individuals over population? What variables contribute to this difference?</strong> Our target population for this question are individuals living in the Northeast and Midwest area of the US, as the Northeast is generally more urban and the Midwest is generally more rural and agricultural-based. We hope to bring awareness to potentially significant differences in food access because everyone should have access across the US, regardless of geographic location. This question is original because it is focusing on a “10 mile” range specifically. This research question will be answered using a hypothesis test and confidence intervals. <strong>Given our background research on the Midwest and the Northeast regions, we hypothesize that the Midwest will be mostly impacted by having a greater proportion of low income population count beyond 10 miles from supermarkets.</strong> We will conduct a hypothesis test to test this hypothesis. We are also exploring an additional question to support our hypothesis test: What is the confidence interval for the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast? In the Midwest?</p>
 <p>Data cleaning: We first mutated the data set to categorize each state into their respective region (Midwest, Northeast, Southwest, Southeast, and West). We also mutated the data to include the proportion of low income population count beyond 10 miles from supermarket, the proportion of seniors population count beyond 10 miles from supermarket, and housing units without vehicle count beyond 10 miles from supermarket (all these are over occupied housing unit count from 2010 census).</p>
 <div class="cell">
 
@@ -221,15 +221,15 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
-   mean
-  &lt;dbl&gt;
-1 0.112</code></pre>
+    mean
+   &lt;dbl&gt;
+1 0.0458</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
-    mean
-   &lt;dbl&gt;
-1 0.0167</code></pre>
+     mean
+    &lt;dbl&gt;
+1 0.00669</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.09569124</code></pre>
@@ -269,15 +269,15 @@ position_identity </code></pre>
 <pre><code>Rows: 5,000
 Columns: 2
 $ replicate &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
-$ stat      &lt;dbl&gt; 0.1144171, 0.1136144, 0.1131544, 0.1066412, 0.1130759, 0.120…</code></pre>
+$ stat      &lt;dbl&gt; 0.04686445, 0.04644723, 0.04560251, 0.04343468, 0.04608814, …</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
-  lower upper
-  &lt;dbl&gt; &lt;dbl&gt;
-1 0.103 0.123</code></pre>
+   lower  upper
+   &lt;dbl&gt;  &lt;dbl&gt;
+1 0.0419 0.0499</code></pre>
 </div>
 </div>
 <p>We are creating a histogram to see the distribution of re-samples from our original data for Midwest. We also have lines that represent our confidence interval.</p>
@@ -286,22 +286,22 @@ $ stat      &lt;dbl&gt; 0.1144171, 0.1136144, 0.1131544, 0.1066412, 0.1130759, 0
 <p><img src="report_files/figure-html/Visualization%20Midwest-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Midwest is between 0.102609 and 0.1226445.</p>
+<p>Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Midwest is between 0.04193319 and 0.04991374.</p>
 <p><strong>Confidence Interval: True mean proportion for Northeast</strong></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 5,000
 Columns: 2
 $ replicate &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
-$ stat      &lt;dbl&gt; 0.01381593, 0.01676433, 0.01266810, 0.01101073, 0.01092749, …</code></pre>
+$ stat      &lt;dbl&gt; 0.005593696, 0.006556711, 0.005153758, 0.004501902, 0.004408…</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
-   lower  upper
-   &lt;dbl&gt;  &lt;dbl&gt;
-1 0.0114 0.0230</code></pre>
+    lower   upper
+    &lt;dbl&gt;   &lt;dbl&gt;
+1 0.00458 0.00911</code></pre>
 </div>
 </div>
 <p>We are creating a histogram to see the distribution of re-samples from our original data for Northeast. We also have lines that represent our confidence interval.</p>
@@ -310,31 +310,31 @@ $ stat      &lt;dbl&gt; 0.01381593, 0.01676433, 0.01266810, 0.01101073, 0.010927
 <p><img src="report_files/figure-html/Visualization%20Northeast-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast is between 0.01155406 and 0.02294395.</p>
+<p>Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast is between 0.004583965 and 0.009113933.</p>
 <p><strong>Regression Models</strong></p>
 <p><span class="math inline">\(p\)</span> = low income individuals who are 10 miles away from supermarkets/ housing units <span class="math inline">\(p_v\)</span> = no vehicle access beyond 10 miles from a supermarket population count/ housing units <span class="math inline">\(p_s\)</span> = seniors beyond 10 miles from a supermarket population count/ housing units</p>
 <p>Adjusted r-squared value for linear regression model fitting <span class="math inline">\(p\)</span> to <span class="math inline">\(p_v\)</span> within Midwest region</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6773385</code></pre>
+<pre><code>[1] 0.650493</code></pre>
 </div>
 </div>
 <p>Adjusted r-squared value for linear regression model fitting <span class="math inline">\(p\)</span> to <span class="math inline">\(p_s\)</span> within Midwest region</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7553672</code></pre>
+<pre><code>[1] 0.8107254</code></pre>
 </div>
 </div>
 <p>Adjusted r-squared value for additive linear regression model fitting <span class="math inline">\(p\)</span> to <span class="math inline">\(p_v\)</span> and <span class="math inline">\(p_s\)</span> within Midwest region</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8534947</code></pre>
+<pre><code>[1] 0.8671285</code></pre>
 </div>
 </div>
 <p>Adjusted r-squared value for interactive linear regression model fitting <span class="math inline">\(p\)</span> to <span class="math inline">\(p_v\)</span> times <span class="math inline">\(p_s\)</span> within Midwest region</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8715612</code></pre>
+<pre><code>[1] 0.8847318</code></pre>
 </div>
 </div>
 <p>After seeing the results to our hypothesis test and CI, we conclude that the Midwest has a higher amount of individuals who are low income and 10 miles beyond a supermarket. We used a linear regression to see which variables affect that, which answers the second part of our research question. We choose the variables proportion of seniors and no vehicle access being 10 miles away. First, we fit those variables individually. Then we looked at their adjusted r-squared values. The linear regression with the proportion of seniors had a higher adjusted r-squared value. So then we included an additive and interactive component with the proportion of having no vehicle access. The interactive model had a higher adjusted r-squared value.</p>
@@ -343,12 +343,10 @@ $ stat      &lt;dbl&gt; 0.01381593, 0.01676433, 0.01266810, 0.01101073, 0.010927
 <h2 class="anchored" data-anchor-id="results">Results</h2>
 <p>Based on the exploratory data analysis, the first graph is a density plot that shows the distribution of vehicle access beyond 10 miles for both the Midwest and Northeast regions. The graph is relevant as it shows the difference in the distribution of vehicle access between the two regions. For instance, the Midwest region appears to have a higher density of vehicle access beyond 10 miles than the Northeast region. The third and fourth ROC graph curves represent where the x-axis represents the false positive rate, while the y-axis represents the true positive rate. The graph is relevant as it shows the ability of the logistic regression model to distinguish between the Midwest and Northeast regions based on vehicle access beyond 10 miles. For instance, the higher the AUC, the better the model is at discriminating between the two regions. They both have an AUC of around 0.717, indicating a high prediction rate based on the regions and no vehicle access. This helps quantify the strength of the relationships and set up for the hypothesis test.</p>
 <p>Conclusion of Hypothesis Test: The probability of observing a 0.09569124 true mean proportional difference between the Midwest and the Northeast and low income population count beyond 10 miles from the supermarket is approximately 0, given that the difference is equal to 0, is p = ~0. Because p = 0 $alpha$ = .05, we reject the null hypothesis that the true mean proportional difference between the Midwest and low income population count beyond 10 miles from the supermarket is equal to 0. We have strong evidence to conclude the alternative, which supports our hypothesis that the Midwest has more low income populations 10 miles away from supermarkets than the Northeast.</p>
-<p>might delete &lt;- Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Midwest is between 0.102609 and 0.1226445. (Other confidence)</p>
-<p>add &lt;- key takeaway from CIs</p>
+<p>Confidence Interval: The interval for the true mean proportion of low income individuals that are beyond 10 miles away from a supermarket in the Midwest has a significantly higher interval compared to the northeast. This difference supports our answer to our hypothesis test that the Midwest has a higher mean proportion of low income individuals being 10 miles beyond from a supermarket.</p>
 <p>The two explanatory graphs in the Introduction support our claim that the Midwest is more impacted as the proportions for the Midwest reach higher numbers for the proportion of low income who are 10 miles away. Moreover, it shows that having no vehicle access contributes to this problem, supporting our claim that the Midwest is more impacted by not having reliable access to transportation compared to more urban areas like the Northeast.</p>
-<p>Linear regression: After we rejected our null hypthesis, we created a linear regression to see which variables affect low income and being 10 miles away for the Midwest specifically. We found that the best model was when the proportion of seniors and proportion of no vehicle access being 10 miles away interacted with each other. This model had the highest adjusted r squared value (0.8715612). A higher r-squared value indicates a higher amount of variability being explained by our model. Therefore, our adjusted r-squared value supports that our interactive model is a good fit for our data. This value answers the second part of our research question. Individiuals who are a senior and have no vehicle access and being 10 miles beyond a supermarket contribute to low income and being 10 miles beyond a supermarket in the midwest.</p>
 <p>These two graphs support our claim that the Midwest is more impacted as the proportions for the Midwest reach higher numbers for the proportion of low income who are 10 miles away. Moreover, it shows that having no vehicle access contributes to this problem, supporting our claim that the Midwest is more impacted by not having reliable access to transportation compared to more urban areas like the Northeast.</p>
-<p>Linear regression: We created a linear regression to see which variables have a strong association with the variable “Low Access Numbers. Low Income People. 10 Miles” which describes the low income population count beyond 10 miles from supermarket. We found that the best model was when the proportion of seniors and proportion of no vehicle access being 10 miles away interacted with each other. This model had the highest adjusted r-squared value (0.8715612). A higher adjusted r-squared value indicates a higher amount of variability being explained by our model. Therefore, our adjusted r-squared value supports that our interactive model is a good fit for our data. This value answers the second part of our research question. Individuals who are a senior and have no vehicle access being 10 miles beyond a supermarket contribute to low income and being 10 miles beyond a supermarket in the Midwest.</p>
+<p>Linear regression: We created a linear regression to see which variables have a strong association with the variable “Low Access Numbers. Low Income People. 10 Miles” which describes the low income population count beyond 10 miles from supermarket. We found that the best model was when the proportion of seniors and proportion of no vehicle access being 10 miles away interacted with each other. This model had the highest adjusted r-squared value (0.8847318). A higher adjusted r-squared value indicates a higher amount of variability being explained by our model. Therefore, our adjusted r-squared value supports that our interactive model is a good fit for our data. This value answers the second part of our research question. Individuals who are a senior and have no vehicle access being 10 miles beyond a supermarket are associated to low income and being 10 miles beyond a supermarket in the Midwest.</p>
 </section>
 <section id="discussion" class="level2">
 <h2 class="anchored" data-anchor-id="discussion">Discussion</h2>

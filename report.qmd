@@ -21,7 +21,7 @@ Definitions of Key Variables: There are a mix of quantitative and qualitative va
 
 Research Question:
 
-**Does the Midwest or Northeast have a higher amount of individuals who have low access to super markets and have low income and are beyond 10 miles away from a supermarket? Which specific variables contribute to this difference?** Our target population for this question are individuals living in the Northeast and Midwest area of the US, as the Northeast is generally more urban and the Midwest is generally more rural and agricultural-based. We hope to bring awareness to potentially significant differences in food access because everyone should have access across the US, regardless of geographic location. This question is original because it is focusing on a "10 mile" range specifically. This research question will be answered using a hypothesis test and confidence intervals. **Given our background research on the Midwest and the Northeast regions, we hypothesize that the Midwest will be mostly impacted by having a greater proportion of low income population count beyond 10 miles from supermarkets.** We will conduct a hypothesis test to test this hypothesis. We are also exploring an additional question to support our hypothesis test: What is the confidence interval for the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast? In the Midwest?
+**For those classified as low income and beyond 10 miles away from a supermarket, does the Midwest or Northeast have a higher mean proportion of individuals over population? What variables contribute to this difference?** Our target population for this question are individuals living in the Northeast and Midwest area of the US, as the Northeast is generally more urban and the Midwest is generally more rural and agricultural-based. We hope to bring awareness to potentially significant differences in food access because everyone should have access across the US, regardless of geographic location. This question is original because it is focusing on a "10 mile" range specifically. This research question will be answered using a hypothesis test and confidence intervals. **Given our background research on the Midwest and the Northeast regions, we hypothesize that the Midwest will be mostly impacted by having a greater proportion of low income population count beyond 10 miles from supermarkets.** We will conduct a hypothesis test to test this hypothesis. We are also exploring an additional question to support our hypothesis test: What is the confidence interval for the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast? In the Midwest?
 
 Data cleaning: We first mutated the data set to categorize each state into their respective region (Midwest, Northeast, Southwest, Southeast, and West). We also mutated the data to include the proportion of low income population count beyond 10 miles from supermarket, the proportion of seniors population count beyond 10 miles from supermarket, and housing units without vehicle count beyond 10 miles from supermarket (all these are over occupied housing unit count from 2010 census).
 
@@ -64,13 +64,12 @@ food_access_reg <- food_access |>
 
 food_access_reg <- food_access_reg |>
   mutate(
-    proportion = `Low Access Numbers.Low Income People.10 Miles` / `Housing Data.Total Housing Units`,
-    proportion_lowaccess = `Low Access Numbers.Low Income People.10 Miles`,
-    proportion_vehicle = `Vehicle Access.10 Miles` / `Housing Data.Total Housing Units`,
+    proportion = `Low Access Numbers.Low Income People.10 Miles` / `Population`,
+    proportion_vehicle = `Vehicle Access.10 Miles` / `Population`,
     proportion_seniors = `Low Access Numbers.Seniors.10 Miles` /
-      `Housing Data.Total Housing Units`,
+      `Population`,
     proportion_group = `Housing Data.Residing in Group Quarters` /
-      `Housing Data.Total Housing Units`,
+      `Population`,
     group_quarters = `Housing Data.Residing in Group Quarters`
   )
 ```
@@ -316,13 +315,13 @@ boot_df |>
   ggplot(
     aes(x = stat)) + 
   geom_histogram() + 
-  geom_vline(xintercept = c(0.102609 , 0.1226445)) + 
+  geom_vline(xintercept = c(0.04193319 , 0.04991374)) + 
   labs(x = "Stat",
        y = "Count")
 
 ```
 
-Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Midwest is between 0.102609 and 0.1226445.
+Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Midwest is between 0.04193319 and 0.04991374.
 
 **Confidence Interval: True mean proportion for Northeast**
 
@@ -359,13 +358,13 @@ boot_df |>
   ggplot(
     aes(x = stat)) + 
   geom_histogram() + 
-  geom_vline(xintercept = c(0.102609 , 0.1226445)) + 
+  geom_vline(xintercept = c(0.004583965 , 0.009113933)) + 
   labs(x = "Stat",
        y = "Count")
 
 ```
 
-Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast is between 0.01155406 and 0.02294395.
+Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast is between 0.004583965 and 0.009113933.
 
 **Regression Models**
 
@@ -434,17 +433,14 @@ Based on the exploratory data analysis, the first graph is a density plot that s
 
 Conclusion of Hypothesis Test: The probability of observing a 0.09569124 true mean proportional difference between the Midwest and the Northeast and low income population count beyond 10 miles from the supermarket is approximately 0, given that the difference is equal to 0, is p = \~0. Because p = 0 \$alpha\$ = .05, we reject the null hypothesis that the true mean proportional difference between the Midwest and low income population count beyond 10 miles from the supermarket is equal to 0. We have strong evidence to conclude the alternative, which supports our hypothesis that the Midwest has more low income populations 10 miles away from supermarkets than the Northeast.
 
-might delete <- Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Midwest is between 0.102609 and 0.1226445. (Other confidence)
 
-add <- key takeaway from CIs
+Confidence Interval: The interval for the true mean proportion of low income individuals that are beyond 10 miles away from a supermarket in the Midwest has a significantly higher interval compared to the northeast. This difference supports our answer to our hypothesis test that the Midwest has a higher mean proportion of low income individuals being 10 miles beyond from a supermarket. 
 
 The two explanatory graphs in the Introduction support our claim that the Midwest is more impacted as the proportions for the Midwest reach higher numbers for the proportion of low income who are 10 miles away. Moreover, it shows that having no vehicle access contributes to this problem, supporting our claim that the Midwest is more impacted by not having reliable access to transportation compared to more urban areas like the Northeast.
 
-Linear regression: After we rejected our null hypthesis, we created a linear regression to see which variables affect low income and being 10 miles away for the Midwest specifically. We found that the best model was when the proportion of seniors and proportion of no vehicle access being 10 miles away interacted with each other. This model had the highest adjusted r squared value (0.8715612). A higher r-squared value indicates a higher amount of variability being explained by our model. Therefore, our adjusted r-squared value supports that our interactive model is a good fit for our data. This value answers the second part of our research question. Individiuals who are a senior and have no vehicle access and being 10 miles beyond a supermarket contribute to low income and being 10 miles beyond a supermarket in the midwest. 
-
 These two graphs support our claim that the Midwest is more impacted as the proportions for the Midwest reach higher numbers for the proportion of low income who are 10 miles away. Moreover, it shows that having no vehicle access contributes to this problem, supporting our claim that the Midwest is more impacted by not having reliable access to transportation compared to more urban areas like the Northeast.
 
-Linear regression: We created a linear regression to see which variables have a strong association with the variable "Low Access Numbers. Low Income People. 10 Miles" which describes the low income population count beyond 10 miles from supermarket. We found that the best model was when the proportion of seniors and proportion of no vehicle access being 10 miles away interacted with each other. This model had the highest adjusted r-squared value (0.8715612). A higher adjusted r-squared value indicates a higher amount of variability being explained by our model. Therefore, our adjusted r-squared value supports that our interactive model is a good fit for our data. This value answers the second part of our research question. Individuals who are a senior and have no vehicle access being 10 miles beyond a supermarket contribute to low income and being 10 miles beyond a supermarket in the Midwest.
+Linear regression: We created a linear regression to see which variables have a strong association with the variable "Low Access Numbers. Low Income People. 10 Miles" which describes the low income population count beyond 10 miles from supermarket. We found that the best model was when the proportion of seniors and proportion of no vehicle access being 10 miles away interacted with each other. This model had the highest adjusted r-squared value (0.8847318). A higher adjusted r-squared value indicates a higher amount of variability being explained by our model. Therefore, our adjusted r-squared value supports that our interactive model is a good fit for our data. This value answers the second part of our research question. Individuals who are a senior and have no vehicle access being 10 miles beyond a supermarket are associated to low income and being 10 miles beyond a supermarket in the Midwest.
 
 ## Discussion
 
