@@ -106,7 +106,10 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#introduction-and-data" id="toc-introduction-and-data" class="nav-link active" data-scroll-target="#introduction-and-data">Introduction and Data</a></li>
   <li><a href="#literature-review" id="toc-literature-review" class="nav-link" data-scroll-target="#literature-review">Literature Review</a></li>
-  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a></li>
+  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a>
+  <ul class="collapse">
+  <li><a href="#confidence-interval-true-mean-proportion-for-midwest" id="toc-confidence-interval-true-mean-proportion-for-midwest" class="nav-link" data-scroll-target="#confidence-interval-true-mean-proportion-for-midwest"><strong>Confidence Interval: True mean proportion for Midwest</strong></a></li>
+  </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
   </ul>
@@ -167,7 +170,7 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="report_files/figure-html/Graph%203%20Density-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Explanation for Density Curve: Given housing units without vehicle access beyond 10 miles from a supermarket, the density curves for both regions have a similar shape, with the Midwest having a slightly higher density of lower values of vehicle access compared to the Northeast. There is some overlap between the two regions in terms of the distribution of vehicle access, indicating that there are some areas in the Midwest with similar vehicle access to supermarkets as some areas in the Northeast.</p>
+<p>Explanation for Density Curve: Given the population without vehicle access beyond 10 miles from a supermarket, the density curves for both regions have a similar shape, with the Midwest having a slightly higher density of lower values of vehicle access compared to the Northeast. There is some overlap between the two regions in terms of the distribution of vehicle access, indicating that there are some areas in the Midwest with similar vehicle access to supermarkets as some areas in the Northeast.</p>
 <div class="cell">
 
 </div>
@@ -188,20 +191,20 @@ ul.task-list li input[type="checkbox"] {
 <pre><code># A tibble: 1 × 3
   .metric .estimator .estimate
   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
-1 roc_auc binary         0.718</code></pre>
+1 roc_auc binary         0.778</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   .metric .estimator .estimate
   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
-1 roc_auc binary         0.718</code></pre>
+1 roc_auc binary         0.778</code></pre>
 </div>
 </div>
-<p>Based on both ROC Curves, the AUC for both is around ~0.717, indicating a strong predictor value for the given region.</p>
+<p>Based on both ROC Curves, the AUC for both is around ~0.778, indicating a strong predictor value for the given region.</p>
 </section>
 <section id="literature-review" class="level2">
 <h2 class="anchored" data-anchor-id="literature-review">Literature Review</h2>
-<p>https://pubmed.ncbi.nlm.nih.gov/30792950/ This study examines the relationship between access to a personal vehicle and diet, food insecurity, and physical activity among public housing residents, which are typically low-income, urban populations. The study conducted a cross-sectional survey of randomly selected households within two public housing communities in Baltimore, MD. The study used Poisson regression with robust error variance to estimate relative risk ratios adjusted for demographics and perceived environmental factors.</p>
+<p>This study examines the relationship between access to a personal vehicle and diet, food insecurity, and physical activity among public housing residents, which are typically low-income, urban populations.^[https://pubmed.ncbi.nlm.nih.gov/30792950/] The study conducted a cross-sectional survey of randomly selected households within two public housing communities in Baltimore, MD. The study used Poisson regression with robust error variance to estimate relative risk ratios adjusted for demographics and perceived environmental factors.</p>
 <p>The independent variable was whether or not the resident had access to a personal vehicle which the dependent variables were ‘high’ fruit &amp; vegetable intake (&gt;= 6.7 servings/day), ‘high’ added sugar intake (&gt;+ 39.9 tsp/day), food insecurity, and being physically active. The sample included 265 adults with mean age of 45 years, 86% women, and 96% African-American. Only 42% had access to a vehicle.</p>
 <p>The study found that there were no significant associations that existed between personal vehicle access with diet or physical activity outcomes. However, the study found that access to a personal vehicle was associated with significantly lower risk of food insecurity (RR 0.76, 95% CI 0.63-0.92, p &lt; 0.01). There was a significant association between personal vehicle access and lower risk of food insecurity.</p>
 <p>In connection to the article, our research explores other factors beyond transportation (specifically vehicle access) such as family income and the availability of public transportation. Our research also expands across both urban and rural areas in the United States while the article focuses exclusively on Baltimore, MD. Moreover, our research attempts to understand the relationship between various geographical regions, accounting for numerous variables.</p>
@@ -238,7 +241,7 @@ ul.task-list li input[type="checkbox"] {
 <p>The sample mean proportion of low income population count beyond 10 miles from the supermarket is .11 for the Midwest region and .017 for the Northeast region.</p>
 <p><span class="math inline">\(\bar{x_{Midwest}} = .11\)</span></p>
 <p><span class="math inline">\(\bar {x_{Northeast}} = .017\)</span></p>
-<p>The observed mean proportion difference between <span class="math inline">\(\bar{x_{Midwest}}\)</span> and <span class="math inline">\(\bar{x_{Northeast}}\)</span> = 0.09569124$</p>
+<p>The observed mean proportion difference between <span class="math inline">\(\bar{x_{Midwest}} - \bar{x_{Northeast}}= 0.09569124\)</span></p>
 <div class="cell">
 
 </div>
@@ -262,7 +265,8 @@ position_identity </code></pre>
 </div>
 </div>
 <p>Conclusion: The probability of observing a true mean proportional difference of 0.09569124 between the Midwest and the Northeast for low income population count beyond 10 miles from the supermarket is ~ 0, given that the true mean proportional difference for low income and beyond 10 miles from the supermarket between the Midwest and Northeast is equal to 0 the difference is equal to 0. Because p = ~ 0 alpha = .05, we reject the null hypothesis. We have strong evidence to conclude the alternate hypothesis. Based on this test, we can answer our research question and conclude that the Midwest has a higher amount of individuals who are low income and beyond 10 miles away from a supermarket.</p>
-<p><strong>Confidence Interval: True mean proportion for Midwest</strong></p>
+<section id="confidence-interval-true-mean-proportion-for-midwest" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-interval-true-mean-proportion-for-midwest"><strong>Confidence Interval: True mean proportion for Midwest</strong></h3>
 <p>After our result from the hypothesis test, we wanted to further support that the Midwest is more impacted than the Northeast. Therefore, we will be creating two confidence intervals to determine the true mean proportion for low income and living 10 miles beyond a supermarkets. We will then compare these intervals. The interval with a higher proportion interval will have a higher amount of individuals who are low income and live 10 miles beyond a supermarket. We will be used simulation based techniques because we are sampling with replacement, calculating the new resampled mean, and then we will be repeat that process 5000 times.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -312,7 +316,7 @@ $ stat      &lt;dbl&gt; 0.005593696, 0.006556711, 0.005153758, 0.004501902, 0.00
 </div>
 <p>Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast is between 0.004583965 and 0.009113933.</p>
 <p><strong>Regression Models</strong></p>
-<p><span class="math inline">\(p\)</span> = low income individuals who are 10 miles away from supermarkets/ housing units <span class="math inline">\(p_v\)</span> = no vehicle access beyond 10 miles from a supermarket population count/ housing units <span class="math inline">\(p_s\)</span> = seniors beyond 10 miles from a supermarket population count/ housing units</p>
+<p><span class="math inline">\(p\)</span> = low income individuals who are 10 miles away from supermarkets/ population <span class="math inline">\(p_v\)</span> = no vehicle access beyond 10 miles from a supermarket population count/ population <span class="math inline">\(p_s\)</span> = seniors beyond 10 miles from a supermarket population count/ population</p>
 <p>Adjusted r-squared value for linear regression model fitting <span class="math inline">\(p\)</span> to <span class="math inline">\(p_v\)</span> within Midwest region</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -338,6 +342,7 @@ $ stat      &lt;dbl&gt; 0.005593696, 0.006556711, 0.005153758, 0.004501902, 0.00
 </div>
 </div>
 <p>After seeing the results to our hypothesis test and CI, we conclude that the Midwest has a higher amount of individuals who are low income and 10 miles beyond a supermarket. We used a linear regression to see which variables affect that, which answers the second part of our research question. We choose the variables proportion of seniors and no vehicle access being 10 miles away. First, we fit those variables individually. Then we looked at their adjusted r-squared values. The linear regression with the proportion of seniors had a higher adjusted r-squared value. So then we included an additive and interactive component with the proportion of having no vehicle access. The interactive model had a higher adjusted r-squared value.</p>
+</section>
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
