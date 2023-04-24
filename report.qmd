@@ -62,13 +62,14 @@ Southeast <- c("West Virginia", "Virginia", "Kentucky", "Tennessee", "North Caro
 West <- c("Colorado", "Wyoming", "Montana", "Idaho", "Washington", "Oregon", "Utah", "Nevada", "California", "Alaska", "Hawaii")
 
 food_access_reg <- food_access |>
-  mutate (region = case_when(State %in% Northeast ~ "Northeast", State %in% Southeast ~ "Southeast", State %in% Midwest ~ "Midwest", State %in% Southwest ~ "Southwest", State %in% West ~ "West")) 
+  mutate(region = case_when(State %in% Northeast ~ "Northeast", State %in% Southeast ~ "Southeast", State %in% Midwest ~ "Midwest", State %in% Southwest ~ "Southwest", State %in% West ~ "West")) 
 
 food_access_reg <- food_access_reg |>
-  mutate (proportion = `Low Access Numbers.Low Income People.10 Miles` / `Housing Data.Total Housing Units`, 
-          proportion_lowaccess = `Low Access Numbers.Low Income People.10 Miles`, proportion_vehicle = `Vehicle Access.10 Miles`/`Housing Data.Total Housing Units`, proportion_seniors = `Low Access Numbers.Seniors.10 Miles`/`Housing Data.Total Housing Units`, proportion_group = `Housing Data.Residing in Group Quarters`/`Housing Data.Total Housing Units`, 
-  group_quarters = `Housing Data.Residing in Group Quarters`
-      )
+  mutate(proportion = `Low Access Numbers.Low Income People.10 Miles` / `Housing Data.Total Housing Units`, 
+          proportion_lowaccess = `Low Access Numbers.Low Income People.10 Miles`, 
+          proportion_vehicle = `Vehicle Access.10 Miles`/`Housing Data.Total Housing Units`,           proportion_seniors = `Low Access Numbers.Seniors.10 Miles`/`Housing Data.Total Housing Units`, 
+          proportion_group = `Housing Data.Residing in Group Quarters`/`Housing Data.Total Housing Units`, 
+          group_quarters = `Housing Data.Residing in Group Quarters`)
 
 ```
 
@@ -84,10 +85,11 @@ food_access_reg_MID_and_NORTH <- food_access_reg |>
 #| label: Graph 1 relationship between low income and vehicle access in the Midwest & Northeast
 
 food_access_reg |>
-  filter (region %in% c ("Midwest", "Northeast")) |>
-  ggplot (aes (x = proportion_vehicle, y = proportion)) +
-  geom_point() + 
-  facet_wrap ("region", ncol = 1)
+  filter(region %in% c ("Midwest", "Northeast")) |>
+  ggplot(
+    aes(x = proportion_vehicle, y = proportion)) +
+  geom_point() +
+  facet_wrap("region", ncol = 1)
 
 ```
 
@@ -97,10 +99,11 @@ We wanted to see if having no vehicle access and being beyond 10 miles from a su
 #| label: Graph 2 relationship between low income and seniors in the Midwest & Northeast
 
 food_access_reg |>
-  filter (region %in% c ("Midwest", "Northeast")) |>
-  ggplot (aes (x = proportion_seniors, y = proportion)) +
+  filter(region %in% c ("Midwest", "Northeast")) |>
+  ggplot(
+    aes(x = proportion_seniors, y = proportion)) +
   geom_point() + 
-  facet_wrap ("region", ncol = 1)
+  facet_wrap("region", ncol = 1)
 
 ```
 
@@ -110,28 +113,33 @@ We wanted to see if being a senior who lives beyond 10 miles from a supermarket 
 #| label: Graph 3 Density
 
 food_access_reg_MID_and_NORTH |> 
-  ggplot(aes(x = `Vehicle Access.10 Miles`, fill = region)) + 
+  ggplot(
+    aes(x = `Vehicle Access.10 Miles`, fill = region)) + 
   geom_density()
+
 ```
 
 ```{r}
-
 #| label: Splitting data into testing and training data 
+
 set.seed(0310)
 
-food_access_reg_MID_and_NORTH_split <- 
-  initial_split(food_access_reg_MID_and_NORTH, prop = 0.80) 
+food_access_reg_MID_and_NORTH_split <- initial_split(food_access_reg_MID_and_NORTH, prop = 0.80) 
 
 train_data <- training(food_access_reg_MID_and_NORTH_split)
 test_data <- testing(food_access_reg_MID_and_NORTH_split)
+
 ```
 
 ```{r}
-
 #| label: Fitting Logistic Regression Model 
+
 model1 <- logistic_reg() |>
   set_engine("glm") |>
-  fit(region ~ `Vehicle Access.10 Miles`, data = food_access_reg_MID_and_NORTH, family = "binomial")
+  fit(region ~ `Vehicle Access.10 Miles`, 
+      data = food_access_reg_MID_and_NORTH, 
+      family = "binomial")
+
 ```
 
 ```{r}
@@ -146,32 +154,27 @@ region_pred |>
   roc_curve(
     truth = region, 
     .pred_Midwest, 
-    event_level = "first"
-  ) |>
+    event_level = "first") |>
   autoplot()
 
 region_pred |>
   roc_curve(
     truth = region, 
     .pred_Northeast, 
-    event_level = "second" 
-  ) |>
+    event_level = "second") |>
   autoplot()
-
 
 region_pred |>
   roc_auc(
     truth = region, 
     .pred_Midwest, 
-    event_level = "first" 
-  ) 
+    event_level = "first") 
 
 region_pred |>
   roc_auc(
     truth = region, 
     .pred_Northeast, 
-    event_level = "second"
-  ) 
+    event_level = "second") 
 ```
 
 ## Methodology
@@ -196,12 +199,12 @@ Alternative Hypothesis: The true mean proportional difference for low income and
 #| label: Meean for Midwest and Northeast
 
 food_access_reg |>
-  filter (region == "Midwest") |>
-  summarize (mean = mean(proportion))
+  filter(region == "Midwest") |>
+  summarize(mean = mean(proportion))
 
 food_access_reg |>
-  filter (region == "Northeast") |>
-  summarize (mean = mean(proportion))
+  filter(region == "Northeast") |>
+  summarize(mean = mean(proportion))
 
 xbar <- 0.1124311 - 0.01673986
 
@@ -221,17 +224,17 @@ $\bar{x_{Midwest}} - \bar{x_{Northeast}} = 0.09569124$
 #| label: Creating null distribution
 
 null_dist <- food_access_reg |>
-  filter (region %in% c("Midwest", "Northeast")) |>
-  specify (response = proportion, explanatory = region) |>
-  hypothesize (null = "independence") |>
-  generate (reps = 5000, type = "permute") |>
-  calculate (stat = "diff in means", order = c("Midwest", "Northeast"))
+  filter(region %in% c("Midwest", "Northeast")) |>
+  specify(response = proportion, explanatory = region) |>
+  hypothesize(null = "independence") |>
+  generate(reps = 5000, type = "permute") |>
+  calculate(stat = "diff in means", order = c("Midwest", "Northeast"))
 
 ```
 
 ```{r}
-
 #| label: visualization
+
 null_dist |>
   ggplot(
     aes(x = stat)) + 
@@ -241,8 +244,8 @@ null_dist |>
 ```
 
 ```{r}
-
 #| label: p-value 
+
 null_dist |>
   get_p_value(obs_stat = xbar, direction = "greater")
 
@@ -255,12 +258,12 @@ Conclusion: The probability of observing a true mean proportional difference of 
 After our result from the hypothesis test, we wanted to further support that the Midwest is more impacted than the Northeast. Therefore, we will be creating two confidence intervals to determine the true mean proportion for low income and living 10 miles beyond a supermarkets. We will then compare these intervals. The interval with a higher proportion interval will be the most impacted by being low income and living 10 miles beyond a supermarket. We will be used simulation based techniques because we are sampling with replacement, calculating the new resampled mean, and then we will be repeat that process 5000 times.
 
 ```{r}
-
 #| label: Bootstrapping
+
 set.seed(12345)
 
 boot_df <- food_access_reg |>
-  filter (region == "Midwest") |>
+  filter(region == "Midwest") |>
   specify(response = proportion) |>
   generate(reps = 5000, type = "bootstrap") |>
   calculate(stat = "mean")
@@ -270,20 +273,20 @@ glimpse(boot_df)
 ```
 
 ```{r}
-
 #| label: 95% confidence interval 
+
 set.seed(12345)
+
 boot_df |>
   summarize(lower = quantile(stat, 0.025),
             upper = quantile(stat, 0.975))
 
 ```
-
 We are creating a histogram to see the distribution of re-samples from our original data for Midwest. We also have lines that represent our confidence interval.
 
 ```{r}
-
 #| label: Visualization 
+
 boot_df |>
   ggplot(
     aes(x = stat)) + 
@@ -299,12 +302,12 @@ Interpretation: We are 95% confident that the true mean proportion of low income
 ### **Confidence Interval: True mean proportion for Northeast**
 
 ```{r}
-
 #| label: Bootstrapping
+
 set.seed(12345)
 
 boot_df <- food_access_reg |>
-  filter (region == "Northeast") |>
+  filter(region == "Northeast") |>
   specify(response = proportion) |>
   generate(reps = 5000, type = "bootstrap") |>
   calculate(stat = "mean")
@@ -314,20 +317,20 @@ glimpse(boot_df)
 ```
 
 ```{r}
-
 #| label: 95% confidence interval 
+
 set.seed(12345)
+
 boot_df |>
   summarize(lower = quantile(stat, 0.025),
             upper = quantile(stat, 0.975))
 
 ```
-
 We are creating a histogram to see the distribution of re-samples from our original data for Northeast. We also have lines that represent our confidence interval.
 
 ```{r}
-
 #| label: Visualization 
+
 boot_df |>
   ggplot(
     aes(x = stat)) + 
@@ -341,46 +344,49 @@ boot_df |>
 Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast is between 0.01155406 and 0.02294395.
 
 ```{r}
-
+#| label: linear regression between proportion access and vehicles Midwest
 
 Midwest <- food_access_reg |>
-  filter (region == "Midwest")
+  filter(region == "Midwest")
 
 linear_reg() |>
-  set_engine ("lm") |>
-  fit (proportion ~ proportion_vehicle, data = Midwest) |>
+  set_engine("lm") |>
+  fit(proportion ~ proportion_vehicle, data = Midwest) |>
   glance() |>
-  pull (adj.r.squared)
+  pull(adj.r.squared)
   
 ```
 
 ```{r}
+#| label: linear regression between proportion access and senior status Midwest
 
 linear_reg() |>
   set_engine ("lm") |>
-  fit (proportion ~ proportion_seniors, data = Midwest) |>
+  fit(proportion ~ proportion_seniors, data = Midwest) |>
   glance() |>
-  pull (adj.r.squared)
+  pull(adj.r.squared)
   
 ```
 
 ```{r}
+#| label: additive regression model for seniors and vehicles Midwest
 
 linear_reg() |>
-  set_engine ("lm") |>
-  fit (proportion ~ proportion_seniors + proportion_vehicle, data = Midwest) |>
+  set_engine("lm") |>
+  fit(proportion ~ proportion_seniors + proportion_vehicle, data = Midwest) |>
   glance() |>
-  pull (adj.r.squared)
+  pull(adj.r.squared)
 
 ```
 
 ```{r}
+#| label: interaction regression model for seniors and vehicles Midwest
 
 linear_reg() |>
-  set_engine ("lm") |>
-  fit (proportion ~ proportion_seniors * proportion_vehicle, data = Midwest) |>
+  set_engine("lm") |>
+  fit(proportion ~ proportion_seniors * proportion_vehicle, data = Midwest) |>
   glance() |>
-  pull (adj.r.squared)
+  pull(adj.r.squared)
 
 ```
 
@@ -389,18 +395,6 @@ After seeing the results to our hypothesis test and CI, we conclude that the Mid
 ## Results
 
 Based on the exploratory data analysis, The first graph is a density plot that shows the distribution of vehicle access beyond 10 miles for both the Midwest and Northeast regions. The x-axis represents the distance of vehicle access beyond 10 miles, while the y-axis represents the density of the distribution. The graph is relevant as it shows the difference in the distribution of vehicle access between the two regions. For instance, the Midwest region appears to have a higher density of vehicle access beyond 10 miles than the Northeast region. The third and fourth ROC graph curves represent where the x-axis represents the false positive rate, while the y-axis represents the true positive rate. The graph is relevant as it shows the ability of the logistic regression model to distinguish between the Midwest and Northeast regions based on vehicle access beyond 10 miles. For instance, the higher the AUC, the better the model is at discriminating between the two regions. They both have an AUC of around 0.717, indicating a high prediction rate based on the regions and no vehicle access. This helps quantify the strength of the relationships and set up for the hypothesis test.
-
-Graph 1
-
-The general trend between the variables \_\_\_\_\_ and \_\_\_\_\_\_ are a positive correlation. This helps us set up the context for our research question because...
-
-Graph 2
-
-The general trend between the variables \_\_\_\_\_ and \_\_\_\_\_\_ are a positive correlation. This helps us set up the context for our research question because...
-
-Graph 3
-
-The general trend between the variables \_\_\_\_\_ and \_\_\_\_\_\_ are a positive correlation. This helps us set up the context for our research question because...
 
 Conclusion of Hypothesis Test: The probability of observing a difference of 0.09569124 between the mean proportion of the Midwest versus the Northeast and low income population count beyond 10 miles from the supermarket is equal to 0, given that the difference is equal to 0, is p = \~0. Because p = 0 \$alpha\$ = .05, we reject the null hypothesis that the true mean proportional difference between the Midwest and low income population count beyond 10 miles from the supermarket is equal to 0. We have strong evidence to conclude the alternative, which supports our hypothesis that the Midwest has more low income populations 10 miles away from supermarkets than the Northeast.
 
