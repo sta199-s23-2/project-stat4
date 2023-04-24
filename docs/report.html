@@ -183,7 +183,11 @@ Attaching package: 'dplyr'</code></pre>
 ✖ dplyr::lag()      masks stats::lag()
 ✖ yardstick::spec() masks readr::spec()
 ✖ recipes::step()   masks stats::step()
+<<<<<<< HEAD
 • Use tidymodels_prefer() to resolve common conflicts.
+=======
+• Search for functions across packages at https://www.tidymodels.org/find/
+>>>>>>> 345858fe51e7d5608b8da988cb6a23b89cb6d856
 
 Rows: 3142 Columns: 25
 ── Column specification ────────────────────────────────────────────────────────
@@ -398,6 +402,27 @@ $ stat      &lt;dbl&gt; 0.01381593, 0.01676433, 0.01266810, 0.01101073, 0.010927
 </div>
 </div>
 <p>Interpretation: We are 95% confident that the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast is between 0.01155406 and 0.02294395.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1679574</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7553672</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8534947</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8715612</code></pre>
+</div>
+</div>
+<p>After seeing the results to our hypothesis test and CI, we believe that the Midwest is more impacted by low income and being 10 miles away. We used a linear regression to see which variables affect that. We choose the variables proportion of seniors and no vehicle access being 10 miles away. First, we fit those variables individually. Then we looked at their adjusted r squared values. The linear regression with the proportion of seniors had a higher r-squared. So then we added a additive and interactive component with the proportion of having no vehicle access. The interative model had a higher r squared value.</p>
 </section>
 </section>
 <section id="results" class="level2">
@@ -414,6 +439,7 @@ $ stat      &lt;dbl&gt; 0.01381593, 0.01676433, 0.01266810, 0.01101073, 0.010927
 <p>These two graphs support our claim that the Midwest is more impacted as the proportions for the Midwest reach higher numbers for the proportion of low income who are 10 miles away. Moreover, it shows that having no vehicle access contributes to this problem, supporting our claim that the Midwest is more impacted by not having reliable access to transportation compared to more urban areas like the Northeast.</p>
 <p>We wanted to see if having no vehicle access and being beyond 10 miles from a market contributes to low income and being 10 miles from a market. Therefore, we created a scatter plot. There is a positive relationship between the proportion of having no vehicle and being beyond 10 miles away from a market and the proportion of low income people who are 10 miles away from a supermarket for both regions. As the proportion of no vehicle access who are 10 miles away increases so does the proportion for individuals who are low income and are 10 miles away from a market.</p>
 <p>We wanted to see if being a senior who was beyond 10 miles from a market contributes to low income and being 10 miles from a market. Therefore, we created a scatter plot. There is a positive relationship between the proportion of seniors living 10 miles away from a market and the proportion of low income people who are 10 miles away from a supermarket for both regions. As the proportion of being a senior and living 10 miles away increases so does the proportion for individuals who are low income and are 10 miles away from a market.</p>
+<p>Linear regression: We created a linear regression to see which variables effect low income and being 10 miles away for the Midwest. We found that the best model was when the proportion of seniors and proportion of no vehicle access being 10 miles away interacted with each other. This model had the highest adjusted r squared value (0.8715612). A higher r-squared value indicates a higher amount of variability being explained by our model. Therefore, our r-squared value supports that our interactive model is a good fit for our data. This value answers the second part of our research question. Individiuals who are a senior and have no vehicle access and being 10 miles beyond a supermarket contribute to low income and being 10 miles beyond a supermarket in the midwest.</p>
 </section>
 <section id="discussion" class="level2">
 <h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
