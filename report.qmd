@@ -22,19 +22,7 @@ Research Question:
 
 **Is the Midwest more impacted by being low income and being beyond 10 miles from a supermarket compared to the Northeast?** If there is a difference between those two regions, and if so, what variables contribute to that? Our target population for this question are individuals living in the Northeast and Midwest area of the US, as the Northeast is generally more urban and the Midwest is generally more rural and agricultural-based. We hope to bring awareness to potentially significant differences in food access because everyone should have access across the US, regardless of geographic location. This question is original because it is focusing on a "10 mile" range specifically. This research question will be answered using a hypothesis test and confidence intervals. **Given our background research on the Midwest and the Northeast regions, we hypothesize that the Midwest will be mostly impacted by having a greater proportion of low income population count beyond 10 miles from supermarkets.** We will conduct a hypothesis test to test this hypothesis. We are also exploring an additional question to support our hypothesis test: What is the confidence interval for the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast? In the Midwest?
 
-Data cleaning: We first mutated the data set to categorize each state into their respective region (Midwest, Northeast, Southwest, Southeast, and West). We also mutated the data to include the proportion of low income population count beyond 10 miles from supermarket, the proportion of housing units without vehicle count beyond 10 miles from supermarket. 
-
-## Literature Review
-
-https://pubmed.ncbi.nlm.nih.gov/30792950/ 
-This study examines the relationship between access to a personal vehicle and diet, food insecurity, and physical activity among public housing residents, which are typically low-income, urban populations. The study conducted a cross-sectional survey of randomly selected households within two public housing communities in Baltimore, MD. The study used Poisson regression with robust error variance to estimate relative risk ratios adjusted for demographics and perceived environmental factors.
-
-The independent variable was whether or not the resident had access to a personal vehicle which the dependent variables were 'high' fruit & vegetable intake (\>= 6.7 servings/day), 'high' added sugar intake (\>+ 39.9 tsp/day), food insecurity, and being physically active. The sample included 265 adults with mean age of 45 years, 86% women, and 96% African-American. Only 42% had access to a vehicle.
-
-The study found that there were no significant associations that existed between personal vehicle access with diet or physical activity outcomes. However, the study found that access to a personal vehicle was associated with significantly lower risk of food insecurity (RR 0.76, 95% CI 0.63-0.92, p \< 0.01). There was a significant association between personal vehicle access and lower risk of food insecurity.
-
-In connection to the article, our research explores other factors beyond transportation (specifically vehicle access) such as family income and the availability of public transportation. Our research also expands across both urban and rural areas in the United States while the article focuses exclusively on Baltimore, MD. Moreover, our research attempts to understand the relationship between various geographical regions, accounting for numerous variables.
-
+Data cleaning: We first mutated the data set to categorize each state into their respective region (Midwest, Northeast, Southwest, Southeast, and West). We also mutated the data to include the proportion of low income population count beyond 10 miles from supermarket, the proportion of housing units without vehicle count beyond 10 miles from supermarket.
 
 ```{r}
 #| label: read libraries
@@ -130,7 +118,7 @@ food_access_reg_MID_and_NORTH |>
 
 ```
 
-Explanation for Density Curve: There are more people in the Midwest that have vehicle access for supermarkets...
+Explanation for Density Curve: Based on if there was no vehicle access beyond 10 miles from a supermarket, the density curves for both regions have a similar shape, with the Midwest having a slightly higher density of lower values of vehicle access compared to the Northeast. There is some overlap between the two regions in terms of the distribution of vehicle access, indicating that there are some areas in the Midwest with similar vehicle access to supermarkets as some areas in the Northeast.
 
 ```{r}
 #| label: Splitting data into testing and training data 
@@ -192,11 +180,23 @@ region_pred |>
     event_level = "second") 
 ```
 
+Based on both ROC Curves, the AUC for both is around \~0.717, indicating a strong predictor value for the given region.
+
+## Literature Review
+
+https://pubmed.ncbi.nlm.nih.gov/30792950/ This study examines the relationship between access to a personal vehicle and diet, food insecurity, and physical activity among public housing residents, which are typically low-income, urban populations. The study conducted a cross-sectional survey of randomly selected households within two public housing communities in Baltimore, MD. The study used Poisson regression with robust error variance to estimate relative risk ratios adjusted for demographics and perceived environmental factors.
+
+The independent variable was whether or not the resident had access to a personal vehicle which the dependent variables were 'high' fruit & vegetable intake (\>= 6.7 servings/day), 'high' added sugar intake (\>+ 39.9 tsp/day), food insecurity, and being physically active. The sample included 265 adults with mean age of 45 years, 86% women, and 96% African-American. Only 42% had access to a vehicle.
+
+The study found that there were no significant associations that existed between personal vehicle access with diet or physical activity outcomes. However, the study found that access to a personal vehicle was associated with significantly lower risk of food insecurity (RR 0.76, 95% CI 0.63-0.92, p \< 0.01). There was a significant association between personal vehicle access and lower risk of food insecurity.
+
+In connection to the article, our research explores other factors beyond transportation (specifically vehicle access) such as family income and the availability of public transportation. Our research also expands across both urban and rural areas in the United States while the article focuses exclusively on Baltimore, MD. Moreover, our research attempts to understand the relationship between various geographical regions, accounting for numerous variables.
+
 ## Methodology
 
 First, in order to clean our data and prep for the data analysis and models, different region vectors were created in order to merge with the original food_access datasets. Since our research question involves regions and the original datasets does not include that, multiple mutate with case_when was used to clean and modify the data.
 
-In order to explore the basic relationships, first some exploratory data analysis was conducted to see which specific states in the regions our research question was exploring. By quantifying and visualizing the relationship between the variables in the Midwest and Northeast, the sample mean difference is extracted from the given regions. This is used to run a hypothesis test in order to answer our research question. [CONFUSING EDIT With a null distribution and p-value either reject or fail to reject the null hypothesis of no difference between the two regions.] This would help answer our research question as it would show which region is impacted more by taking the mean of the proportions of low income people 10 miles away from the supermarket without a vehicle. Based on the results of the hypothesis test, we run a confidence interval in order to see where the true mean lies in each region.
+In order to explore the basic relationships, first some exploratory data analysis was conducted to see which specific states in the regions our research question was exploring. By quantifying and visualizing the relationship between the variables in the Midwest and Northeast, the sample mean difference is extracted from the given regions. This is used to run a hypothesis test in order to answer our research question. \[CONFUSING EDIT With a null distribution and p-value either reject or fail to reject the null hypothesis of no difference between the two regions.\] This would help answer our research question as it would show which region is impacted more by taking the mean of the proportions of low income people 10 miles away from the supermarket without a vehicle. Based on the results of the hypothesis test, we run a confidence interval in order to see where the true mean lies in each region.
 
 In order to find which variables contribute to the Midwest region being more impacted by low income and no transportation, a linear regression model is used as the low income people without vehicle access beyond 10 miles from a supermarket is the explanatory, and the number of people living in housing quarters as the response variable. This would be the best variable to use in the linear regression because the other data refers to children, seniors, and other varying amounts of vehicle distance. Therefore, housing group quarters population would be the best variable to use in this linear regression model and would help solidify the second part of the research question.
 
@@ -297,6 +297,7 @@ boot_df |>
             upper = quantile(stat, 0.975))
 
 ```
+
 We are creating a histogram to see the distribution of re-samples from our original data for Midwest. We also have lines that represent our confidence interval.
 
 ```{r}
@@ -341,6 +342,7 @@ boot_df |>
             upper = quantile(stat, 0.975))
 
 ```
+
 We are creating a histogram to see the distribution of re-samples from our original data for Northeast. We also have lines that represent our confidence interval.
 
 ```{r}
@@ -405,7 +407,7 @@ linear_reg() |>
 
 ```
 
-After seeing the results to our hypothesis test and CI, we conclude that the Midwest is more impacted by low income and being 10 miles away. We used a linear regression to see which variables affect that. We choose the variables proportion of seniors and no vehicle access being 10 miles away. First, we fit those variables individually. Then we looked at their adjusted r-squared values. The linear regression with the proportion of seniors had a higher adjusted r-squared value. So then we included an additive and interactive component with the proportion of having no vehicle access. The interative model had a higher adjusted r-squared value. 
+After seeing the results to our hypothesis test and CI, we conclude that the Midwest is more impacted by low income and being 10 miles away. We used a linear regression to see which variables affect that. We choose the variables proportion of seniors and no vehicle access being 10 miles away. First, we fit those variables individually. Then we looked at their adjusted r-squared values. The linear regression with the proportion of seniors had a higher adjusted r-squared value. So then we included an additive and interactive component with the proportion of having no vehicle access. The interactive model had a higher adjusted r-squared value.
 
 ## Results
 
@@ -421,7 +423,7 @@ We wanted to see if having no vehicle access and being beyond 10 miles from a ma
 
 We wanted to see if being a senior who was beyond 10 miles from a market contributes to low income and being 10 miles from a market. Therefore, we created a scatter plot. There is a positive relationship between the proportion of seniors living 10 miles away from a market and the proportion of low income people who are 10 miles away from a supermarket for both regions. As the proportion of being a senior and living 10 miles away increases so does the proportion for individuals who are low income and are 10 miles away from a market.
 
-Linear regression: We created a linear regression to see which variables affect low income and being 10 miles away for the Midwest. We found that the best model was when the proportion of seniors and proportion of no vehicle access being 10 miles away interacted with each other. This model had the highest adjusted r squared value (0.8715612). A higher r-squared value indicates a higher amount of variability being explained by our model. Therefore, our adjusted r-squared value supports that our interactive model is a good fit for our data. This value answers the second part of our research question. Individiuals who are a senior and have no vehicle access and being 10 miles beyond a supermarket contribute to low income and being 10 miles beyond a supermarket in the midwest. 
+Linear regression: We created a linear regression to see which variables affect low income and being 10 miles away for the Midwest. We found that the best model was when the proportion of seniors and proportion of no vehicle access being 10 miles away interacted with each other. This model had the highest adjusted r squared value (0.8715612). A higher r-squared value indicates a higher amount of variability being explained by our model. Therefore, our adjusted r-squared value supports that our interactive model is a good fit for our data. This value answers the second part of our research question. Individiuals who are a senior and have no vehicle access and being 10 miles beyond a supermarket contribute to low income and being 10 miles beyond a supermarket in the Midwest.
 
 ## Discussion
 

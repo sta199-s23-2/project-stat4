@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Food Access in Different Regions</title>
+<title>Food Access in the Midwest versus the Northeast</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Food Access in Different Regions</h1>
+<h1 class="title">Food Access in the Midwest versus the Northeast</h1>
 <p class="subtitle lead">Report</p>
 </div>
 
@@ -144,63 +144,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Research Question:</p>
 <p><strong>Is the Midwest more impacted by being low income and being beyond 10 miles from a supermarket compared to the Northeast?</strong> If there is a difference between those two regions, and if so, what variables contribute to that? Our target population for this question are individuals living in the Northeast and Midwest area of the US, as the Northeast is generally more urban and the Midwest is generally more rural and agricultural-based. We hope to bring awareness to potentially significant differences in food access because everyone should have access across the US, regardless of geographic location. This question is original because it is focusing on a “10 mile” range specifically. This research question will be answered using a hypothesis test and confidence intervals. <strong>Given our background research on the Midwest and the Northeast regions, we hypothesize that the Midwest will be mostly impacted by having a greater proportion of low income population count beyond 10 miles from supermarkets.</strong> We will conduct a hypothesis test to test this hypothesis. We are also exploring an additional question to support our hypothesis test: What is the confidence interval for the true mean proportion of low income individuals that live beyond 10 miles from a supermarket in the Northeast? In the Midwest?</p>
 <p>Data cleaning: We first mutated the data set to categorize each state into their respective region (Midwest, Northeast, Southwest, Southeast, and West). We also mutated the data to include the proportion of low income population count beyond 10 miles from supermarket, the proportion of housing units without vehicle count beyond 10 miles from supermarket.</p>
-</section>
-<section id="literature-review" class="level2">
-<h2 class="anchored" data-anchor-id="literature-review">Literature Review</h2>
-<p>https://pubmed.ncbi.nlm.nih.gov/30792950/ This study examines the relationship between access to a personal vehicle and diet, food insecurity, and physical activity among public housing residents, which are typically low-income, urban populations. The study conducted a cross-sectional survey of randomly selected households within two public housing communities in Baltimore, MD. The study used Poisson regression with robust error variance to estimate relative risk ratios adjusted for demographics and perceived environmental factors.</p>
-<p>The independent variable was whether or not the resident had access to a personal vehicle which the dependent variables were ‘high’ fruit &amp; vegetable intake (&gt;= 6.7 servings/day), ‘high’ added sugar intake (&gt;+ 39.9 tsp/day), food insecurity, and being physically active. The sample included 265 adults with mean age of 45 years, 86% women, and 96% African-American. Only 42% had access to a vehicle.</p>
-<p>The study found that there were no significant associations that existed between personal vehicle access with diet or physical activity outcomes. However, the study found that access to a personal vehicle was associated with significantly lower risk of food insecurity (RR 0.76, 95% CI 0.63-0.92, p &lt; 0.01). There was a significant association between personal vehicle access and lower risk of food insecurity.</p>
-<p>In connection to the article, our research explores other factors beyond transportation (specifically vehicle access) such as family income and the availability of public transportation. Our research also expands across both urban and rural areas in the United States while the article focuses exclusively on Baltimore, MD. Moreover, our research attempts to understand the relationship between various geographical regions, accounting for numerous variables.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-✔ tibble  3.1.8     ✔ stringr 1.5.0
-✔ tidyr   1.2.1     ✔ forcats 0.5.2
-✔ purrr   1.0.0     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-── Attaching packages ────────────────────────────────────── tidymodels 1.0.0 ──
-
-✔ broom        1.0.2     ✔ rsample      1.1.1
-✔ dials        1.1.0     ✔ tune         1.0.1
-✔ infer        1.0.4     ✔ workflows    1.1.2
-✔ modeldata    1.0.1     ✔ workflowsets 1.0.0
-✔ parsnip      1.0.3     ✔ yardstick    1.1.0
-✔ recipes      1.0.3     
-
-── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
-✖ scales::discard() masks purrr::discard()
-✖ dplyr::filter()   masks stats::filter()
-✖ recipes::fixed()  masks stringr::fixed()
-✖ dplyr::lag()      masks stats::lag()
-✖ yardstick::spec() masks readr::spec()
-✖ recipes::step()   masks stats::step()
-• Search for functions across packages at https://www.tidymodels.org/find/
-
-Rows: 3142 Columns: 25
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr  (2): County, State
-dbl (23): Population, Housing Data.Residing in Group Quarters, Housing Data....
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 3,142
 Columns: 25
@@ -254,7 +198,7 @@ $ `Low Access Numbers.Seniors.20 Miles`           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 
 <p><img src="report_files/figure-html/Graph%203%20Density-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Explanation for Density Curve: There are more people in the Midwest that have vehicle access for supermarkets…</p>
+<p>Explanation for Density Curve: Based on if there was no vehicle access beyond 10 miles from a supermarket, the density curves for both regions have a similar shape, with the Midwest having a slightly higher density of lower values of vehicle access compared to the Northeast. There is some overlap between the two regions in terms of the distribution of vehicle access, indicating that there are some areas in the Midwest with similar vehicle access to supermarkets as some areas in the Northeast.</p>
 <div class="cell">
 
 </div>
@@ -284,6 +228,14 @@ $ `Low Access Numbers.Seniors.20 Miles`           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 
 1 roc_auc binary         0.718</code></pre>
 </div>
 </div>
+<p>Based on both ROC Curves, the AUC for both is around ~0.717, indicating a strong predictor value for the given region.</p>
+</section>
+<section id="literature-review" class="level2">
+<h2 class="anchored" data-anchor-id="literature-review">Literature Review</h2>
+<p>https://pubmed.ncbi.nlm.nih.gov/30792950/ This study examines the relationship between access to a personal vehicle and diet, food insecurity, and physical activity among public housing residents, which are typically low-income, urban populations. The study conducted a cross-sectional survey of randomly selected households within two public housing communities in Baltimore, MD. The study used Poisson regression with robust error variance to estimate relative risk ratios adjusted for demographics and perceived environmental factors.</p>
+<p>The independent variable was whether or not the resident had access to a personal vehicle which the dependent variables were ‘high’ fruit &amp; vegetable intake (&gt;= 6.7 servings/day), ‘high’ added sugar intake (&gt;+ 39.9 tsp/day), food insecurity, and being physically active. The sample included 265 adults with mean age of 45 years, 86% women, and 96% African-American. Only 42% had access to a vehicle.</p>
+<p>The study found that there were no significant associations that existed between personal vehicle access with diet or physical activity outcomes. However, the study found that access to a personal vehicle was associated with significantly lower risk of food insecurity (RR 0.76, 95% CI 0.63-0.92, p &lt; 0.01). There was a significant association between personal vehicle access and lower risk of food insecurity.</p>
+<p>In connection to the article, our research explores other factors beyond transportation (specifically vehicle access) such as family income and the availability of public transportation. Our research also expands across both urban and rural areas in the United States while the article focuses exclusively on Baltimore, MD. Moreover, our research attempts to understand the relationship between various geographical regions, accounting for numerous variables.</p>
 </section>
 <section id="methodology" class="level2">
 <h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
@@ -320,19 +272,11 @@ $ `Low Access Numbers.Seniors.20 Miles`           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 
 
 </div>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-</div>
 <div class="cell-output-display">
 <p><img src="report_files/figure-html/visualization-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Please be cautious in reporting a p-value of 0. This result is an
-approximation based on the number of `reps` chosen in the `generate()` step. See
-`?get_p_value()` for more information.</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   p_value
@@ -361,9 +305,6 @@ $ stat      &lt;dbl&gt; 0.1144171, 0.1136144, 0.1131544, 0.1066412, 0.1130759, 0
 </div>
 <p>We are creating a histogram to see the distribution of re-samples from our original data for Midwest. We also have lines that represent our confidence interval.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-</div>
 <div class="cell-output-display">
 <p><img src="report_files/figure-html/Visualization%20Midwest-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -389,9 +330,6 @@ $ stat      &lt;dbl&gt; 0.01381593, 0.01676433, 0.01266810, 0.01101073, 0.010927
 </div>
 <p>We are creating a histogram to see the distribution of re-samples from our original data for Northeast. We also have lines that represent our confidence interval.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-</div>
 <div class="cell-output-display">
 <p><img src="report_files/figure-html/Visualization%20Northeast-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -417,7 +355,7 @@ $ stat      &lt;dbl&gt; 0.01381593, 0.01676433, 0.01266810, 0.01101073, 0.010927
 <pre><code>[1] 0.8715612</code></pre>
 </div>
 </div>
-<p>After seeing the results to our hypothesis test and CI, we conclude that the Midwest is more impacted by low income and being 10 miles away. We used a linear regression to see which variables affect that. We choose the variables proportion of seniors and no vehicle access being 10 miles away. First, we fit those variables individually. Then we looked at their adjusted r-squared values. The linear regression with the proportion of seniors had a higher adjusted r-squared value. So then we included an additive and interactive component with the proportion of having no vehicle access. The interative model had a higher adjusted r-squared value.</p>
+<p>After seeing the results to our hypothesis test and CI, we conclude that the Midwest is more impacted by low income and being 10 miles away. We used a linear regression to see which variables affect that. We choose the variables proportion of seniors and no vehicle access being 10 miles away. First, we fit those variables individually. Then we looked at their adjusted r-squared values. The linear regression with the proportion of seniors had a higher adjusted r-squared value. So then we included an additive and interactive component with the proportion of having no vehicle access. The interactive model had a higher adjusted r-squared value.</p>
 </section>
 </section>
 <section id="results" class="level2">
@@ -428,7 +366,7 @@ $ stat      &lt;dbl&gt; 0.01381593, 0.01676433, 0.01266810, 0.01101073, 0.010927
 <p>These two graphs support our claim that the Midwest is more impacted as the proportions for the Midwest reach higher numbers for the proportion of low income who are 10 miles away. Moreover, it shows that having no vehicle access contributes to this problem, supporting our claim that the Midwest is more impacted by not having reliable access to transportation compared to more urban areas like the Northeast.</p>
 <p>We wanted to see if having no vehicle access and being beyond 10 miles from a market contributes to low income and being 10 miles from a market. Therefore, we created a scatter plot. There is a positive relationship between the proportion of having no vehicle and being beyond 10 miles away from a market and the proportion of low income people who are 10 miles away from a supermarket for both regions. As the proportion of no vehicle access who are 10 miles away increases so does the proportion for individuals who are low income and are 10 miles away from a market.</p>
 <p>We wanted to see if being a senior who was beyond 10 miles from a market contributes to low income and being 10 miles from a market. Therefore, we created a scatter plot. There is a positive relationship between the proportion of seniors living 10 miles away from a market and the proportion of low income people who are 10 miles away from a supermarket for both regions. As the proportion of being a senior and living 10 miles away increases so does the proportion for individuals who are low income and are 10 miles away from a market.</p>
-<p>Linear regression: We created a linear regression to see which variables affect low income and being 10 miles away for the Midwest. We found that the best model was when the proportion of seniors and proportion of no vehicle access being 10 miles away interacted with each other. This model had the highest adjusted r squared value (0.8715612). A higher r-squared value indicates a higher amount of variability being explained by our model. Therefore, our adjusted r-squared value supports that our interactive model is a good fit for our data. This value answers the second part of our research question. Individiuals who are a senior and have no vehicle access and being 10 miles beyond a supermarket contribute to low income and being 10 miles beyond a supermarket in the midwest.</p>
+<p>Linear regression: We created a linear regression to see which variables affect low income and being 10 miles away for the Midwest. We found that the best model was when the proportion of seniors and proportion of no vehicle access being 10 miles away interacted with each other. This model had the highest adjusted r squared value (0.8715612). A higher r-squared value indicates a higher amount of variability being explained by our model. Therefore, our adjusted r-squared value supports that our interactive model is a good fit for our data. This value answers the second part of our research question. Individiuals who are a senior and have no vehicle access and being 10 miles beyond a supermarket contribute to low income and being 10 miles beyond a supermarket in the Midwest.</p>
 </section>
 <section id="discussion" class="level2">
 <h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
