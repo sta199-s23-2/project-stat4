@@ -131,5 +131,12 @@
     "title": "About",
     "section": "",
     "text": "Sreya Gnanavel: Sreya is a freshman at Duke University majoring in Statistical Science and a minor in Finance.\nSathvika Gandavarapu: Sathvika is a freshman at Duke University looking to double major in Economics and Public Policy.\nTina Zheng: Tina is a junior at Duke University, majoring in Environmental Science & Policy, with a minor in Asian American Diaspora Studies.\nLaura Peng: Laura is a freshman at Duke University majoring in Computer Science."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Stat4",
+    "section": "",
+    "text": "We are interested in the topic of food accessibility (defined as the ability to access healthy and affordable foods) in the US and how factors such as family income, vehicle availability, and neighborhood characteristics such as average income and availability of public transportation impact food accessibility. Our data is from the United States Department of Agriculture’s Economic Research Service, which contains information about US county’s ability to access supermarkets. In particular, we aim to explore: Is the Midwest more impacted by being low income and being beyond 10 miles from a supermarket compared to the Northeast? If there is a difference between those two regions, what variables contribute to that?"
   }
 ]

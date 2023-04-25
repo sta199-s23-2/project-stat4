@@ -242,7 +242,7 @@ $\bar{x_{Midwest}} = .11$
 
 $\bar {x_{Northeast}} = .017$
 
-The observed mean proportion difference between $\bar{x_{Midwest}}  -  \bar{x_{Northeast}}= 0.09569124$
+The observed mean proportion difference between $\bar{x_{Midwest}} - \bar{x_{Northeast}}= 0.09569124$
 
 ```{r}
 #| label: Creating null distribution
