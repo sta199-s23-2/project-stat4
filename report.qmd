@@ -56,9 +56,7 @@ West <-
 food_access_reg <- food_access |>
   mutate(
     region = case_when(State %in% Northeast ~ "Northeast",State %in% Southeast ~ "Southeast",
-      State %in% Midwest ~ "Midwest",State %in% Southwest ~ "Southwest", State %in% West ~ "West"
-    )
-  )
+      State %in% Midwest ~ "Midwest",State %in% Southwest ~ "Southwest", State %in% West ~ "West"))
 
 food_access_reg <- food_access_reg |>
   mutate(
@@ -68,8 +66,7 @@ food_access_reg <- food_access_reg |>
       `Population`,
     proportion_group = `Housing Data.Residing in Group Quarters` /
       `Population`,
-    group_quarters = `Housing Data.Residing in Group Quarters`
-  )
+    group_quarters = `Housing Data.Residing in Group Quarters`)
 ```
 
 ```{r}
@@ -187,7 +184,6 @@ In connection to the article, our research explores other factors beyond transpo
 First, in order to clean our data and prep for the data analysis and models, different region vectors were created in order to merge with the original food_access data sets. Since our research question involves regions and the original data sets does not include that, multiple mutate with case_when was used to clean and modify the data. Moreover, we created proportions for the count of low income and being 10 miles away from a supermarket, seniors who were 10 miles away from a supermarket, and individuals without vehicle access who were 10 miles away from a supermarket. All these variables were divided by the population count. 
 
 In order to explore the basic relationships, first some exploratory data analysis was conducted. By quantifying and visualizing the relationship between the variables in the Midwest and Northeast, the sample mean difference is extracted from the given regions. This is used to run a hypothesis test in order to answer our research question. This would help answer our research question as it would show which region is impacted more by taking the mean of the proportions of low income people 10 miles away from the supermarket without a vehicle. Based on the results of the hypothesis test, we run a confidence interval in order to see where the true mean proportion lies in each region.
-
 
 **Hypothesis Test**
 
@@ -420,19 +416,14 @@ Conclusion of Hypothesis Test: The probability of observing a 0.09569124 true me
 
 Confidence Interval: The interval for the true mean proportion of low income individuals that are beyond 10 miles away from a supermarket in the Midwest has a significantly higher interval compared to the northeast. This difference supports our answer to our hypothesis test that the Midwest has a higher mean proportion of low income individuals being 10 miles beyond from a supermarket.
 
-
-
 Linear regression: We created a linear regression to see which variables have a strong association with the Midwest's higher proportion for low income and being 10 miles away from a supermarket. We found that the best model was when the proportion of seniors and proportion of no vehicle access being 10 miles away interacted with each other. This model had the highest adjusted r-squared value (0.8847318). A higher adjusted r-squared value indicates a higher amount of variability being explained by our model. Therefore, our adjusted r-squared value supports that our interactive model is a good fit for our data. This value answers the second part of our research question. Individuals who are a senior and have no vehicle access being 10 miles beyond a supermarket are associated to low income and being 10 miles beyond a supermarket in the Midwest.
 
 ## Discussion
 
-We have learned from our research question that the Midwest has a smaller true mean proportion of low-income households that have vehicle access to a supermarket 10 miles away compared to the Northwest, with a p-value of \~0 when assuming that there is no difference.\
-The analysis included the state with the most no vehicle access which was District of Columbia. However, the District of Columbia only has one row of collected data and therefore, we could not perform an accurate linear regression in order to quantify the relationship between the variables contributing to the no vehicle access and low income. This could be a limitation of the analysis and therefore combining more data from other data sets would help further strengthen this analysis. Not much could be analyzed from housing quarters and no vehicle access, and more could be gleamed from combining other data sets. There could be more influential variables affecting the low access, low income people living 10 miles away. However, only much could be done using this data set.
+We have learned from our research question that the Midwest has a smaller true mean proportion of low-income households that have vehicle access to a supermarket 10 miles away compared to the Northwest, with a p-value of \~0 when assuming that there is no difference.\ The analysis included the state with the most no vehicle access which was District of Columbia. However, the District of Columbia only has one row of collected data and therefore, we could not perform an accurate linear regression in order to quantify the relationship between the variables contributing to the no vehicle access and low income. This could be a limitation of the analysis and therefore combining more data from other data sets would help further strengthen this analysis. Not much could be analyzed from housing quarters and no vehicle access, and more could be gleamed from combining other data sets. There could be more influential variables affecting the low access, low income people living 10 miles away. However, only much could be done using this data set.
 
-Also, since this data set was collected by census and surveys, there could be a sample size and representation bias. Surveys often rely on a sample of people to represent a larger population. If the sample size is too small or not representative of the population of interest, the results may not be generalization to the broader population. This data set is also from 2010, which is relatively outdated compared to 2023.
+Also, since this data set was collected by census and surveys, there could be a sample size and representation bias. Surveys often rely on a sample of people to represent a larger population. If the sample size is too small or not representative of the population of interest, the results may not be generalization to the broader population. This data set is also from 2010, which is relatively outdated compared to 2023. Another confounding variable is that the dataset only looked into supermarkets, and excluded farmer's markets and local shops. The analysis could be improved by comparing our dataset to an alternative dataset focusing on local shops.
 
-Some potential areas of future interest include: relationship between food access and health outcomes, or socioeconomic factors. With the data on health outcomes available in the data set, researchers could explore whether living in an area with limited food access is associated with poorer health outcomes, such as higher rates of obesity, diabetes, or heart disease. The data set could expand to include information on income, education level, and race/ethnicity. Researchers could explore whether these factors are associated with differences in food access, and if so, which policy interventions might be effective in addressing these disparities.
+As for potential ethical concerns with data collection with the census, informed consent, impartiality, and transparency are some main ones. Individuals should be fully informed about the purpose of the census and how their data will be used and any lack of informed consent would lead to a violation of an individual’s privacy rights. As impartiality, census collection should be conducted in an impartial and unbiased manner. These concerns, along with other concerns such as accuracy, undercounting, and sampling bias are important to acknowledge.
 
-As for potential ethical concerns with data collection with the census, informed consent, impartiality, and transparency are some main ones. Individuals should be fully informed about the purpose of the census and how their data will be used and any lack of informed consent would lead to a violation of an individual’s privacy rights. As impartiality, census collection should be conducted in an impartial and unbiased manner.
-
-These concerns, along with other concerns such as accuracy, undercounting, and sampling bias are important to acknowledge.
+What is important about these results is the originality in honing in on Midwest food access and decentralizing myths about its access and the varying access within the United States. Some potential areas of future interest include: relationship between food access and health outcomes, or socioeconomic factors. With the data on health outcomes available in the data set, researchers could explore whether living in an area with limited food access is associated with poorer health outcomes, such as higher rates of obesity, diabetes, or heart disease. The data set could expand to include information on income, education level, and race/ethnicity. Researchers could explore whether these factors are associated with differences in food access, and if so, which policy interventions might be effective in addressing these disparities. Based on our research, we recommend backing the CDC recommendation in creating new food retail outlets in underserved areas, but particularly in the Midwest. Our research goes against the notion that the Midwest, which is central to the agriculture production of America, has accessible supermarkets everywhere. We recommend states specific to the Midwest provide loans or state grants for the creation of these food retail outlets as an incentive. 
